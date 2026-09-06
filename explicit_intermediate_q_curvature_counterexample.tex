@@ -1,0 +1,501 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!65!black
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Qlx}{\mathcal{Q}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dd}{\,dx}
+
+\title[Intermediate $Q$-curvature positivity fails]
+{An explicit counterexample to intermediate
+$Q$-curvature positivity in dimension thirty}
+
+\author{[Author Name]}
+% \address{Department, University, Postal address}
+% \email{author@example.edu}
+
+\date{August 18, 2026}
+\subjclass[2020]{53C18, 35J30, 35B09}
+\keywords{conformal metric, $Q$-curvature, polyharmonic equation,
+positivity, counterexample}
+
+\begin{document}
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~50 (L50), ``Intermediate $Q$-curvature
+positivity.''  It gives a full explicit counterexample in the stated class,
+but it is not a new disproof: it is a self-contained specialization of the
+V\'etois--Zeitler construction, which had already disproved the conjecture.
+
+Li and Xu conjectured that, for a conformally Euclidean metric
+\(g=u^{4/(n-2m)}|dx|^2\) on \(\R^n\), positivity and a slow-decay
+barrier for the top-order curvature \(Q_g^{(2m)}\) force positivity of
+every intermediate curvature \(Q_g^{(2k)}\), \(1\leq k<m\).
+V\'etois and Zeitler recently disproved this statement for \(m\geq4\)
+in sufficiently large dimensions.  We give a self-contained, completely
+worked specialization of their construction to \((m,n)=(4,30)\).
+For all sufficiently small \(\eps>0\), we construct a smooth positive
+function \(u_\eps\) such that
+\[
+ g_\eps=u_\eps^{2/11}|dx|^2,
+ \qquad 0<c_\eps\leq Q_{g_\eps}^{(8)}\leq C_\eps,
+ \qquad Q_{g_\eps}^{(6)}(0)<0.
+\]
+The sign at the origin is certified by an exact sixth-order Taylor
+calculation for a two-pole Riesz potential with weights \(10\) and \(1\).
+All normalization factors and the slow-decay hypothesis are verified
+explicitly.
+\end{abstract}
+
+\maketitle
+
+\section{The conjecture and the counterexample}
+
+We use the sign convention
+\(\Delta=\sum_{j=1}^n\partial_j^2\), so that \(-\Delta\) is positive.
+For a smooth positive function \(u\) on \(\R^n\), integers
+\(2\leq m<n/2\) and \(1\leq k\leq m\), set
+\begin{equation}\label{eq:LX-definition}
+ \Qlx_{2k}[u]
+ :=u^{-\frac{n+2k}{n-2m}}
+   (-\Delta)^k\!\left(u^{\frac{n-2k}{n-2m}}\right).
+\end{equation}
+Thus the conformal metric
+\[
+ g=u^{\frac{4}{n-2m}}|dx|^2
+\]
+satisfies the equations used by Li and Xu \cite[(1.1)--(1.2)]{LiXu}:
+\[
+ (-\Delta)^k\!\left(u^{\frac{n-2k}{n-2m}}\right)
+ =\Qlx_{2k}[u]\,u^{\frac{n+2k}{n-2m}}.
+\]
+Their Conjecture~1 asserts that if \(\Qlx_{2m}[u]>0\) and, for some
+\(-2m<s\leq0\),
+\begin{equation}\label{eq:barrier}
+ \Qlx_{2m}[u](x)\geq c_0|x|^s
+ \quad\text{for all sufficiently large }|x|,
+\end{equation}
+then \(\Qlx_{2k}[u]>0\) for every \(1\leq k<m\).
+
+Our main result is the following explicit negation of that assertion.
+
+\begin{theorem}\label{thm:main}
+There is a smooth positive function \(u\) on \(\R^{30}\) for which
+\[
+ g=u^{2/11}|dx|^2
+\]
+has the following properties:
+\begin{enumerate}
+\item there are constants \(0<c<C<\infty\) such that
+\begin{equation}\label{eq:top-bounded}
+ c\leq \Qlx_8[u](x)\leq C
+ \qquad\text{for every }x\in\R^{30};
+\end{equation}
+\item the intermediate curvature of order six is negative at the origin:
+\begin{equation}\label{eq:q6-negative}
+ \Qlx_6[u](0)<0.
+\end{equation}
+\end{enumerate}
+In particular, \eqref{eq:barrier} holds with \(s=0\), and Li--Xu's
+Conjecture~1 is false.
+\end{theorem}
+
+The geometric GJMS normalization used in
+\cite[(1.1)]{VetoisZeitler} is
+\begin{equation}\label{eq:standard-normalization}
+ Q_g^{(2k)}=\frac{2}{n-2k}\,\Qlx_{2k}[u].
+\end{equation}
+The factors in \eqref{eq:standard-normalization} are positive.  Hence
+Theorem~\ref{thm:main} is unchanged if all curvatures are interpreted in
+that normalization.  In particular, when \((n,m)=(30,4)\),
+\begin{align}
+ Q_g^{(8)}
+ &=\frac1{11}u^{-19/11}(-\Delta)^4u,
+ \label{eq:q8-standard}\\
+ Q_g^{(6)}
+ &=\frac1{12}u^{-18/11}(-\Delta)^3(u^{12/11}).
+ \label{eq:q6-standard}
+\end{align}
+
+The construction below is the \((m,n)=(4,30)\) instance of the
+two-peak construction of V\'etois and Zeitler
+\cite[Theorem~1.2 and \S4]{VetoisZeitler}.  The purpose of this note is
+not to claim a new disproof, but to record one concrete family and give
+an independent exact calculation of its negative sixth-order curvature.
+
+\section{The two-bump conformal factor}
+
+Let \(e_1=(1,0,\dots,0)\in\R^{30}\).  Choose
+\(\rho\in C_c^\infty(B_1(0))\) such that
+\begin{equation}\label{eq:mollifier}
+ \rho\geq0,
+ \qquad \int_{\R^{30}}\rho(x)\,dx=1,
+ \qquad
+ \rho_\eps(x):=\eps^{-30}\rho(x/\eps).
+\end{equation}
+Put
+\begin{equation}\label{eq:h-definition}
+ h_\eps(x)
+ :=\eps(1+|x|^2)^{-19}
+   +10\rho_\eps(x-e_1)+\rho_\eps(x+e_1),
+ \qquad 0<\eps<\frac14.
+\end{equation}
+In particular, \(h_\eps\) is smooth and strictly positive everywhere.
+Let \(\omega_{29}=|\mathbb S^{29}|\), and define
+\begin{equation}\label{eq:kappa}
+ \kappa
+ :=\frac{\Gamma(12)}{2^7\,3!\,\Gamma(15)\omega_{29}}
+ =\frac{11\Gamma(11)}{2^8\pi^{15}\Gamma(4)}
+\end{equation}
+and
+\begin{equation}\label{eq:u-definition}
+ u_\eps(x)
+ :=\kappa\int_{\R^{30}}|x-y|^{-22}h_\eps(y)\,dy.
+\end{equation}
+
+\begin{lemma}\label{lem:fundamental}
+For every \(0<\eps<1/4\), the function \(u_\eps\) is smooth and positive
+on \(\R^{30}\), and
+\begin{equation}\label{eq:top-equation}
+ (-\Delta)^4u_\eps=11h_\eps
+ \qquad\text{in }\R^{30}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The fundamental solution of \((-\Delta)^4\) on \(\R^{30}\) is
+\begin{equation}\label{eq:fundamental-solution}
+ \Phi(x)
+ =\frac{\Gamma(11)}{2^8\pi^{15}\Gamma(4)}|x|^{-22}.
+\end{equation}
+Indeed, this is the specialization of
+\[
+ \frac{\Gamma((n-2m)/2)}{2^{2m}\pi^{n/2}\Gamma(m)}
+ |x|^{2m-n}
+\]
+to \((n,m)=(30,4)\).  Equations
+\eqref{eq:kappa}--\eqref{eq:u-definition} therefore give
+\(u_\eps=11\Phi*h_\eps\), and \eqref{eq:top-equation} follows in the
+sense of distributions.  The integral is finite and positive because
+\(|x|^{-22}\) is locally integrable in dimension \(30\), while
+\(h_\eps\) decays like \(|x|^{-38}\).  Local elliptic regularity applied
+to \eqref{eq:top-equation} then gives \(u_\eps\in C^\infty(\R^{30})\).
+\end{proof}
+
+We next verify the global hypothesis in the conjecture.  Write
+\begin{equation}\label{eq:W-psi}
+ W(x):=(1+|x|^2)^{-11},
+ \qquad
+ \psi(x):=(1+|x|^2)^{-19}=W(x)^{19/11}.
+\end{equation}
+
+\begin{lemma}\label{lem:comparison}
+For each fixed \(0<\eps<1/4\), there is a constant
+\(C_\eps\geq1\) such that
+\begin{equation}\label{eq:comparisons}
+ C_\eps^{-1}\psi\leq h_\eps\leq C_\eps\psi,
+ \qquad
+ C_\eps^{-1}W\leq u_\eps\leq C_\eps W
+ \quad\text{on }\R^{30}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The first comparison is immediate outside a fixed ball, where the two
+mollified bumps vanish and \(h_\eps=\eps\psi\).  It extends over that ball
+because \(h_\eps\) and \(\psi\) are smooth, \(h_\eps>0\), and
+\(\psi>0\).
+
+For completeness, the standard spherical bubble identity in the present
+dimension is
+\begin{equation}\label{eq:bubble-identity}
+ (-\Delta)^4W
+ =2^8\frac{\Gamma(19)}{\Gamma(11)}\,\psi.
+\end{equation}
+It follows either by four radial differentiations or from the conformal
+covariance of \((-\Delta)^4\).  Convolving \eqref{eq:bubble-identity}
+with \(\Phi\) from \eqref{eq:fundamental-solution} gives the Riesz-potential
+identity
+\begin{equation}\label{eq:background-potential}
+ \kappa\int_{\R^{30}}|x-y|^{-22}\psi(y)\,dy
+ =a_0W(x),
+ \qquad
+ a_0:=\frac{11\Gamma(11)}{2^8\Gamma(19)}>0.
+\end{equation}
+The possible polyharmonic difference vanishes by decay at infinity.
+
+Thus the background term in \eqref{eq:u-definition} is
+\(\eps a_0W\), which gives the lower bound for \(u_\eps\).  Each of the
+two remaining potentials is smooth and bounded on compact sets.  Since
+its source is compactly supported and has finite mass, it is bounded by
+a constant times \(|x|^{-22}\) for large \(|x|\), hence by a constant
+times \(W\) on all of \(\R^{30}\).  This proves the second comparison.
+\end{proof}
+
+\begin{proposition}\label{prop:top-curvature}
+For each fixed \(0<\eps<1/4\), the metric
+\begin{equation}\label{eq:g-epsilon}
+ g_\eps:=u_\eps^{2/11}|dx|^2
+\end{equation}
+has strictly positive top-order curvature, uniformly bounded away from
+zero and infinity:
+\begin{equation}\label{eq:q8-bounds}
+ 0<c_\eps\leq \Qlx_8[u_\eps](x)\leq C_\eps<\infty
+ \qquad(x\in\R^{30}).
+\end{equation}
+Consequently the slow-decay condition \eqref{eq:barrier} holds with
+\(s=0\), and also with any fixed \(s\in(-8,0)\).
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:LX-definition} and \eqref{eq:top-equation},
+\begin{equation}\label{eq:q8-explicit}
+ \Qlx_8[u_\eps]
+ =11h_\eps u_\eps^{-19/11}>0.
+\end{equation}
+The two comparisons in \eqref{eq:comparisons}, together with
+\(\psi=W^{19/11}\), give \eqref{eq:q8-bounds}.  If \(|x|\geq1\) and
+\(s<0\), then \(|x|^s\leq1\), so the positive constant lower bound also
+implies the barrier with rate \(s\).
+\end{proof}
+
+\section{The exact sixth-order sign calculation}
+
+The limiting two-pole function is
+\begin{equation}\label{eq:A-r}
+ A_r(x):=r|x-e_1|^{-22}+|x+e_1|^{-22},
+ \qquad r>0.
+\end{equation}
+Only its sixth-order Taylor polynomial at the origin is needed.
+
+\begin{lemma}[Two-pole calculation]\label{lem:two-pole}
+Let \(S=1+r\), \(\eta=(r-1)/(r+1)\), and
+\begin{equation}\label{eq:F-r}
+ F_r(x):=\left(\frac{A_r(x)}{S}\right)^{12/11}.
+\end{equation}
+Then
+\begin{align}
+ (-\Delta)^3F_r(0)
+ ={}&125042688-460505088\eta^2
+ \notag\\
+ &\quad+557383680\eta^4-221921280\eta^6.
+ \label{eq:eta-polynomial}
+\end{align}
+In particular, for \(r=10\),
+\begin{equation}\label{eq:negative-exact}
+ (-\Delta)^3F_{10}(0)
+ =-\frac{43658772480}{1771561}<0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write \(x=(t,z)\in\R\times\R^{29}\) and \(q=|z|^2\).  Assign weight
+one to \(t\) and weight two to \(q\).  Since
+\[
+ |x\mp e_1|^{-22}=(1\mp2t+t^2+q)^{-11},
+\]
+the generalized binomial formula gives, through weighted degree six,
+\begin{align}
+ \frac{A_r}{S}
+ ={}&1+22\eta t+(253t^2-11q)
+      +\eta(2024t^3-264tq)\notag\\
+ &+(12650t^4-3300t^2q+66q^2)\notag\\
+ &+\eta(65780t^5-28600t^3q+1716tq^2)\notag\\
+ &+(296010t^6-193050t^4q+23166t^2q^2-286q^3)
+ +O_{\mathrm w}(7).
+ \label{eq:A-expansion}
+\end{align}
+Here \(O_{\mathrm w}(7)\) contains only monomials of weighted degree at
+least seven.  Expanding the \(12/11\)-power in \eqref{eq:F-r}, the part
+of weighted degree six is
+\begin{equation}\label{eq:F-degree-six}
+ [F_r]_6=C_{60}t^6+C_{41}t^4q+C_{22}t^2q^2+C_{03}q^3,
+\end{equation}
+where direct collection of the generalized-binomial terms gives
+\begin{align*}
+ C_{60}&=396980+388056\eta^2-618240\eta^4+308224\eta^6,\\
+ C_{41}&=-275460+17328\eta^2-26880\eta^4,\\
+ C_{22}&=29148+2520\eta^2,\\
+ C_{03}&=-364.
+\end{align*}
+These four coefficients can also be obtained by substituting
+\eqref{eq:A-expansion} into
+\[
+ (1+X)^{12/11}
+ =\sum_{j=0}^{6}\binom{12/11}{j}X^j+O_{\mathrm w}(7).
+\]
+
+For a function depending only on \((t,q)\), the Euclidean Laplacian on
+\(\R\times\R^{29}\) is
+\begin{equation}\label{eq:radial-laplacian}
+ \Delta=\partial_t^2+58\partial_q+4q\partial_q^2.
+\end{equation}
+Only \([F_r]_6\) contributes to \(\Delta^3F_r(0)\), and
+\begin{equation}\label{eq:laplacian-coefficients}
+ \Delta^3F_r(0)
+ =720C_{60}+4176C_{41}+43152C_{22}+1424016C_{03}.
+\end{equation}
+Substitution of the four displayed coefficients into
+\eqref{eq:laplacian-coefficients}, followed by a change of sign, gives
+\eqref{eq:eta-polynomial}.  Finally, when \(r=10\), one has
+\(\eta=9/11\).  Substitution into \eqref{eq:eta-polynomial} yields
+\[
+ (-\Delta)^3F_{10}(0)
+ =-\frac{43658772480}{11^6},
+\]
+and \(11^6=1771561\), proving \eqref{eq:negative-exact}.
+\end{proof}
+
+\begin{remark}[Connection with the palindromic sign polynomial]
+\label{rem:K-polynomial}
+In the notation arising from the sixfold integral calculation of
+V\'etois--Zeitler \cite[\S4]{VetoisZeitler}, the specialization
+\((m,n)=(4,30)\) gives
+\[
+ b_0=29952,
+ \qquad b_1=-1009152,
+ \qquad b_2=7168512
+\]
+and
+\begin{equation}\label{eq:K-polynomial}
+ K(r)=64r(b_0+b_1r+b_2r^2+b_1r^3+b_0r^4).
+\end{equation}
+The direct computation above is equivalently
+\begin{equation}\label{eq:K-identity}
+ (-\Delta)^3(A_r^{12/11})(0)
+ =24(1+r)^{-54/11}K(r).
+\end{equation}
+For the integer choice \(r=10\),
+\[
+ b_0+10b_1+100b_2+1000b_1+10000b_0=-2842368,
+\]
+so \(K(10)=-1819115520<0\).  This provides an independent arithmetic
+check on \eqref{eq:negative-exact}.
+\end{remark}
+
+We now transfer the point-mass calculation to the smooth metrics
+\eqref{eq:g-epsilon}.
+
+\begin{lemma}\label{lem:C6-convergence}
+As \(\eps\downarrow0\),
+\begin{equation}\label{eq:C6-convergence}
+ u_\eps\longrightarrow\kappa A_{10}
+ \quad\text{in }C^6(\overline{B_{1/4}(0)}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:background-potential}, the potential of the first term in
+\eqref{eq:h-definition} is \(\eps a_0W\), which tends to zero in
+\(C^\infty\).  For \(x\in\overline{B_{1/4}(0)}\) and
+\(0<\eps<1/4\), the supports of
+\(\rho_\eps(\,\cdot\mp e_1)\) stay a positive distance from \(x\).
+The kernel \(|x-y|^{-22}\) and all of its \(x\)-derivatives are therefore
+uniformly smooth on the relevant product sets.  The approximate-identity
+property in \eqref{eq:mollifier} consequently gives convergence of the
+two bump potentials, with every derivative, to
+\(10|x-e_1|^{-22}\) and \(|x+e_1|^{-22}\), respectively.  This proves
+\eqref{eq:C6-convergence}.
+\end{proof}
+
+\begin{proposition}\label{prop:q6-negative}
+For all sufficiently small \(\eps>0\),
+\begin{equation}\label{eq:q6-epsilon-negative}
+ \Qlx_6[u_\eps](0)<0.
+\end{equation}
+More precisely,
+\begin{equation}\label{eq:q6-limit}
+ \lim_{\eps\downarrow0}\Qlx_6[u_\eps](0)
+ =-\frac{43658772480}{1771561}
+   (11\kappa)^{-6/11}<0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For \((n,m,k)=(30,4,3)\), definition \eqref{eq:LX-definition} reads
+\begin{equation}\label{eq:q6-LX}
+ \Qlx_6[u]
+ =u^{-18/11}(-\Delta)^3(u^{12/11}).
+\end{equation}
+The limit \(\kappa A_{10}\) in \eqref{eq:C6-convergence} is bounded
+away from zero on \(\overline{B_{1/4}(0)}\).  Composition with the smooth
+map \(s\mapsto s^{12/11}\) therefore preserves the \(C^6\) convergence.
+Since \(A_{10}(0)=11\) and
+\(A_{10}^{12/11}=11^{12/11}F_{10}\), equations
+\eqref{eq:q6-LX} and \eqref{eq:negative-exact} give
+\begin{align*}
+ \lim_{\eps\downarrow0}\Qlx_6[u_\eps](0)
+ &=(11\kappa)^{-18/11}\kappa^{12/11}11^{12/11}
+   (-\Delta)^3F_{10}(0)\\
+ &=(11\kappa)^{-6/11}
+   \left(-\frac{43658772480}{1771561}\right),
+\end{align*}
+which is \eqref{eq:q6-limit}.  Strict negativity persists for every
+sufficiently small positive \(\eps\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Choose any \(\eps>0\) small enough for
+Proposition~\ref{prop:q6-negative}, and set \(u=u_\eps\).
+Lemma~\ref{lem:fundamental} gives smoothness and positivity.
+Proposition~\ref{prop:top-curvature} gives
+\eqref{eq:top-bounded} and the slow-decay barrier, while
+Proposition~\ref{prop:q6-negative} gives \eqref{eq:q6-negative}.
+\end{proof}
+
+\section{Concluding remarks}
+
+The counterexample has three features worth emphasizing.  First, the
+top-order curvature is not merely positive: it is bounded between two
+positive constants.  Second, the failure occurs for a smooth conformal
+metric and is not an artifact of singular point masses; the point masses
+enter only as a limit used to certify the sign.  Third, no numerical root
+of the dimension-threshold polynomial is needed: the integer weight
+\(r=10\) makes the sign strictly negative by exact arithmetic.
+
+V\'etois and Zeitler prove a much broader result: for every \(m\geq4\),
+they construct counterexamples in every sufficiently large dimension
+\cite[Theorem~1.2]{VetoisZeitler}.  The calculation here isolates the
+a particularly simple specialization, \((m,n)=(4,30)\), and keeps the
+Li--Xu normalization visible throughout.
+
+\begin{thebibliography}{99}
+
+\bibitem{LiXu}
+M.~Li and X.~Xu,
+\emph{On positivity of the $Q$-curvatures of conformal metrics},
+J. Funct. Anal. \textbf{289} (2025), no.~8, Paper No.~111011;
+\href{https://doi.org/10.1016/j.jfa.2025.111011}
+{doi:10.1016/j.jfa.2025.111011};
+\href{https://arxiv.org/abs/2402.16277}{arXiv:2402.16277}.
+
+\bibitem{VetoisZeitler}
+J.~V\'etois and S.~Zeitler,
+\emph{Positivity and non-positivity results for the sixth-order
+$Q$-curvature of conformal metrics in $\mathbb{R}^n$},
+preprint (20 July 2026),
+\href{https://arxiv.org/abs/2607.18205}{arXiv:2607.18205v1}.
+
+\end{thebibliography}
+
+\end{document}

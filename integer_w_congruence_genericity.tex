@@ -1,0 +1,373 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Generic Integer-Order Umbilics of Analytic $W$-Congruences}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~9 (L9), ``Generic integer
+$W$-singularity.''  It gives a full proof within the fixed-$m$ stratum of
+real-analytic nondegenerate $W$-congruence germs, using the analytic
+coefficient topology.  It makes no claim outside that analytic,
+nondegenerate, fixed-parameter setting.
+
+Fix an integer $m\ge1$ and consider the real-analytic nondegenerate
+$W$-congruence germs whose normalized umbilic parameter equals $m$.  We
+prove that the discriminant is generically of real type $A_m$, with both
+real signs allowed.  In hodograph coordinates the $W$-equation becomes
+$X\Delta=2\Delta$.  The sole possible nonlinear resonance of $X$ is forced
+to vanish, so $X$ is analytically linearizable and the entire discriminant
+germ has the form $c_2v^2+\kappa u^{m+1}$.  We then construct an analytic
+deformation through genuine $W$-congruences which changes $\kappa$
+transversely.  Hence $\kappa\ne0$, equivalently type $A_m$, is open and
+dense in the fixed-$m$ stratum.
+\end{abstract}
+
+\section{Introduction}
+
+Let a real-analytic line congruence be represented in an affine chart by
+\[
+ f(x,y)=(x,y,0),
+ \qquad
+ \xi(x,y)=(P(x,y),Q(x,y),1).
+\]
+Its extended Weingarten equation is
+\begin{align}
+ W(P,Q)={}&(Q_y-P_x)(Q_{xx}P_{yy}-P_{xx}Q_{yy})\notag\\
+ &-2P_y(P_{xx}Q_{xy}-Q_{xx}P_{xy})
+ +2Q_x(P_{xy}Q_{yy}-P_{yy}Q_{xy})=0,\label{eq:W}
+\end{align}
+and the discriminant is
+\begin{equation}\label{eq:delta}
+ \delta=(P_x-Q_y)^2+4P_yQ_x.
+\end{equation}
+Craizer and Garcia proved the generic $A_m$ statement for the first few
+integer values and conjectured it for every $m\ge1$ \cite{CraizerGarcia}.
+We establish the all-order assertion in the natural fixed-parameter
+analytic stratum.
+
+At a normalized nondegenerate umbilic at the origin, the common linear part
+has been removed and
+\begin{equation}\label{eq:normal}
+ p_{20}=p_{02}=q_{11}=0,
+ \qquad
+ p_{11}=a\ne0,
+ \qquad
+ q_{02}\ne0,
+ \qquad
+ p_{11}\ne q_{02},
+\end{equation}
+where $p_{ij}=\partial_x^i\partial_y^jP(0)$ and similarly for $q_{ij}$.
+The normalized parameter is
+\begin{equation}\label{eq:m}
+ m=-\frac{q_{02}}{p_{11}}.
+\end{equation}
+Let $\mathcal S_m$ denote the space of real-analytic solutions of
+\eqref{eq:W} satisfying the umbilic conditions and
+\eqref{eq:normal}--\eqref{eq:m}, modulo the normalizing linear changes.
+We use the analytic coefficient topology in which a basic neighborhood
+restricts finitely many free Taylor coefficients.
+
+We call a real function germ an unsigned real $A_m$ singularity if it is
+analytically right-equivalent to
+\[
+ \varepsilon_2v^2+\varepsilon_1u^{m+1},
+ \qquad \varepsilon_1,\varepsilon_2\in\{\pm1\}.
+\]
+
+\begin{theorem}\label{thm:main}
+For every integer $m\ge1$, the set of germs in $\mathcal S_m$ whose
+discriminant has unsigned real type $A_m$ is open and dense.  More precisely,
+near every germ there is an analytic scalar $\kappa$ such that
+\[
+ \delta\sim_{\mathrm{right}}c_2v^2+\kappa u^{m+1},
+ \qquad c_2\ne0,
+\]
+and the exceptional locus $\kappa=0$ is locally a smooth hypersurface.
+\end{theorem}
+
+\section{Hodograph reduction}
+
+Assume first that $m>1$.  Set
+\begin{equation}\label{eq:AB}
+ A=P_y,
+ \qquad
+ B=\frac{P_x-Q_y}{2}.
+\end{equation}
+At the normalized umbilic,
+\[
+ A=ax+O(2),
+ \qquad
+ B=\frac{m+1}{2}ay+O(2),
+\]
+so $(A,B)$ are analytic local coordinates.  Define analytic functions
+$F,G$ by
+\begin{equation}\label{eq:FG}
+ -Q_x=F(A,B),
+ \qquad
+ \frac{P_x+Q_y}{2}=G(A,B).
+\end{equation}
+Then
+\[
+ P_x=B+G,
+ \quad P_y=A,
+ \quad Q_x=-F,
+ \quad Q_y=G-B.
+\]
+Put
+\begin{align}
+ E&=(1-G_B)F-(1+G_B)AF_A+(AG_A-B)F_B-2BG_A,
+ \label{eq:E}\\
+ X&=A(1+G_B)\partial_A+(B-AG_A)\partial_B,
+ \label{eq:X}\\
+ \Delta&=B^2-AF.\label{eq:Delta}
+\end{align}
+
+\begin{lemma}\label{lem:identities}
+If $J=\det(\partial(A,B)/\partial(x,y))$, then
+\begin{equation}\label{eq:identities}
+ W=2JE,
+ \qquad
+ (X-2)\Delta=AE,
+ \qquad
+ \delta=4\Delta.
+\end{equation}
+For a $W$-congruence germ,
+\begin{equation}\label{eq:eigen}
+ X\Delta=2\Delta.
+\end{equation}
+The linear terms are
+\begin{equation}\label{eq:linear}
+ X=X_0+O(2),
+ \qquad
+ X_0=\alpha A\partial_A+B\partial_B,
+ \qquad
+ \alpha=\frac{2}{m+1},
+ \qquad
+ \Delta=B^2+O(3).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Substituting the four derivative relations following \eqref{eq:FG} into
+\eqref{eq:W} and \eqref{eq:delta} gives the first and third identities.
+A direct application of \eqref{eq:X} to $B^2-AF$ gives the second.
+Since $J(0)=\frac{m+1}{2}a^2\ne0$, $W=0$ implies $E=0$ and hence
+\eqref{eq:eigen}.  The normalized two-jet gives \eqref{eq:linear}.
+\end{proof}
+
+For $m=1$, the same identities hold and $(A,B)$ are still coordinates,
+but $F$ may have a linear $A$-term.  We treat that case separately below.
+
+\section{Analytic normal form}
+
+\begin{proposition}\label{prop:linearization}
+For every integer $m\ge2$, the vector field $X$ is analytically linearizable:
+there are analytic coordinates $(u,v)$ in which
+\begin{equation}\label{eq:linearized}
+ X=\alpha u\partial_u+v\partial_v.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The eigenvalues $\alpha=2/(m+1)$ and $1$ are positive, so convergent
+Poincar\'{e}--Dulac normalization applies \cite{Arnold}.  For a nonlinear
+monomial vector field,
+\begin{align*}
+ [X_0,A^iB^j\partial_A]
+ &=\bigl(\alpha(i-1)+j\bigr)A^iB^j\partial_A,\\
+ [X_0,A^iB^j\partial_B]
+ &=\bigl(\alpha i+j-1\bigr)A^iB^j\partial_B.
+\end{align*}
+There is no nonlinear $A$-component resonance.  A $B$-component resonance
+exists only when $m$ is odd, and then the only possible resonant term is
+\[
+ cA^r\partial_B,
+ \qquad r=\frac{m+1}{2}.
+\]
+Normalize through degree $r$.  At degree $r+1$, equation
+\eqref{eq:eigen} and the quadratic term $\Delta_2=B^2$ give
+\begin{equation}\label{eq:kill}
+ (X_0-2)\Delta_{r+1}+2cA^rB=0.
+\end{equation}
+Because $\alpha r+1=2$, the monomial $A^rB$ lies in the kernel of the
+scalar homological operator $X_0-2$.  Taking its coefficient in
+\eqref{eq:kill} forces $c=0$.  Thus every nonlinear resonance vanishes,
+and the convergent normal form is exactly \eqref{eq:linearized}.
+\end{proof}
+
+\begin{proposition}\label{prop:classification}
+For $m\ge2$, the entire analytic germ $\Delta$ is right-equivalent to
+\begin{equation}\label{eq:split}
+ c_2v^2+\kappa u^{m+1},
+ \qquad c_2\ne0.
+\end{equation}
+It has type $A_m$ if and only if $\kappa\ne0$; if $\kappa=0$, it has type
+$A_\infty$.
+\end{proposition}
+
+\begin{proof}
+Expand $\Delta$ in the coordinates of \eqref{eq:linearized}.  Equation
+\eqref{eq:eigen} allows a monomial $u^iv^j$ only when
+\begin{equation}\label{eq:weight}
+ \alpha i+j=2.
+\end{equation}
+The nonnegative integer solutions are $(m+1,0)$ and $(0,2)$, together with
+$((m+1)/2,1)$ when $m$ is odd.  Therefore
+\[
+ \Delta=
+ \begin{cases}
+  c_2v^2+c_0u^{m+1},&m\text{ even},\\[1mm]
+  c_2v^2+c_1u^{(m+1)/2}v+c_0u^{m+1},&m\text{ odd},
+ \end{cases}
+\]
+with $c_2\ne0$.  In the odd case, completing the square by
+$v\mapsto v+(c_1/2c_2)u^{(m+1)/2}$ gives \eqref{eq:split}, where
+\[
+ \kappa=c_0-\frac{c_1^2}{4c_2}.
+\]
+The even case has $\kappa=c_0$.  Since $\delta=4\Delta$, the singularity
+classification follows.
+\end{proof}
+
+When $m=1$, the source normalization gives directly
+\begin{equation}\label{eq:m1}
+ \delta_2=4a\bigl(ay^2+q_{20}x^2\bigr).
+\end{equation}
+Thus $q_{20}\ne0$ is precisely the unsigned real $A_1$ condition, while
+$q_{20}=0$ is the rank-one exceptional locus.
+
+\section{An analytic transverse deformation}
+
+We now show that $\kappa$ is not constrained by the analytic $W$-equation.
+Keep $G$ fixed and put
+\begin{equation}\label{eq:lambda}
+ \lambda=1-G_B,
+ \qquad
+ \lambda(0)=\frac{2m}{m+1}=m\alpha.
+\end{equation}
+Use the linearizing coordinates of Proposition~\ref{prop:linearization},
+so $X=\alpha u\partial_u+v\partial_v$.  The cohomological equation
+\begin{equation}\label{eq:cohomology}
+ X\phi=\lambda-\lambda(0)
+\end{equation}
+has an analytic solution: every nonconstant monomial is divided by the
+strictly positive weight $\alpha i+j$.  Hence
+\begin{equation}\label{eq:H}
+ H=e^\phi u^m
+\end{equation}
+is analytic and satisfies
+\begin{equation}\label{eq:Hhomogeneous}
+ XH=(1-G_B)H.
+\end{equation}
+In the original hodograph coordinates, $H$ has leading term a nonzero
+multiple of $A^m$.
+
+Since
+\[
+ E(F,G)=(1-G_B)F-XF-2BG_A,
+\]
+the deformation
+\begin{equation}\label{eq:deform}
+ F_t=F+tH,
+ \qquad
+ G_t=G
+\end{equation}
+satisfies $E(F_t,G_t)=0$.  Moreover,
+\[
+ \Delta_t=\Delta-tAH,
+ \qquad
+ X(AH)=2AH.
+\]
+For $m\ge2$, $AH$ has ordinary order $m+1$.  Among the weight-two
+monomials in \eqref{eq:weight}, only $u^{m+1}$ has that order.  Therefore
+\begin{equation}\label{eq:kappat}
+ AH=Cu^{m+1},
+ \qquad C\ne0,
+ \qquad
+ \kappa_t=\kappa-tC.
+\end{equation}
+
+It remains to verify that \eqref{eq:deform} comes from genuine analytic
+functions $P_t,Q_t$.  Let $x=x(A,B)$ and $y=y(A,B)$, and define
+\[
+ \omega_P=(B+G)\,dx+A\,dy,
+ \qquad
+ \omega_Q=-F_t\,dx+(G-B)\,dy.
+\]
+The closedness conditions are
+\begin{align}
+ (1+G_B)x_A-G_Ax_B-y_B&=0,\label{eq:CK1}\\
+ (F_t)_Bx_A-(F_t)_Ax_B+(1-G_B)y_A+G_Ay_B&=0.
+ \label{eq:CK2}
+\end{align}
+As a system for $(x_A,y_A)$, its determinant at the origin is
+\begin{equation}\label{eq:det}
+ (1+G_B(0))(1-G_B(0))
+ =\frac{4m}{(m+1)^2}>0.
+\end{equation}
+Choose analytic initial data on $A=0$ from the inverse hodograph map of the
+original germ.  Cauchy--Kowalevski applied to
+\eqref{eq:CK1}--\eqref{eq:CK2} gives analytic $x_t,y_t$ with nonvanishing
+Jacobian for small $t$.  Integrating the closed forms gives analytic
+$P_t,Q_t$.  Lemma~\ref{lem:identities} and $E(F_t,G)=0$ then imply
+$W(P_t,Q_t)=0$.
+
+For $m=1$, the same construction starts with $H=A+O(2)$ and changes the
+free coefficient $q_{20}$ in \eqref{eq:m1} with nonzero derivative.
+Thus the exceptional coefficient is transverse in every integer order.
+
+\section{Proof of the main theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $m\ge2$, Proposition~\ref{prop:classification} shows that the
+discriminant has type $A_m$ exactly when $\kappa\ne0$.  This is a
+finite-jet nonvanishing condition and is therefore open.  If $\kappa=0$,
+the analytic family \eqref{eq:deform} consists of genuine fixed-$m$
+$W$-congruence germs and, by \eqref{eq:kappat}, has $\kappa_t\ne0$ for
+every sufficiently small $t\ne0$.  Thus the $A_m$ locus is dense, and
+$d\kappa/dt=-C\ne0$ makes the exceptional locus a smooth hypersurface.
+
+For $m=1$, equation \eqref{eq:m1} and the transverse variation of $q_{20}$
+give the same conclusion.  Both signs of the real $A_m$ normal form are
+allowed, as required for the unsigned classification.
+\end{proof}
+
+\begin{thebibliography}{9}
+
+\bibitem{CraizerGarcia}
+M.~Craizer and R.~A.~Garcia,
+\emph{Singularities of Weingarten line congruences},
+\href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289}.
+
+\bibitem{Arnold}
+V.~I.~Arnold,
+\emph{Geometrical Methods in the Theory of Ordinary Differential Equations},
+2nd ed., Springer, New York, 1988.
+
+\bibitem{Hormander}
+L.~H\"ormander,
+\emph{The Analysis of Linear Partial Differential Operators I},
+2nd ed., Springer, Berlin, 1990.
+
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Area}{\operatorname{Area}}
+\newcommand{\Ric}{\operatorname{Ric}}
+
+\title{A Positively Curved Counterexample to a CMC Index--Area Bound}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~3 (L3), ``CMC index versus area and
+genus.''  Relative to the hypotheses printed in the list, it gives a full
+counterexample: one fixed complete ambient three-manifold has strictly
+positive sectional curvature and violates every possible constant $C(N)$.
+The example is noncompact and its curvature decays to zero, so it does not
+disprove variants requiring a closed ambient manifold or a uniform positive
+curvature lower bound.
+
+We construct a complete rotationally symmetric metric of strictly positive
+sectional curvature on $\mathbb R^3$ containing embedded constant-mean-
+curvature spheres whose areas diverge while their strong Morse index is one
+and their nullity is zero.  This disproves an index--area estimate proposed
+for branched CMC immersions when the ambient three-manifold is assumed only
+to have pointwise positive sectional curvature.  The example isolates the
+missing global hypothesis: the ambient curvature is positive everywhere but
+decays to zero along the end.
+\end{abstract}
+
+\section{Introduction}
+
+For a two-sided CMC immersion $u\colon\Sigma^2\to N^3$, let
+\[
+ L=-\Delta_\Sigma-\bigl(|A|^2+\Ric_N(\nu,\nu)\bigr)
+\]
+be the strong Jacobi operator.  Denote its index and nullity by
+$i_{A_h}(u)$ and $n_{A_h}(u)$.  Seemungal and Sharp proposed that, when
+$N$ has strictly positive sectional curvature, there should exist a
+constant $C(N)>0$ such that
+\begin{equation}\label{eq:proposed}
+ C(N)\left((1+h^2)\Area(\Sigma)+g(\Sigma)\right)
+ \le i_{A_h}(u)+n_{A_h}(u)
+\end{equation}
+for every branched CMC-$h$ immersion \cite{SeemungalSharp}.  We show that
+pointwise positivity of the ambient sectional curvature does not suffice.
+
+\begin{theorem}\label{thm:main}
+There is a fixed complete orientable Riemannian three-manifold $(N,g)$ with
+strictly positive sectional curvature and a sequence of embedded CMC
+spheres $\Sigma_j\subset N$ such that
+\[
+ \Area(\Sigma_j)\longrightarrow\infty,
+ \qquad
+ i_{A_{h_j}}(\Sigma_j)=1,
+ \qquad
+ n_{A_{h_j}}(\Sigma_j)=0.
+\]
+Consequently, no positive constant $C(N)$ can make
+\eqref{eq:proposed} hold on this ambient manifold.
+\end{theorem}
+
+\section{A complete positively curved model}
+
+Fix $a\in(0,1)$ and define
+\begin{equation}\label{eq:warping}
+ f(r)=r(1+r^2)^{(a-1)/2},\qquad r\ge0.
+\end{equation}
+On $N=\mathbb R^3$, consider the rotational metric
+\begin{equation}\label{eq:metric}
+ g=dr^2+f(r)^2g_{\mathbb S^2}.
+\end{equation}
+
+\begin{lemma}\label{lem:geometry}
+The metric \eqref{eq:metric} extends smoothly across $r=0$, is complete,
+and has strictly positive sectional curvature everywhere.
+\end{lemma}
+
+\begin{proof}
+The function $f$ is the restriction of a smooth odd function and
+\[
+ f(r)=r+\frac{a-1}{2}r^3+O(r^5).
+\]
+Thus the standard pole conditions $f(0)=0$ and $f'(0)=1$ hold, and
+\eqref{eq:metric} extends smoothly across the origin.  Since the radial
+coefficient is identically one on $[0,\infty)$, the metric is complete.
+
+Direct differentiation gives
+\begin{align}
+ f'(r)&=(1+r^2)^{(a-3)/2}(1+ar^2)>0,\label{eq:fp}\\
+ f''(r)&=(a-1)r(1+r^2)^{(a-5)/2}(3+ar^2)<0
+ \quad(r>0).\label{eq:fpp}
+\end{align}
+The radial and tangential sectional curvatures of \eqref{eq:metric} are
+\[
+ K_{\rm rad}=-\frac{f''}{f},
+ \qquad
+ K_{\rm tan}=\frac{1-(f')^2}{f^2}.
+\]
+Equation \eqref{eq:fpp} gives $K_{\rm rad}>0$.  Moreover $f'$ decreases
+strictly from $1$, so $0<f'(r)<1$ for $r>0$ and $K_{\rm tan}>0$.
+At the pole both curvatures extend continuously to
+\[
+ K_{\rm rad}(0)=K_{\rm tan}(0)=3(1-a)>0.
+\]
+\end{proof}
+
+\section{Coordinate spheres and their Jacobi spectra}
+
+For $R>0$, let $\Sigma_R=\{r=R\}$.  Its induced metric is
+$f(R)^2g_{\mathbb S^2}$, its genus is zero, and
+\begin{equation}\label{eq:area-h}
+ \Area(\Sigma_R)=4\pi f(R)^2,
+ \qquad
+ h_R=2\frac{f'(R)}{f(R)},
+\end{equation}
+up to the irrelevant choice of orientation.  Thus every $\Sigma_R$ is an
+embedded CMC sphere.  Since $f(R)\sim R^a$, its area tends to infinity.
+
+\begin{lemma}\label{lem:spectrum}
+For all sufficiently large $R$,
+\[
+ i_{A_{h_R}}(\Sigma_R)=1,
+ \qquad
+ n_{A_{h_R}}(\Sigma_R)=0.
+\]
+\end{lemma}
+
+\begin{proof}
+For a coordinate sphere,
+\[
+ |A|^2=2\left(\frac{f'}f\right)^2,
+ \qquad
+ \Ric_N(\nu,\nu)=-2\frac{f''}f.
+\]
+The Jacobi potential is therefore constant and equals
+\[
+ q_R=\frac{2\bigl((f')^2-ff''\bigr)}{f^2}.
+\]
+The eigenvalues of $-\Delta_{\Sigma_R}$ are
+$\ell(\ell+1)/f(R)^2$, with multiplicity $2\ell+1$.  Hence the complete
+Jacobi spectrum is
+\begin{equation}\label{eq:spectrum}
+ \lambda_\ell(L_R)
+ =\frac{\ell(\ell+1)-S(R)}{f(R)^2},
+ \qquad
+ S(R)=2\bigl(f'(R)^2-f(R)f''(R)\bigr).
+\end{equation}
+Using $f(R)\sim R^a$, $f'(R)\sim aR^{a-1}$, and
+$f''(R)\sim a(a-1)R^{a-2}$ gives
+\[
+ S(R)\sim 2aR^{2a-2}\longrightarrow0^+.
+\]
+For all large $R$ one has $0<S(R)<2$.  In \eqref{eq:spectrum}, the
+$\ell=0$ eigenvalue is then negative and every $\ell\ge1$ eigenvalue is
+positive.  This proves the asserted index and nullity.
+\end{proof}
+
+\section{Failure of the estimate}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Choose any sequence $R_j\to\infty$ for which Lemma~\ref{lem:spectrum}
+applies.  Equations \eqref{eq:area-h} give
+\[
+ (1+h_{R_j}^2)\Area(\Sigma_{R_j})
+ =4\pi f(R_j)^2+16\pi f'(R_j)^2
+ \longrightarrow\infty,
+\]
+whereas
+\[
+ i_{A_{h_{R_j}}}(\Sigma_{R_j})+n_{A_{h_{R_j}}}(\Sigma_{R_j})=1.
+\]
+The ambient manifold is fixed, so no positive constant depending only on
+$N$ can satisfy \eqref{eq:proposed} for this sequence.
+\end{proof}
+
+\begin{remark}
+The curvature of \eqref{eq:metric} is strictly positive but tends to zero
+at infinity.  Thus the construction does not address variants in which the
+ambient manifold is closed or has a uniform positive curvature lower bound.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{SeemungalSharp}
+K.~Seemungal and B.~Sharp,
+\emph{Index estimates for constant mean curvature surfaces in three-manifolds by energy comparison},
+\href{https://arxiv.org/abs/2411.02932}{arXiv:2411.02932}.
+
+\bibitem{ONeill}
+B.~O'Neill,
+\emph{Semi-Riemannian Geometry with Applications to Relativity},
+Academic Press, New York, 1983.
+
+\end{thebibliography}
+\end{document}

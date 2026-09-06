@@ -1,0 +1,9 @@
+# machine-specific Lean build config (contains local absolute paths)
+lakefile.toml
+lake-manifest.json
+.lake/
+# local assistant config
+.claude/
+CLAUDE.md
+# build artifacts
+*.pdf

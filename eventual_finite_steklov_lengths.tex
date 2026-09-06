@@ -1,0 +1,357 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Eventual Finiteness of Critical Steklov Lengths on Hypersurfaces of Revolution}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~38 (L38), ``Only finitely many infinite
+critical Steklov lengths.''  It gives a full proof of the conjecture in its
+sharp-bound-profile formulation: for each fixed dimension, every sufficiently
+high index has finite critical length.  This is a statement about where the
+sharp profile attains its supremum; it does not assert that a smooth maximizing
+metric realizes the profile.
+
+For hypersurfaces of revolution with two unit spherical boundary components,
+M\'{e}tras and Tschanz associated to each Steklov index a sharp-bound profile
+depending on the meridian length and conjectured that every sufficiently high
+index has a finite critical length.  We prove the conjecture in every
+dimension.  At a sequence of diagnosis indices, we choose the coupled scale
+$1+L/2=e^{s/i}$ and count simultaneously the increasing Neumann and
+decreasing Dirichlet branches.  The weighted count reduces to the scalar
+inequality $a_s^{n-1}+b_s^{n-1}<2$, where
+$a_s\tanh(sa_s)=1$ and $b_s\coth(sb_s)=1$.  A second-order large-$s$
+expansion proves this inequality in every fixed dimension.  A propagation
+lemma then covers all intervening indices.
+\end{abstract}
+
+\section{Introduction}
+
+Let
+\[
+ M=[0,L]\times\mathbb S^{n-1},
+ \qquad
+ g=dr^2+h(r)^2g_{\mathbb S^{n-1}},
+\]
+where $L>0$, $h(0)=h(L)=1$, $h>0$, and $|h'|\le1$.  The two boundary
+components are unit round spheres.  M\'{e}tras and Tschanz derived, for
+each positive Steklov index $k$, a continuous sharp-bound profile
+$B_n^k(L)$ and defined
+\[
+ B_n^k=\sup_{L>0}B_n^k(L).
+\]
+The index $k$ has \emph{finite critical length} if this supremum is attained
+by the profile at some finite $L$, and it has \emph{infinite critical length}
+if
+\[
+ B_n^k=\lim_{L\to\infty}B_n^k(L).
+\]
+The profile is a sharp envelope; no assertion that a smooth maximizing
+metric realizes it is needed here.  Conjecture~8 of \cite{MetrasTschanz}
+asks whether, for each dimension, every sufficiently high index has finite
+critical length.
+
+\begin{theorem}\label{thm:main}
+For every integer $n\ge2$, there exists $K(n)$ such that every Steklov
+index $k\ge K(n)$ has finite critical length.
+\end{theorem}
+
+The case $n=2$ follows from Fan, Tam, and Yu \cite{FanTamYu}.  We prove the
+result for every fixed $n\ge3$ by a full weighted-branch count.
+
+\section{Mixed branches and weighted order statistics}
+
+Put $R=1+L/2$ and consider the Euclidean annulus
+$A_R=B_R\setminus\overline B_1\subset\mathbb R^n$.  For spherical-harmonic
+degree $j\ge0$, the mixed Steklov--Dirichlet and Steklov--Neumann eigenvalues
+at the inner sphere are
+\begin{align}
+ D_j(R)&=
+ \frac{(j+n-2)R^{2j+n-2}+j}{R^{2j+n-2}-1},\label{eq:D}\\
+ N_j(R)&=
+ j\frac{(j+n-2)(R^{2j+n-2}-1)}
+ {jR^{2j+n-2}+j+n-2}.\label{eq:N}
+\end{align}
+The branch $D_j$ decreases in $R$, the branch $N_j$ increases in $R$, and
+both have spherical multiplicity
+\begin{equation}\label{eq:multiplicity}
+ m_j=\frac{(2j+n-2)(j+n-3)!}{j!(n-2)!}.
+\end{equation}
+Their cumulative multiplicity is
+\begin{equation}\label{eq:S}
+ S_J=\sum_{j=0}^Jm_j
+ =\binom{J+n-1}{n-1}+\binom{J+n-2}{n-1}.
+\end{equation}
+
+For fixed $n,k,L$, let $\ell_0=\max\{\ell:S_\ell\le k\}$.  The extension
+process of \cite{MetrasTschanz} forms the weighted multiset
+\begin{equation}\label{eq:multiset}
+ \{D_0,\ldots,D_{\ell_0},N_1,\ldots,N_{\ell_0+1}\},
+\end{equation}
+where every occurrence of degree $j$ has weight $m_j$.  The number
+$B_n^k(L)$ is its $k$th weighted order statistic.  Since
+\eqref{eq:multiset} is finite and its branches are continuous,
+$B_n^k(L)$ is continuous in $L$.
+
+Set
+\[
+ q=n-1\ge2,
+ \qquad
+ k_i=2S_{i-1}.
+\]
+These are the diagnosis indices used in \cite{MetrasTschanz}.
+
+\begin{lemma}\label{lem:infinity}
+For all sufficiently large $L$,
+\[
+ B_n^{k_i}(L)=N_i(1+L/2),
+\]
+and therefore
+\begin{equation}\label{eq:Ti}
+ \lim_{L\to\infty}B_n^{k_i}(L)=T_i:=i+q-1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For each fixed $j$, formulas \eqref{eq:D}--\eqref{eq:N} give
+\[
+ D_j(R),N_j(R)\longrightarrow j+q-1
+ \qquad(R\to\infty).
+\]
+For large $R$, the branches $D_0,\ldots,D_{i-1}$ contribute
+$S_{i-1}$ weighted occurrences below $N_i$, while
+$N_1,\ldots,N_{i-1}$ contribute $S_{i-1}-1$; the subtraction removes the
+zero Neumann mode.  Thus exactly $k_i-1$ occurrences precede $N_i$, proving
+the first assertion.  The limit of $N_i$ gives \eqref{eq:Ti}.
+\end{proof}
+
+It is enough to find one finite $L$ for which
+$B_n^{k_i}(L)>T_i$.
+
+\section{The coupled branch limit}
+
+Fix $s>1$ and set
+\begin{equation}\label{eq:scale}
+ R_i=e^{s/i},
+ \qquad
+ L_i=2(e^{s/i}-1).
+\end{equation}
+
+\begin{lemma}\label{lem:limits}
+If $j_i/i\to x\ge0$, then
+\begin{align}
+ \frac{N_{j_i}(R_i)}{i}&\longrightarrow
+ f_s(x):=x\tanh(sx),\label{eq:flimit}\\
+ \frac{D_{j_i}(R_i)}{i}&\longrightarrow
+ g_s(x):=x\coth(sx),\label{eq:glimit}
+\end{align}
+where $g_s(0)=1/s$.  Both $f_s$ and $g_s$ are strictly increasing on
+$[0,\infty)$.
+\end{lemma}
+
+\begin{proof}
+Substitute $R_i=e^{s/i}$ and $j_i/i\to x$ into
+\eqref{eq:D}--\eqref{eq:N}; then
+$R_i^{2j_i+n-2}\to e^{2sx}$, giving
+\eqref{eq:flimit}--\eqref{eq:glimit}.  At $x=0$, the Dirichlet formula
+gives $D_0(R_i)/i\to1/s$.  Finally,
+\[
+ f_s'(x)=\tanh(sx)+sx\operatorname{sech}^2(sx)>0,
+\]
+while, with $z=sx$,
+\[
+ g_s'(x)=\coth z-z\operatorname{csch}^2z
+ =\frac{\sinh z\cosh z-z}{\sinh^2z}>0.
+\]
+\end{proof}
+
+Let $a_s>1$ and $b_s\in(0,1)$ be the unique roots
+\begin{equation}\label{eq:roots}
+ a_s\tanh(sa_s)=1,
+ \qquad
+ b_s\coth(sb_s)=1.
+\end{equation}
+The second equation is equivalent to $b_s=\tanh(sb_s)$.  Define the
+discrete cutoffs
+\begin{align}
+ A_i&=\max\{j\ge1:N_j(R_i)\le T_i\},\label{eq:Ai}\\
+ C_i&=\max\{j\ge0:D_j(R_i)\le T_i\}.\label{eq:Ci}
+\end{align}
+
+\begin{lemma}\label{lem:cutoffs}
+For fixed $s>1$,
+\[
+ \frac{A_i}{i}\longrightarrow a_s,
+ \qquad
+ \frac{C_i}{i}\longrightarrow b_s.
+\]
+\end{lemma}
+
+\begin{proof}
+The mixed eigenvalues are strictly increasing in the spherical degree.
+Since $T_i/i\to1$, Lemma~\ref{lem:limits} and the strict monotonicity of
+$f_s,g_s$ give the conclusion by a two-sided root sandwich.  For example,
+for every $\varepsilon>0$, uniform convergence on the two fixed compact
+intervals around $a_s\pm\varepsilon$ places $A_i/i$ between those two
+numbers for all large $i$; the argument for $C_i$ is identical.
+\end{proof}
+
+\section{Weighted rank and the scalar inequality}
+
+Count all mixed branch occurrences at $R_i$ whose value is at most $T_i$.
+By \eqref{eq:Ai}--\eqref{eq:Ci}, this weighted rank is
+\begin{equation}\label{eq:rank}
+ \mathcal R_i=S_{A_i}-1+S_{C_i}.
+\end{equation}
+The $-1$ again removes $N_0=0$.  From \eqref{eq:S},
+\begin{equation}\label{eq:Sasymptotic}
+ S_J=\frac{2}{q!}J^q+O_q(J^{q-1}).
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:ranklimits}
+ \frac{\mathcal R_i}{i^q}
+ \longrightarrow\frac{2}{q!}(a_s^q+b_s^q),
+ \qquad
+ \frac{k_i}{i^q}\longrightarrow\frac4{q!}.
+\end{equation}
+
+\begin{lemma}\label{lem:scalar}
+For every fixed integer $q\ge2$, there exists $s>1$ such that
+\begin{equation}\label{eq:scalar}
+ a_s^q+b_s^q<2.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+ E=e^{-2s},
+ \qquad
+ a_s=1+\delta_s,
+ \qquad
+ b_s=1-\varepsilon_s.
+\]
+Equations \eqref{eq:roots} are equivalent to
+\begin{equation}\label{eq:exactroots}
+ \frac{\delta_s}{2+\delta_s}=Ee^{-2s\delta_s},
+ \qquad
+ \frac{\varepsilon_s}{2-\varepsilon_s}=Ee^{2s\varepsilon_s}.
+\end{equation}
+The relevant roots satisfy $\delta_s,\varepsilon_s=O(E)$.  Indeed,
+evaluating the defining functions at $1+4E$ and $1-4E$, and using the
+elementary bounds for $\tanh$, gives
+$0<\delta_s,\varepsilon_s<4E$ for all large $s$.
+
+Taylor expansion of \eqref{eq:exactroots}, with $sE\to0$, yields
+\begin{align}
+ \delta_s&=2E+(2-8s)E^2+O(s^2E^3),\label{eq:deltaexp}\\
+ \varepsilon_s&=2E+(8s-2)E^2+O(s^2E^3).\label{eq:epsilonexp}
+\end{align}
+For fixed $q$, the binomial expansion gives
+\begin{align}
+ a_s^q+b_s^q-2
+ &=q(\delta_s-\varepsilon_s)
+ +\frac{q(q-1)}2(\delta_s^2+\varepsilon_s^2)+O_q(E^3)\notag\\
+ &=4q(q-4s)E^2+O_q(s^2E^3).\label{eq:sign}
+\end{align}
+The leading term is asymptotic to $-16qsE^2$, whereas the remainder divided
+by $sE^2$ tends to zero.  Hence \eqref{eq:scalar} holds for all sufficiently
+large $s$.
+\end{proof}
+
+\begin{proposition}\label{prop:diagnosis}
+For every fixed $n\ge3$, all sufficiently large diagnosis indices $k_i$
+have finite critical length.
+\end{proposition}
+
+\begin{proof}
+Fix $q=n-1$ and choose $s$ as in Lemma~\ref{lem:scalar}.  Equations
+\eqref{eq:ranklimits} then give $\mathcal R_i<k_i$ for all sufficiently
+large $i$.  The finite multiset \eqref{eq:multiset} is a sub-multiset of the
+full family counted in \eqref{eq:rank}.  Hence fewer than $k_i$ of its
+weighted occurrences can be at most $T_i$, and therefore
+\begin{equation}\label{eq:overshoot}
+ B_n^{k_i}(L_i)>T_i.
+\end{equation}
+By Lemma~\ref{lem:infinity}, the right-hand side is the infinite-length
+limit of the profile.
+
+For fixed $i$, the function $B_n^{k_i}(L)$ is continuous, tends to zero as
+$L\downarrow0$, and has the finite limit $T_i$ as $L\to\infty$.
+The strict overshoot \eqref{eq:overshoot} confines its global supremum to a
+compact subinterval of $(0,\infty)$.  Thus the supremum is attained at a
+finite length.
+\end{proof}
+
+\section{Propagation to every high index}
+
+We use the following propagation result of M\'{e}tras and Tschanz
+\cite[Lemma~17]{MetrasTschanz}.
+
+\begin{lemma}[Block propagation]\label{lem:propagation}
+If $k_i=2S_{i-1}$ has finite critical length, then every index
+\[
+ k_i\le k\le k_i+2m_i-1=k_{i+1}-1
+\]
+has finite critical length.
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $n\ge3$, Proposition~\ref{prop:diagnosis} gives an $i_0$ such that
+every $k_i$ with $i\ge i_0$ has finite critical length.  Applying
+Lemma~\ref{lem:propagation} to each such $i$ covers the consecutive blocks
+$[k_i,k_{i+1}-1]$.  Their union is every index $k\ge k_{i_0}$.  Thus one
+may take $K(n)=k_{i_0}$.  The two-dimensional case is proved in
+\cite{FanTamYu}, completing the theorem.
+\end{proof}
+
+\begin{remark}
+The choice of $s$ depends on $q=n-1$.  The gap in
+\eqref{eq:scalar} becomes small in high dimension, so the argument is
+dimension-by-dimension and does not provide a useful uniform bound for
+$K(n)$.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{MetrasTschanz}
+A.~M\'{e}tras and L.~Tschanz,
+\emph{Critical lengths of Steklov eigenvalues of hypersurfaces of revolution
+in Euclidean space},
+Experimental Math. \textbf{34} (2025), 728--744;
+\href{https://doi.org/10.1080/10586458.2024.2410967}{DOI}.
+
+\bibitem{Tschanz}
+L.~Tschanz,
+\emph{Sharp upper bounds for Steklov eigenvalues of a hypersurface of
+revolution with two boundary components in Euclidean space},
+Ann. Math. Qu\'{e}bec \textbf{48} (2024);
+\href{https://doi.org/10.1007/s40316-024-00225-8}{DOI}.
+
+\bibitem{FanTamYu}
+X.-Q.~Fan, L.-F.~Tam, and C.~Yu,
+\emph{Extremal problems for Steklov eigenvalues on annuli},
+Calc. Var. Partial Differential Equations \textbf{54} (2015), 1043--1059;
+\href{https://doi.org/10.1007/s00526-014-0816-8}{DOI}.
+
+\end{thebibliography}
+\end{document}

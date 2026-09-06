@@ -1,0 +1,294 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Umbilics of Analytic $W$-Congruences with
+\texorpdfstring{$m\notin\mathbb N$}{m not in N}
+Have \texorpdfstring{$A_\infty$}{A-infinity} Discriminant}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~10 (L10), ``Generic noninteger
+$W$-singularity.''  It gives a full proof in the real-analytic,
+nondegenerate, fixed-$m$ setting; in fact it proves the stronger statement
+that every admissible germ in that stratum has type $A_\infty$, rather than
+only a generic set of germs.
+
+We study nondegenerate umbilics of real-analytic $W$-congruences in the
+normalization of Craizer and Garcia.  For every admissible value
+$m\notin\mathbb N$
+of the normalized parameter $m$, we prove that the discriminant germ is
+analytically right-equivalent to the square of one coordinate.  Thus the
+umbilic has type $A_\infty$.  The proof converts the $W$-equation into an
+eigenfunction equation $X\Delta=2\Delta$ for an analytic planar vector
+field.  A nonresonant analytic invariant curve and two one-dimensional
+order comparisons force $\Delta$ to have a double transverse factor.
+\end{abstract}
+
+\section{Introduction and statement}
+
+In an affine chart, a line congruence may be represented by
+\[
+ f(x,y)=(x,y,0),
+ \qquad
+ \xi(x,y)=(P(x,y),Q(x,y),1),
+\]
+where $P$ and $Q$ are real analytic.  The extended Weingarten equation is
+\begin{align}
+ W(P,Q)={}&(Q_y-P_x)(Q_{xx}P_{yy}-P_{xx}Q_{yy})\notag\\
+ &-2P_y(P_{xx}Q_{xy}-Q_{xx}P_{xy})
+ +2Q_x(P_{xy}Q_{yy}-P_{yy}Q_{xy})=0.\label{eq:W}
+\end{align}
+Its discriminant is
+\begin{equation}\label{eq:disc}
+ \delta=(P_x-Q_y)^2+4P_yQ_x.
+\end{equation}
+At an umbilic at the origin one has
+$P_x=Q_y$ and $P_y=Q_x=0$.  Subtracting the common linear part and making
+the standard linear normalization, write
+\[
+ p_{ij}=\partial_x^i\partial_y^jP(0),
+ \qquad
+ q_{ij}=\partial_x^i\partial_y^jQ(0),
+\]
+and assume
+\begin{equation}\label{eq:normalization}
+ p_{20}=p_{02}=q_{11}=0,
+ \qquad
+ p_{11}=a\ne0,
+ \qquad
+ q_{02}\ne0,
+ \qquad
+ p_{11}\ne q_{02}.
+\end{equation}
+The normalized parameter is
+\begin{equation}\label{eq:m}
+ m=-\frac{q_{02}}{a}.
+\end{equation}
+The hypotheses exclude $m=0$ and $m=-1$.  A germ is said to have type
+$A_\infty$ when its discriminant is analytically right-equivalent to
+$v^2$.
+
+\begin{theorem}\label{thm:main}
+Let $(P,Q)$ be a real-analytic solution of \eqref{eq:W} with a
+nondegenerate umbilic satisfying \eqref{eq:normalization}.  If the parameter
+$m$ in \eqref{eq:m} is not a positive integer, then there are analytic
+coordinates $(u,v)$ centered at the umbilic in which
+\[
+ \delta(u,v)=v^2.
+\]
+In particular, every admissible fixed-$m$ germ with $m\notin\mathbb N$ has type
+$A_\infty$.
+\end{theorem}
+
+\section{Hodograph form of the \texorpdfstring{$W$}{W}-equation}
+
+Because $m\ne1$, the first differentiated $W$-equation gives $q_{20}=0$.
+Set
+\begin{equation}\label{eq:hodograph}
+ A=P_y,
+ \qquad
+ B=\frac{P_x-Q_y}{2},
+ \qquad
+ -Q_x=F(A,B),
+ \qquad
+ \frac{P_x+Q_y}{2}=G(A,B).
+\end{equation}
+At the origin,
+\[
+ A=ax+O(2),
+ \qquad
+ B=\frac{m+1}{2}ay+O(2),
+\]
+so $(A,B)$ are analytic local coordinates.  The normalized two-jet gives
+\[
+ F=O(2),
+ \qquad
+ G=\frac{1-m}{1+m}B+O(2).
+\]
+Define
+\begin{align}
+ \Delta&=B^2-AF,\label{eq:Delta}\\
+ X&=A(1+G_B)\partial_A+(B-AG_A)\partial_B,\label{eq:X}\\
+ E&=(1-G_B)F-(1+G_B)AF_A
+ +(AG_A-B)F_B-2BG_A.\label{eq:E}
+\end{align}
+
+\begin{lemma}\label{lem:identities}
+Let $J=\det(\partial(A,B)/\partial(x,y))$.  Then
+\begin{equation}\label{eq:identities}
+ W=2JE,
+ \qquad
+ (X-2)\Delta=AE,
+ \qquad
+ \delta=4\Delta.
+\end{equation}
+Consequently, every analytic $W$-germ satisfies
+\begin{equation}\label{eq:eigenfunction}
+ X\Delta=2\Delta.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:linear}
+ DX(0)=\operatorname{diag}(\alpha,1),
+ \qquad
+ \alpha=\frac{2}{m+1}\ne0,
+ \qquad
+ \Delta=B^2+O(3).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The derivative relations in \eqref{eq:hodograph} are
+\[
+ P_x=B+G,
+ \quad P_y=A,
+ \quad Q_x=-F,
+ \quad Q_y=G-B.
+\]
+Substitution of these four identities and their first derivatives into
+\eqref{eq:W} gives $W=2JE$.  Applying the vector field \eqref{eq:X} to
+$B^2-AF$ and collecting terms gives $(X-2)\Delta=AE$.  The last identity
+in \eqref{eq:identities} follows immediately from \eqref{eq:disc}.
+Since $J(0)=\frac{m+1}{2}a^2\ne0$, the equation $W=0$ implies $E=0$;
+the remaining assertions follow from the normalized linear terms.
+\end{proof}
+
+\section{An analytic invariant curve}
+
+\begin{lemma}\label{lem:curve}
+Under the hypotheses of Theorem~\ref{thm:main}, the vector field $X$ has
+an analytic invariant curve through the origin tangent to the $A$-axis.
+\end{lemma}
+
+\begin{proof}
+Write
+\[
+ X=(\alpha A+R(A,B))\partial_A+(B+S(A,B))\partial_B,
+ \qquad R,S=O(2).
+\]
+Seek the invariant curve as $B=\phi(A)$ with $\phi=O(A^2)$.  Its
+invariance equation is
+\begin{equation}\label{eq:invariance}
+ \phi'(A)\bigl(\alpha A+R(A,\phi(A))\bigr)
+ =\phi(A)+S(A,\phi(A)).
+\end{equation}
+Writing $\phi(A)=\sum_{n\ge2}\phi_nA^n$ gives the triangular recursion
+\begin{equation}\label{eq:recursion}
+ (n\alpha-1)\phi_n
+ =\Psi_n(\phi_2,\ldots,\phi_{n-1};R,S).
+\end{equation}
+The only possible zero denominator satisfies
+\[
+ n\alpha=1
+ \quad\Longleftrightarrow\quad
+ m=2n-1,
+\]
+which is a positive integer.  It is therefore excluded.  For fixed
+$\alpha\ne0$, the nonzero denominators in \eqref{eq:recursion} grow
+linearly in $n$.  The standard majorant argument for analytic
+Briot--Bouquet equations makes the recursively defined series convergent;
+see \cite[Chapter~2]{IlyashenkoYakovenko}.  Hence the invariant curve is
+analytic.
+\end{proof}
+
+Choose analytic coordinates $(s,t)$ for which this curve is $\{t=0\}$,
+with $s$ tangent to the $A$-axis and $t$ transverse to it.  Invariance gives
+\begin{equation}\label{eq:Xst}
+ X=v(s,t)\partial_s+t w(s,t)\partial_t,
+ \qquad
+ v(s,0)=\alpha s+O(s^2),
+ \qquad
+ w(0,0)=1.
+\end{equation}
+
+\section{Double divisibility of the discriminant}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $f(s)=\Delta(s,0)$.  Restricting \eqref{eq:eigenfunction} to the
+invariant curve gives
+\begin{equation}\label{eq:firstrestriction}
+ v(s,0)f'(s)=2f(s).
+\end{equation}
+If $f$ is not identically zero and has leading term $cs^n$, then
+$n\ge3$ by \eqref{eq:linear}.  Comparing leading terms in
+\eqref{eq:firstrestriction} yields
+\[
+ \alpha n=2
+ \quad\Longleftrightarrow\quad
+ m=n-1,
+\]
+contrary to the hypothesis.  Thus $f\equiv0$, and analytic division gives
+$\Delta=tH$.
+
+Because $Xt=tw$, the equation $X(tH)=2tH$ becomes
+\[
+ XH+(w-2)H=0.
+\]
+Let $h(s)=H(s,0)$.  Restriction to the invariant curve yields
+\begin{equation}\label{eq:secondrestriction}
+ v(s,0)h'(s)+(w(s,0)-2)h(s)=0.
+\end{equation}
+If $h\not\equiv0$ has leading term $ds^n$, where $n\ge0$, comparison of
+leading terms gives $\alpha n+1=2$.  The case $n=0$ is impossible, while
+for $n\ge1$ this is equivalent to
+\[
+ m=2n-1,
+\]
+again a positive integer.  Therefore $h\equiv0$ and a second analytic
+division gives
+\begin{equation}\label{eq:factor}
+ \Delta=t^2U(s,t).
+\end{equation}
+The quadratic term in \eqref{eq:linear} and transversality of $t$ imply
+$U(0,0)>0$.  Hence
+\[
+ \widetilde t=t\sqrt{U(s,t)}
+\]
+is an analytic coordinate.  By \eqref{eq:identities} and
+\eqref{eq:factor},
+\[
+ \delta=4\widetilde t^{,2}.
+\]
+Rescaling $\widetilde t$ completes the analytic right equivalence to the
+normal form $v^2$.
+\end{proof}
+
+\begin{remark}
+The conclusion is relative to the fixed-$m$ analytic nondegenerate stratum.
+It is stronger than a generic statement: every germ in that stratum has
+type $A_\infty$.  The proof uses analyticity essentially in the invariant
+curve, analytic division, and the square-root coordinate change.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{CraizerGarcia}
+M.~Craizer and R.~A.~Garcia,
+\emph{Singularities of Weingarten line congruences},
+\href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289}.
+
+\bibitem{IlyashenkoYakovenko}
+Y.~Ilyashenko and S.~Yakovenko,
+\emph{Lectures on Analytic Differential Equations},
+Graduate Studies in Mathematics, vol.~86,
+American Mathematical Society, Providence, 2008.
+
+\end{thebibliography}
+\end{document}

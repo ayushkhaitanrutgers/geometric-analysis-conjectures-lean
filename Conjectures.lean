@@ -1,0 +1,13 @@
+import Conjectures.RoundSpherePWidth
+import Conjectures.CmcIndexArea
+import Conjectures.HuiskenEnergy
+import Conjectures.IntermediateQCurvature
+import Conjectures.NonintegralVarifold
+import Conjectures.AffineMaximalOmittedParameter
+import Conjectures.SteklovLengths
+import Conjectures.ExactReduction
+import Conjectures.HyperbolicRobinThreshold
+import Conjectures.IntegerWCongruenceGenericity
+import Conjectures.MagneticCheeger
+import Conjectures.NonintegerWCongruence
+import Conjectures.WCongruenceAllOrder

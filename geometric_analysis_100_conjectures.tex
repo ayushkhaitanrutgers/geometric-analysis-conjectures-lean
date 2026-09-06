@@ -1,0 +1,692 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!60!black,citecolor=blue!55!black}
+\setlist[enumerate]{leftmargin=*,itemsep=1.05em,topsep=.5em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.35em}
+\setlength{\emergencystretch}{1.5em}
+
+\newcommand{\cand}[5]{%
+  \item \textbf{#1}\par
+  \emph{Conjecture.} #2\par
+  \emph{Source and status.} #3\par
+  \emph{Plausible attack.} #4\par
+  \emph{Assessment.} #5
+}
+\newcommand{\psettle}{P_{\mathrm{settle}}}
+
+\title{One Hundred Potentially Tractable Conjectures\\in Geometric Analysis}
+\author{A source-checked research prospectus}
+\date{Status cutoff: 12 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document lists exactly one hundred sharply stated conjectures in geometric analysis: fifty lesser-known targets and fifty problems of medium fame.  The most famous flagship problems are deliberately omitted.  Every item includes a primary or authoritative source, a status note, a concrete line of attack, and a deliberately coarse estimate of the chance of obtaining either a proof or a counterexample.  The estimates are research triage, not calibrated mathematical probabilities.
+\end{abstract}
+
+\section*{How to read the list}
+
+The score $\psettle$ is the estimated chance that a focused project---roughly one strong investigator working for several weeks to a few months, with symbolic computation, interval arithmetic, or numerical reconnaissance where appropriate---would obtain a publishable proof or disproof of the \emph{literal statement}.  It is not the probability that the statement is true.  Universal statements with an exposed finite-dimensional ansatz can therefore score highly even when they look deep.  Every displayed score is at least $50\%$ by construction.
+
+``Lesser-known'' means that the conjecture is recent, buried in a remark, computationally motivated, or confined to a small specialty.  ``Medium fame'' means that the problem recurs in surveys or has a recognizable name, but is not one of the field's dominant mega-conjectures.  Closely related entries are retained only when their conclusions are genuinely distinct; shared machinery is noted.  Status was checked against arXiv and later primary literature through the date above, but an absence-of-resolution claim should still be rechecked before beginning a project.
+
+\section{Fifty lesser-known conjectures}
+
+\begin{enumerate}[label=\textbf{L\arabic*.}]
+
+\cand{Xu's zero-mode scalar-curvature sign conjecture (counterexample found)}
+{Let $(M^n,g)$ be compact with smooth nonempty boundary, $n\ge3$, and let the first Robin eigenvalue of the conformal Laplacian be $\eta'_1=0$.  Xu conjectured that whenever a conformal metric realizes a nonzero prescribed boundary mean curvature $H$, its prescribed scalar curvature $S$ must change sign and satisfy $\int_M S\,dV_g<0$.}
+{J. Xu, Remark 5.1 in \href{https://arxiv.org/abs/2211.15024}{arXiv:2211.15024v2} (2022/23).  The literal statement is false; no later correction was found in the targeted search.}
+{On flat $[-1,1]\times T^{n-1}$ take $u=A-y^2$ and $\widetilde g=u^{4/(n-2)}g$.  Then $S=2a u^{1-p}>0$ and $H=-(p-2)(A-1)^{-p/2}<0$.  Appendix~\ref{app:xu} gives the complete check.}
+{$\psettle=99\%$; false.  This is included as a proof-of-concept result produced during the search.}
+
+\cand{Affine-maximal Bernstein threshold}
+{If $f\in C^\infty(\Omega)$ is strictly convex on a convex $\Omega\subset\mathbb R^2$, satisfies $\sum f^{ij}w_{ij}=0$ with $w=(\det D^2f)^a$ and $a\notin[-2/3,-1/3]$, and the Calabi metric $D^2f$ is complete, then $f$ is quadratic.}
+{Y. Sun and R. Xu, p.~3 of \href{https://arxiv.org/abs/2501.08525}{arXiv:2501.08525} (2025).  Open at the cutoff.}
+{Reduce radial and cohomogeneity-one solutions to an autonomous ODE and exhaust complete asymptotics; if no counterexample survives, combine the Legendre transform with the two-dimensional maximum principle.}
+{$\psettle=65\%$; lean true.}
+
+\cand{CMC index versus area and genus}
+{For every branched CMC-$h$ immersion $u:\Sigma^2\to N^3$ into a three-manifold of strictly positive sectional curvature, there is $C(N)>0$ such that
+\[C(N)\bigl((1+h^2)\operatorname{Area}(\Sigma)+g(\Sigma)\bigr)\le \operatorname{ind}(A_h)+\operatorname{nul}(A_h).\]}
+{L. Seemungal and B. Sharp, Conjecture 1.4 in \href{https://arxiv.org/abs/2411.02932}{arXiv:2411.02932} (2024).  Open.}
+{Sharpen the Ejiri--Micallef energy comparison and test every constant against explicit CMC families in Berger spheres.  A collapsing Berger example is also a credible disproof route.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Algebraic harmonic maps are totally symmetric}
+{For a compact or noncompact Riemann surface $M$ and an inner semisimple symmetric space $G/K$ with $G$ connected and center-free, every algebraic harmonic map $M\to G/K$ is totally symmetric; equivalently its extended-frame monodromy is trivial.}
+{J. Dorfmeister and P. Wang, \S5.2 of \href{https://arxiv.org/abs/2408.12487}{arXiv:2408.12487} (2024).  Open.}
+{Write finite-Laurent DPW potentials on an annulus or cylinder and compute monodromy exactly.  The breadth of the noncompact and nonsimply-connected formulation makes a small-rank counterexample plausible.}
+{$\psettle=80\%$; lean false.}
+
+\cand{Gaussian boundary area of convex bodies is below two (counterexample found)}
+{For every closed convex body $C\subset\mathbb R^{n+1}$ with nonempty interior,
+\[\mathcal H(C)=(4\pi)^{-n/2}\int_{\partial C}e^{-|x|^2/4}\,d\mathcal H^n<2.\]}
+{Conjecture I of Angenent--Daskalopoulos--Sesum, \href{https://arxiv.org/abs/2305.17272}{arXiv:2305.17272} (2023).  The literal dimension-free statement is false.}
+{For the cube $C=[-a,a]^d$, $d=n+1$, direct integration gives
+\[\mathcal H(C)=2d\,e^{-a^2/4}\operatorname{erf}(a/2)^{d-1}.\]
+Taking $d=1000$ and $a=5$ makes this quantity greater than two; elementary bounds on $e$ and $\operatorname{erfc}(5/2)$ turn the numerical observation into a short rigorous disproof.}
+{$\psettle=99\%$; false.}
+
+\cand{Magnetic Cheeger positivity}
+{For compact $M$ with smooth boundary and magnetic potential $\eta$ not gauge-equivalent to zero, the two magnetic Cheeger constants of Definition 2.4 satisfy
+\[h^\eta(M)(h^\eta)'(M)>0.\]}
+{T. Chakradhar, K. Gittins, G. Habib and N. Peyerimhoff, after Theorem 2.5 in \href{https://arxiv.org/abs/2410.07462}{arXiv:2410.07462} (2024/25).  Open.}
+{Use BV compactness for minimizing $S^1$-valued gauges.  A vanishing sequence should converge to a global gauge, contradicting the flux obstruction; thin-neck examples stress-test compactness.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Large-domain magnetic frustration}
+{If $\eta$ is not gauge-equivalent to zero, there exist $\varepsilon,\delta>0$ such that every smooth relatively compact $D\subset M$ with $|D|\ge(1-\varepsilon)|M|$ and $|\partial_I D|\le\varepsilon$ has frustration $\iota^\eta(D)\ge\delta$.}
+{Technical conjecture on p.~12 of \href{https://arxiv.org/abs/2410.07462}{arXiv:2410.07462}.  Open; it is a proposed route to the preceding item.}
+{Extend near-minimizing gauges across the small complement and take an $S^1$-valued BV limit.  Quantifying the extension cost is the finite technical core.}
+{$\psettle=80\%$; lean true.}
+
+\cand{All-order identity for umbilics of W-congruences}
+{At a nondegenerate umbilic of a W-congruence, the exceptional Taylor equation $W_{m0}=0$ follows automatically from $W=0$ for every integer $m\ge1$.  The authors verify the identity through $m=4$.}
+{M. Craizer and R. A. Garcia, equation (3.4) and p.~13 of \href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289} (2025).  Open.}
+{Compute the differential ideal generated by the W-equation, identify the invariant recurrence, and turn symbolic evidence into an induction.}
+{$\psettle=85\%$; lean true.}
+
+\cand{Generic integer W-singularity}
+{Fix an integer $m\ge1$ and a nondegenerate umbilic in the source's W-jet space.  For an open dense subset of the corresponding W-jets, its discriminant singularity is of type $A_m$.}
+{\S5.1 of \href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289}; proved through $m=4$, with examples for all $m$.  Open in general.}
+{Combine the preceding all-order identity with a jet-transversality calculation and an explicit description of the exceptional algebraic set.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Generic noninteger W-singularity}
+{Fix a noninteger parameter $m$ and a nondegenerate umbilic in the source's W-jet space.  For an open dense subset of the corresponding W-jets, its discriminant singularity is of type $A_\infty$.}
+{\S5.1 of \href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289} (2025).  Open.}
+{Use finite-determinacy theory to show that every finite $A_k$ condition is resonant and hence nongeneric; search symbolic jets for a noninteger resonance as a disproof test.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Existence of an immersed CMC sphere for every $c$}
+{For every Riemannian metric on $S^3$ and every $c>0$, there exists a CMC-$c$ immersion $S^2\to S^3$.}
+{L. Mazurowski and X. Zhou, Conjecture 1.5 in \href{https://arxiv.org/abs/2511.08228}{arXiv:2511.08228} (2025).  A branched immersion is known for almost every $c$; the unbranched all-$c$ statement is open.}
+{Close the exceptional parameter set by curvature/area compactness and continuation of the min--max family, or construct a metric with an excluded mean-curvature interval.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Two immersed CMC spheres for every $c$}
+{Under the preceding hypotheses there are at least two CMC-$c$ immersions $S^2\to S^3$.}
+{Mazurowski--Zhou, Conjecture 1.6 in \href{https://arxiv.org/abs/2511.08228}{arXiv:2511.08228}.  Open.}
+{Apply Lusternik--Schnirelmann theory to the immersion-space min--max construction; alternatively, seek a strongly asymmetric metric with a unique solution.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Two generic prescribed-mean-curvature spheres}
+{For generic $h:S^3\to\mathbb R$ on the round sphere, at least two immersed two-spheres have prescribed mean curvature $h$.}
+{Mazurowski--Zhou, Conjecture 1.7 in \href{https://arxiv.org/abs/2511.08228}{arXiv:2511.08228}.  Open.}
+{Compute the degree of the PMC moduli map near the round problem and combine it with a second min--max class; numerically test highly asymmetric $h$ for uniqueness.}
+{$\psettle=52\%$; lean true.}
+
+\cand{Multi-peak exit-set components in prescribed scalar curvature}
+{On a closed negative-Yamabe manifold with $R_{g_0}=-1$ and $\ker L_{g_0}=0$, a sufficiently separated $m$-peak target admits, for each $1\le q<m$ and suitable background level $\bar\alpha=\bar\alpha(q)$, additional distinct exit-set components represented by $q$-bubble states centered near $q$ distinct peaks.}
+{M. Mayer and C. Zhu, Remark 4.3(ii) in \href{https://arxiv.org/abs/2406.10639}{arXiv:2406.10639} (2024).  Open; the paper prints $q<p$, which appears to be a contextual typo for $q<m$.}
+{Perform the full Lyapunov--Schmidt reduction, calculate the interaction matrix, and read the components from the resulting finite-dimensional Morse complex.}
+{$\psettle=60\%$; lean true; wording confidence medium.}
+
+\cand{Strong unique continuation on stationary varifolds}
+{If $V$ is a stationary $m$-varifold and an ambient $C^1$ function $h$ is harmonic on $V$, then infinite-order $L^2(\|V\|)$ vanishing at $x_0$ forces $h$ to vanish on $\operatorname{spt}V$ near $x_0$.}
+{C. Brena, S. Decio and C. De Lellis, Conjecture 1.7 in \href{https://arxiv.org/abs/2503.00651}{arXiv:2503.00651} (2025).  Open.}
+{First establish a frequency inequality on two-plane and branched models; then stratify.  Conversely, glue an infinite-order branch to seek a counterexample.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Normal balance of minimal hypersurfaces in a sphere}
+{Every closed oriented, non-totally-geodesic minimal hypersurface $M^n\subset S^{n+1}$ satisfies $\int_M\nu\,d\mu=0$.}
+{J. Ge and F. Li, Remark 2.9 in \href{https://arxiv.org/abs/2103.07747}{arXiv:2103.07747} (2021).  No resolution was found.}
+{Combine $\Delta\langle\nu,a\rangle=-|A|^2\langle\nu,a\rangle$ with Minkowski identities; in parallel, compute asymmetric cohomogeneity-one examples to test the unweighted integral.}
+{$\psettle=70\%$; lean false.}
+
+\cand{Stability of Type-II translator-tip singularities}
+{Rotationally symmetric MCF data in the ``near class'' of Garfinkle--Isenberg--Knopf--Wu have the same finite-time Type-II singular behavior as the unperturbed IW/IWZ solution, including its maximum-curvature rate and rescaled tip limit.}
+{Conjecture 4.1 in \href{https://arxiv.org/abs/2105.06613}{arXiv:2105.06613} (2021).  Supported numerically; open.}
+{Prove a weighted spectral gap for the linearized translator, introduce modulation parameters, and close matched inner/outer barriers.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Critical degenerate neckpinch asymptotics}
+{A rotationally symmetric solution in the paper's critical class develops a local Type-II Angenent--Vel\'azquez neckpinch with integer $m\ge3$, tip scale $(T-t)^{-(1-1/m)}$, and a Type-I cylindrical neck.}
+{Conjecture 5.1 in \href{https://arxiv.org/abs/2105.06613}{arXiv:2105.06613}.  Open.}
+{Use one-parameter shooting to hit the codimension-one critical manifold, then control the neutral mode with center-manifold estimates.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Finite-entropy translating graph classification}
+{The plane and the bowl soliton are the only finite-entropy translating graphs whose planar domains are not contained in a strip.}
+{E. Gama, F. Mart\'in and N. M\o ller, Introduction of \href{https://arxiv.org/abs/2209.01640}{arXiv:2209.01640} (2022; revised 2025).  Open.}
+{Combine end structure and Morse--Rad\'o theory with tilted grim-reaper and $\Delta$-wing barriers.}
+{$\psettle=65\%$; lean true.}
+
+\cand{No complete translator graph over a half-plane}
+{The domain of every complete connected translating graph in $\mathbb R^3$ is either $\mathbb R^2$ or a strip; in particular, no half-plane occurs.}
+{Remark 3.8 of \href{https://arxiv.org/abs/2209.01640}{arXiv:2209.01640}.  Open.}
+{Exploit Jenkins--Serrin flux on expanding half-disks and compare with tilted grim reapers to contradict completeness at the finite boundary line.}
+{$\psettle=75\%$; lean true.}
+
+\cand{No translating annulus between sufficiently close planes}
+{There exists $\varepsilon>0$ such that no properly embedded connected translating annulus $M\subset\mathbb R^3$ is, outside a compact set, the disjoint union of two $C^2$ normal graphs converging at infinity to parallel vertical planes whose distance is less than $\varepsilon$.}
+{This is the quantitative formulation adopted here from Remark 1.7, Figure 1, and the surrounding discussion of \href{https://arxiv.org/abs/2304.11447}{arXiv:2304.11447} (2023).}
+{Remove the bounded-slice assumption from their slab-width theorem using translator flux and Morse--Rad\'o control of vertical sections.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Large-inner-width annuloids converge to the translating catenoid}
+{For fixed neck size $s>0$, annuloids with inner widths tending to infinity converge, after vertical translation, to the rotational translating catenoid $W(s)$.}
+{Conjecture 2.5 in \href{https://arxiv.org/abs/2304.11447}{arXiv:2304.11447}.  Open.}
+{Obtain uniform curvature and area bounds, take a translator limit, and use Alexandrov reflection plus annular uniqueness to identify it.}
+{$\psettle=75\%$; lean true.}
+
+\cand{A genus-one free-boundary minimal surface in every ellipsoid}
+{Every ellipsoid in $\mathbb R^3$ contains an embedded $D_2$-equivariant free-boundary minimal surface of genus one with connected boundary.}
+{A. Schulz, conjecture on p.~4 of \href{https://arxiv.org/abs/2406.13465}{arXiv:2406.13465} (2024).  Open.}
+{Run a $D_2$-equivariant multiparameter min--max and exclude disk or annulus degeneration using a strict width inequality and equivariant topology.}
+{$\psettle=75\%$; lean true.}
+
+\cand{Critical spherical catenoid maximizes a Robin functional}
+{Among annulus metrics, the critical spherical catenoid in $B^3(r)\subset S^3_+$ maximizes
+$\Xi^+_{r,1}=\min\{\lambda_0(g,-\tan r),\lambda_1(g,\cot r)\}\operatorname{Area}_g$.}
+{T. Ma and V. Medvedev, p.~5 of \href{https://arxiv.org/abs/2504.05160}{arXiv:2504.05160} (2025).  Open.}
+{Use conformal uniformization of the annulus, Hersch balancing, and sharp Robin inequalities; characterize equality through the eigenfunction immersion.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Higher-genus properness in Fine's asymptotic Plateau moduli problem}
+{For a generic knot $K\subset S^3=\partial_\infty\mathbb H^4$, the fixed-topology and fixed-self-linking moduli space of properly immersed minimal fillings is compact for positive genus.}
+{J. Fine, \S1.3 of \href{https://arxiv.org/abs/2112.07713}{arXiv:2112.07713} (2021), restated in \href{https://arxiv.org/abs/2605.26234}{arXiv:2605.26234} (2026).  The disk case is known; higher genus remains open.}
+{Analyze and glue the explicit Hopf-link nodal model.  Either show the bad locus has codimension at least two or exhibit a generic nonproper family.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Uniqueness of degenerate mean-convex ancient free-boundary MCF}
+{For every unstable two-sided properly embedded free-boundary minimal hypersurface in an ambient manifold whose boundary is strictly convex ($\mathrm{II}>0$), the mean-convex ancient free-boundary flow converging to it in $C^{1,\alpha}$ is unique up to time translation and choice of side, without a sublinear decay assumption.}
+{T. Bourni and G. Franz, future-directions discussion in \href{https://arxiv.org/abs/2602.08850}{arXiv:2602.08850} (2026).  The nondegenerate case is proved; the degenerate case is open.}
+{Combine order barriers with a Merle--Zaag spectral ODE bootstrap for the Jacobi kernel.}
+{$\psettle=75\%$; lean true.}
+
+\cand{Exact index of the Carlotto--Schulz hypertorus}
+{For $n>2$, the Carlotto--Schulz minimal hypertorus has
+$\operatorname{ind}(X^n_{CS})=(n^3+9n^2+11n+3)/3$, while $\operatorname{ind}(X^2_{CS})=27$.}
+{O. Perdomo, Conjecture 1.1 in \href{https://arxiv.org/abs/2606.16980}{arXiv:2606.16980} (2026).  Verified numerically through a large range; open in general.}
+{Separate into Sturm--Liouville/Floquet blocks and prove uniform Sturm comparison, using interval arithmetic only on the compact residual parameter range.}
+{$\psettle=90\%$; lean true.}
+
+\cand{Density purity implies stationary-varifold regularity}
+{If a stationary integral varifold has a unique flat tangent cone at $x_0$ and the rescaled measure of points whose density differs from $\Theta(V,x_0)$ tends to zero, then $x_0$ is regular.}
+{Brena--Decio--De Lellis, Conjecture 1.3 in \href{https://arxiv.org/abs/2503.00651}{arXiv:2503.00651} (2025).  Open.}
+{Begin in codimension one or multiplicity two, combining excess decay with their $C^\infty$-rectifiability theorem; also test stationary analogues of Brakke constructions.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Infinite-order minimal-graph approximant}
+{Under the preceding density-purity hypotheses there is a smooth classical minimal graph $M$ through $x_0$ such that, for every $N$,
+\[\int_{B_r(x_0)}\operatorname{dist}(x,M)^2\,d\|V\|(x)=o(r^N).\]}
+{Brena--Decio--De Lellis, Conjecture 1.4 in \href{https://arxiv.org/abs/2503.00651}{arXiv:2503.00651}.  A sequel constructs a smooth approximating graph but does not prove it minimal.}
+{Show that the approximating graph's formally flat mean-curvature jet is analytic or Gevrey; a nonanalytic flat germ is the natural counterexample mechanism.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Infinite-order contact forces containment}
+{If a stationary varifold has infinite-order $L^2$ contact at $x_0$ with a smooth classical minimal submanifold $M$, then its support is locally contained in $M$.}
+{Brena--Decio--De Lellis, Conjecture 1.5 in \href{https://arxiv.org/abs/2503.00651}{arXiv:2503.00651}.  Open even when $M$ is a plane.}
+{Develop a planar-varifold frequency monotonicity or Carleman inequality; in parallel, search branched stationary cones for an infinite-order attachment.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Bounded mean curvature bounds slice index}
+{For a smooth closed embedded Euclidean mean-curvature flow $M_t^n\subset\mathbb R^{n+1}$, $n\ge3$, up to its first singular time, a uniform bound on $|H|$ implies a uniform bound on the Morse index of $\Delta+|A|^2$ on each time slice.}
+{Y. Han, Remark 1.3 in \href{https://arxiv.org/abs/2501.05489}{arXiv:2501.05489} (2025; revised 2026).  Open.}
+{Localize negative modes and prove that each consumes a definite curvature, area, or entropy budget; alternatively glue many almost-minimal unstable regions while keeping $H$ bounded.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Every critical hyperbolic catenoid has index four}
+{For every parameter $a>1/2$, the critical hyperbolic catenoid $\Sigma_a\subset B^3(r(a))\subset\mathbb H^3$ has Morse index $4$.}
+{V. Medvedev, conjecture after Theorem 1.4 in \href{https://arxiv.org/abs/2311.02409}{arXiv:2311.02409} (2023; revised 2025).  A. Pigazzini, Corollary 11.10 of \href{https://arxiv.org/abs/2605.13562}{arXiv:2605.13562}, proves index four and nullity two for $a\in(1/2,1/2+\delta_0)$; the global statement is open.}
+{Separate variables and reduce the residual range to a scalar monotonicity inequality, certified by interval arithmetic where analytic comparison is coarse.}
+{$\psettle=85\%$; lean true.}
+
+\cand{Hyperbolic energy-index comparison}
+{Every $k$-dimensional free-boundary minimal $\Sigma\subset B(r)\subset\mathbb H^n$ satisfies $\operatorname{Ind}_E(\Sigma)\le n\operatorname{Ind}_S(\Sigma)$.}
+{Medvedev, Remark 5.3 in \href{https://arxiv.org/abs/2311.02409}{arXiv:2311.02409}.  This is the open hyperbolic analogue of a proved spherical estimate.}
+{Replace the spherical componentwise comparison by Lorentz-signature splitting and gauge fixing; verify all rotational examples by ODE first.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Peak boundary heat flux is maximized by a semidisk}
+{For bounded convex planar $\Omega$, let $u_1$ be the $L^2$-normalized first Dirichlet eigenfunction.  The scale-invariant quantity $\|\partial_\nu u_1\|_{L^\infty(\partial\Omega)}/\lambda_1(\Omega)$ is maximized by a semidisk, at the midpoint of its diameter.}
+{Wang--Hoskins--Rachh--Barnett, main conjecture in \href{https://arxiv.org/abs/2603.16452}{arXiv:2603.16452} (2026).  The paper proves boundedness and semidisk stationarity; global optimality is open.}
+{Compute the full shape Hessian, then combine a boundary-integral formulation with interval bounds and a global convexity/localization reduction.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Existence and nondegeneracy of the optimal Steklov $N$-gon}
+{Among convex planar polygons with at most $N$ sides and fixed perimeter, the supremum of $\sigma_1$ is attained by a polygon having exactly $N$ nondegenerate sides.}
+{Conjecture 1.1 in \href{https://arxiv.org/html/2603.25116}{arXiv:2603.25116} (2026).  Open.}
+{Use Blaschke compactness for existence and a strict corner-splitting shape derivative to rule out fewer or collapsed sides.}
+{$\psettle=70\%$; lean true.}
+
+\cand{The equilateral triangle maximizes the first Steklov eigenvalue}
+{Among convex planar triangles of fixed perimeter, the equilateral triangle uniquely maximizes $\sigma_1$.}
+{The $N=3$ case of Conjecture 1.2 in \href{https://arxiv.org/html/2603.25116}{arXiv:2603.25116} (2026).  It is open even in this first case.}
+{Use conformal transplantation and certified two-parameter shape optimization, with corner asymptotics controlling the boundary of triangle moduli space.}
+{$\psettle=55\%$; lean true.}
+
+\cand{No convex polygon is Steklov-isospectral to a smooth simply connected domain}
+{A convex planar polygon cannot have the same Steklov spectrum as a bounded simply connected planar domain with smooth boundary.}
+{Dryden et al., Conjecture 6.17 in \href{https://arxiv.org/html/2604.18977}{arXiv:2604.18977} (2026).  Open.}
+{Sharpen the heat or wave trace to isolate a corner-diffraction coefficient incompatible with the smooth expansion.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Only finitely many infinite critical Steklov lengths}
+{For every $n\ge2$ there is $K(n)$ such that, for every eigenvalue index $k\ge K(n)$, the normalized Steklov eigenvalue on a hypersurface of revolution with two unit $S^{n-1}$ boundary components attains its optimum at a finite meridian length.}
+{Conjecture 8 of A. M\'etras and T. Tschanz, \href{https://arxiv.org/abs/2401.10743}{arXiv:2401.10743} (2024).  The case $n=2$ was previously known and the paper proves $n=3,4$; it is open for $n\ge5$.}
+{Derive uniform Bessel/ODE asymptotics and prove eventual positivity of the branch derivative, leaving finitely many modes for certified checking.}
+{$\psettle=75\%$; lean true.}
+
+\cand{Magnetic second-eigenvalue phase transition}
+{For area-one planar domains with constant magnetic field $B$, the second Dirichlet magnetic eigenvalue is minimized by two equal disks for $0\le B\le4\pi$ and by one disk for $B\ge4\pi$, with the stated transition at $4\pi$.}
+{Conjecture 4.1 in \href{https://arxiv.org/abs/2412.06533}{arXiv:2412.06533} (2024).  Open.}
+{Prove a magnetic Wolf--Keller decomposition and combine the disk Landau-level crossing with quantitative Faber--Krahn stability; scrutinize a neighborhood of $4\pi$ for a counterexample.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Strong-field magnetic third eigenvalue is minimized by a disk}
+{For every $B\ge6\pi$, the area-one disk minimizes the third Dirichlet magnetic eigenvalue among planar domains.}
+{The first case not contained in the preceding phase-transition problem of Conjecture 4.2 in \href{https://arxiv.org/abs/2412.06533}{arXiv:2412.06533}.  Open.}
+{Use three-dimensional magnetic Wolf--Keller decompositions, strong-field asymptotics, and quantitative isoperimetry; the exact threshold is also amenable to validated numerics.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Positive exterior-Robin threshold in the hyperbolic plane}
+{There is a bounded nonconvex simply connected $\Omega\subset\mathbb H^2$ whose exterior Robin Laplacian has a discrete eigenvalue below $1/4$ for some positive boundary parameter; equivalently $\alpha_*(\Omega^{\rm ext})>0$ in the source's convention.}
+{Remark 3.11 of \href{https://arxiv.org/html/2601.10280}{arXiv:2601.10280} (2026).  Open.}
+{Join two annular trapping components by a thin channel and prove norm-resolvent convergence while preserving simple connectivity.}
+{$\psettle=85\%$; lean true.}
+
+\cand{A five-facet Dirichlet-minimizing polytope is simple}
+{A minimizer of $\lambda_1$ among convex three-dimensional polytopes of fixed volume with exactly five facets is simple: exactly three facets meet at every vertex.}
+{The $N=5$ case of the concluding conjecture of D\'iaz-Avalos, \href{https://arxiv.org/abs/2607.25419}{arXiv:2607.25419} (2026).  Open; computations support it.}
+{Use first-order support-plane perturbations to split a nonsimple vertex while lowering the eigenvalue, then classify the finite combinatorial types.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Toroidal free-boundary minimal surfaces for every twist number}
+{For each toroid parameter $\rho>2$, the dihedrally symmetric free-boundary minimal surfaces $O_n$ exist for every $n\in\mathbb N$; odd $n$ give M\"obius bands and even $n$ annuli with $n$ half-twists.}
+{M. Schulz, \S6 of \href{https://arxiv.org/abs/2410.05781}{arXiv:2410.05781} (published 2026).  The construction is proved only above an explicit $n$-threshold.}
+{Continue the shooting map through the excluded low-$n$ range and rule out endpoint degeneration with flux and curvature estimates.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Infinitely many toroidal FBMS at fixed twist}
+{For fixed toroid parameter $\rho>2$ and every integer twist number $n\ge0$, there are infinitely many geometrically distinct embedded free-boundary minimal annuli or M\"obius bands with $n$ half-twists.}
+{Conjectural discussion in \S6 of \href{https://arxiv.org/abs/2410.05781}{arXiv:2410.05781}.  Open.}
+{Show that the shooting equation has infinitely many oscillatory roots by Sturm comparison, initially in a large-$\rho$ regime.}
+{$\psettle=55\%$; lean true; the large-$\rho$ regime is the likely first foothold for the literal statement.}
+
+\cand{Four-dimensional minimizing capillary cones are flat}
+{Every four-dimensional minimizing capillary hypersurface cone in a Euclidean half-space, for arbitrary contact angle, is a flat half-hyperplane.}
+{The first broadly open dimension in the dimension-six conjecture stated in the introduction of Pacati, \href{https://arxiv.org/abs/2502.07697}{arXiv:2502.07697} (2025).  Signed-curvature and symmetric cases are proved.}
+{Combine the capillary stability inequality with Simons' identity and find a sharp absorption of the boundary term; four dimensions leave enough exponent room for a borderline estimate.}
+{$\psettle=50\%$; lean true.}
+
+\cand{$\bar\partial$-Robin Faber--Krahn inequality}
+{If $\Omega$ is a bounded $C^2$ planar domain, $D$ the equal-area disk, and $a>0$, then every nondisk satisfies $\mu_{1,D}(a)<\mu_{1,\Omega}(a)$ for the first $\bar\partial$-Robin eigenvalue.}
+{Duran, Conjecture 1.10 in \href{https://arxiv.org/abs/2507.16895}{arXiv:2507.16895} (2025).  Open.}
+{Rewrite the quadratic form magnetically, apply rearrangement, and control the boundary term by quantitative isoperimetry.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Multiplicity forces a width-to-diameter bound}
+{If the first positive Neumann eigenvalue of a bounded convex planar domain has multiplicity two, then $W(\Omega)/D(\Omega)\ge1/\sqrt2$.}
+{Hu, Conjecture 1.5 in \href{https://arxiv.org/abs/2512.15050}{arXiv:2512.15050} (2025).  Open.}
+{Use the Hadamard derivative under anisotropic deformation: below the proposed threshold the double eigenvalue should split in a definite direction.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Interior points are closer on average than boundary points}
+{For every planar convex body $K$, two independent uniform interior points have strictly smaller expected distance than two independent arclength-uniform boundary points.}
+{Zaporozhets--Tarasov conjecture as formulated by Tokmachev in \href{https://arxiv.org/abs/2607.08869}{arXiv:2607.08869} (2026).  Proved for centrally symmetric bodies and certain barycenter configurations; open in general.}
+{Localize to triangles and quantify the defect caused by noncoincident interior and boundary barycenters.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Sharp lower bound for the mean boundary chord}
+{For every planar convex body, $\theta(K)/P(K)>1/6$, where $\theta(K)$ is the expected distance between two arclength-uniform boundary points; the value $1/6$ is approached by degeneration to a segment.}
+{Conjecture (5) in \href{https://arxiv.org/abs/2607.08869}{arXiv:2607.08869}.  The companion upper bound is proved; this lower bound is open.}
+{Reduce to polygons and prove a finite-dimensional edge-length/turning-angle inequality, then pass by approximation.}
+{$\psettle=80\%$; lean true.}
+
+\cand{Intermediate $Q$-curvature positivity (counterexample known)}
+{For $g=u^{4/(n-2m)}|dx|^2$ on $\mathbb R^n$, $2\le m<n/2$, positivity of $Q_g^{(2m)}$ together with the slow-decay bound $Q_g^{(2m)}(x)\ge c|x|^s$, $-2m<s\le0$, was conjectured to imply $Q_g^{(2k)}>0$ for every $1\le k<m$.}
+{Li--Xu, Conjecture 1 in \href{https://arxiv.org/abs/2402.16277}{arXiv:2402.16277} (2024).  V\'etois--Zeitler, Theorem 1.2 of \href{https://arxiv.org/abs/2607.18205}{arXiv:2607.18205} (2026), disproves it for every $m\ge4$ in sufficiently large dimension.}
+{Specialize Theorem 1.2 to $m=4,n=30$: the threshold $N_4\approx29.1$ is the largest root of the degree-five polynomial $\gamma_4$, and the completed two-bump construction gives $Q^{(8)}>0$ but $Q^{(6)}(0)<0$.}
+{$\psettle=99\%$; false.}
+
+\end{enumerate}
+
+\section{Fifty conjectures of medium fame}
+
+\begin{enumerate}[label=\textbf{M\arabic*.}]
+
+\cand{Twin Bubble conjecture}
+{If $M^{n+1}$ is closed and $3\le n+1\le7$, then for every $c>0$ it contains at least two almost-embedded CMC-$c$ hypersurfaces.}
+{Mazurowski--Zhou, Conjecture 1.8 in \href{https://arxiv.org/abs/2511.08228}{arXiv:2511.08228} (2025).  Known for sufficiently small and sufficiently large $c$; open in the intermediate regime.}
+{Continue the two min--max branches through the intermediate interval and prevent merger by an index or orientation invariant.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Two generic prescribed-mean-curvature hypersurfaces}
+{For closed $M^{n+1}$, $3\le n+1\le7$, a generic function $h:M\to\mathbb R$ is realized as mean curvature by at least two almost-embedded hypersurfaces.}
+{Mazurowski--Zhou, Conjecture 1.9 in \href{https://arxiv.org/abs/2511.08228}{arXiv:2511.08228}.  Open.}
+{Develop a two-parameter PMC min--max and use bumpy-function transversality to separate the critical points.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Nonunique Ricci-flow continuation through a quotient neck}
+{For every $k\ge3$, a Ricci flow on $S^1\times S^3/\mathbb Z_k$ can form a singularity tangent to $\mathbb R\times S^3/\mathbb Z_k$ and admit two forward continuations, modeled respectively on Bryant$/\mathbb Z_k$ and the Appleton soliton on $O(-k)$.}
+{R. Haslhofer, Conjecture 1.9 in \href{https://arxiv.org/abs/2308.01448}{arXiv:2308.01448v2} (2023/24).  Open.}
+{Glue the Appleton model into a quotient neck and prove weighted stability; the Bryant branch supplies the comparison continuation.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Ketover shrinkers minimize entropy at fixed genus}
+{For every $g\ge1$, Ketover's embedded genus-$g$ self-shrinker $\Sigma_g\subset\mathbb R^3$ minimizes entropy among genus-$g$ self-shrinkers.}
+{D. Ketover, conjectural paragraph immediately after Remark 1.2 in \href{https://arxiv.org/abs/2407.01240}{arXiv:2407.01240} (2024), p.~3.  Open.}
+{Identify the known entropy minimizer through equivariant width, multiplicity one, and symmetry of its two-ended limit; alternatively compute a lower-entropy competitor.}
+{$\psettle=50\%$; lean true.}
+
+\cand{An eternal flow leaves every higher $p$-width hypersurface}
+{If $(M,g)$ is closed and $g$ is bumpy or has positive Ricci curvature, then for every integer $p\ge2$ there exists a min--max minimal hypersurface $\Sigma_-$ of area $\omega_p(M,g)$ and Morse index $p$ that can be connected by an eternal weak mean-curvature flow to a minimal hypersurface $\Sigma_+$ of strictly smaller area and Morse index.}
+{J. Chen and P. Gaspar, conjectural statement in \href{https://arxiv.org/abs/2507.03837}{arXiv:2507.03837} (2025).  Open.}
+{Construct a Morse connecting orbit for Allen--Cahn, take the sharp-interface limit, and retain strict area and index drop through Brakke compactness.}
+{$\psettle=50\%$; lean true.}
+
+\cand{The four-dimensional quadratic scalar-curvature threshold is $3/4$}
+{There is a constant $C_4$ such that every orientable four-manifold $M$ admitting complete positive scalar curvature satisfies: (i) for every $C<C_4$, $M$ admits a complete positive-scalar-curvature metric with at most $C$-quadratic decay; and (ii) if $M$ admits such a metric for some $C>C_4$, then it admits a uniformly positive-scalar-curvature metric.  Conjecturally $C_4=3/4$.}
+{S. Chen, Conjecture 1.4 and Proposition 1.7 in \href{https://arxiv.org/abs/2508.04173}{arXiv:2508.04173} (2025).  The value $C_3=2/3$ is proved; dimension four is open.}
+{Refine the $\mu$-bubble exhaustion and surgery argument in dimension four, while constructing warped products at the threshold to test sharpness.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Finite-time MCF singularities force $|H|$ blow-up in dimensions $3$--$6$}
+{For a smooth closed embedded hypersurface flow in $\mathbb R^{n+1}$, $3\le n\le6$, the first finite singular time satisfies $\limsup_{t\uparrow T}\max|H|=\infty$.}
+{Y. Han, Conjecture 1.1 in \href{https://arxiv.org/abs/2501.05489}{arXiv:2501.05489} (2025; revised 2026).  Proved under a uniform slice-index bound; open in general.}
+{Derive that index bound from local sheeting and a neck decomposition under bounded $H$, thereby invoking Han's theorem.}
+{$\psettle=55\%$; lean true.}
+
+\cand{High-dimensional convex hot-spot amplification tends to $\sqrt e$}
+{Let $C_d$ be the supremum, over convex $\Omega\subset\mathbb R^d$ and first nonconstant Neumann eigenfunctions $u$, of $\max_\Omega u/\max_{\partial\Omega}u$.  Then $\lim_{d\to\infty}C_d=\sqrt e$.}
+{de Dios Pont and Taylor, Conjecture 10 in \href{https://arxiv.org/abs/2508.16321}{arXiv:2508.16321} (2025).  Open; their examples give the matching lower-bound mechanism.}
+{Prove a dimension-free upper bound by log-concavity and needle decomposition and optimize the resulting one-dimensional profile.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Strict Steklov--conformal eigenvalue gap}
+{If $\Omega$ is a proper domain in a closed Riemannian surface $(M,g)$, then for every $k\ge3$ one has the strict comparison $\sigma_k(\Omega,g)L_g(\partial\Omega)<\lambda_k^*(M,[g])$.}
+{Open Question 3.15 in the Steklov survey \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528} (2022).  The non-strict inequality and low-$k$ strict cases are known.}
+{Analyze equality in the boundary-measure approximation and exclude a boundary-supported extremal measure by unique continuation.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Every nondisk conformal class beats $2\pi$ for $\sigma_1$}
+{For every compact surface with boundary not homeomorphic to a disk and every conformal class $[g]$, the normalized conformal Steklov supremum satisfies $\sigma_1^*(\Omega,[g])>2\pi$.}
+{Open Question 5.39 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  Open.}
+{Attach a quantitatively controlled thin handle or crosscap to a near-disk extremizer and show a strict spectral gain.}
+{$\psettle=60\%$; lean true.}
+
+\cand{No plateaux in conformal Steklov suprema}
+{For every compact surface with boundary and conformal class, the normalized suprema satisfy $\sigma_k^*(\Omega,[g])<\sigma_{k+1}^*(\Omega,[g])$ for all $k$.}
+{Open Question 5.56 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  Open.}
+{Use the bubble-tree characterization and strict subadditivity; before committing to a proof, search symmetric conformal classes for a plateau.}
+{$\psettle=50\%$; no firm truth lean.}
+
+\cand{The Steklov spectrum determines every polygon angle}
+{Let $\Omega$ be a curvilinear polygon whose interior angles all lie in $(0,\pi)$, no angle equals $\pi/n$ for an integer $n$, and whose side lengths are incommensurable with coefficients in $\{-1,0,1\}$.  Then its Steklov spectrum determines the angle vector up to cyclic relabelling and reversal.}
+{This is the affirmative formulation adopted here for Open Question 8.14, under the hypotheses of Theorem 8.12, in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}; the survey poses a question rather than asserting a direction.  Open.}
+{Extract a second independent corner-diffraction invariant from the wave trace and intersect its ambiguity class with the first.}
+{$\psettle=65\%$; lean true.}
+
+\cand{A genuine mixed Steklov problem is never purely Steklov-isospectral}
+{No compact Riemannian manifold $\Omega_1$ with a nontrivial Steklov--Neumann decomposition of its boundary has the same spectrum as the pure Steklov problem on any compact Riemannian manifold $\Omega_2$.}
+{This is the no-isospectrality formulation adopted here for Open Question 8.21 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}; the survey itself asks whether examples can occur.  Open.}
+{Compare heat invariants and isolate the contribution of Steklov--Neumann junctions; the junction term should have no pure analogue.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Second positive Neumann eigenvalue under fixed perimeter}
+{For every bounded convex planar domain, with $0=\mu_1<\mu_2\le\mu_3\le\cdots$, one has $\mu_3(\Omega)P(\Omega)^2\le36\pi^2$, with equality only for a $2{:}1$ rectangle.}
+{Bogosel--Henrot--Michetti conjecture; the parallelogram case is proved in \href{https://arxiv.org/abs/2502.11542}{arXiv:2502.11542} (2025).  Open generally.}
+{Combine nodal partition geometry with sharp width/perimeter estimates, backed by certified polygonal optimization for the extremal reduction.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Robin equilateral-triangle extremizer}
+{For every triangle $\Omega$, its equal-area equilateral triangle $\Omega_*$, and every $\alpha\in(-\infty,0)\cup(0,\infty)$,
+\[\frac{\lambda_1^\alpha(\Omega)}{\lambda_1^\alpha(\Omega_*)}\ge1.\]
+Thus the equilateral triangle minimizes for $\alpha>0$ and, since both eigenvalues are negative, maximizes for $\alpha<0$.}
+{Conjecture 1 of \href{https://arxiv.org/abs/2204.03235}{arXiv:2204.03235} (2022).  Local and asymptotic parameter regimes are known; the global claim is open.}
+{Follow a continuous Steiner symmetrization within triangles and control the Robin boundary term; intermediate negative parameters are the main counterexample window.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Exterior Robin second eigenvalue: fixed area}
+{If $\Omega$ is bounded and simply connected in the plane and $B$ is the equal-area disk, then $\lambda_2^\alpha(\Omega^c)\le\lambda_2^\alpha(B^c)$ throughout the parameter range where the exterior eigenvalue is discrete.}
+{Krej\v{c}i\v{r}\'ik--Lotoreichik, Conjecture 1.2(a) in \href{https://arxiv.org/abs/2307.14286}{arXiv:2307.14286} (2023).  Later exterior-Steklov work still lists it as open.}
+{Use parallel coordinates with two angular trial functions and a sharp elastic-energy inequality for the boundary curve.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Exterior Robin second eigenvalue: fixed perimeter}
+{Under the same hypotheses, if $B$ has the same perimeter as $\Omega$, then $\lambda_2^\alpha(\Omega^c)\le\lambda_2^\alpha(B^c)$.}
+{Conjecture 1.2(b) in \href{https://arxiv.org/abs/2307.14286}{arXiv:2307.14286}.  Open.}
+{The perimeter-normalized parallel-coordinate argument avoids the area-conversion loss and is the cleaner first target.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Flat-torus Dirac conformal optimum}
+{For $T^2=\mathbb R^2/[\mathbb Z(1,0)+\mathbb Z(a,b)]$ in the standard modular region and the trivial spin structure,
+\[\inf_{g\in[g_{a,b}]}\lambda_1(g)\operatorname{Area}(g)^{1/2}=
+\begin{cases}2\pi/\sqrt b,&b\ge\pi,\\2\sqrt\pi,&b\le\pi.\end{cases}\]}
+{M. Karpukhin, A. M\'etras and I. Polterovich, Conjecture 1.8 in \href{https://arxiv.org/abs/2308.07875}{arXiv:2308.07875} (2023).  Open.}
+{Classify the relevant low-energy harmonic tori into $\mathbb{CP}^1$, using energy quantization plus certified spectral numerics near the transition $b=\pi$.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Infinite-mass Dirac optimum for right triangles: fixed area}
+{For every mass $m\ge0$, among planar right triangles of fixed area, the isosceles right triangle minimizes the smallest positive eigenvalue of the Dirac operator with infinite-mass boundary condition.}
+{Vu, Conjecture 2 (area clause) in \href{https://arxiv.org/abs/2302.13040}{arXiv:2302.13040} (2023).  Open.}
+{Reduce to the aspect ratio and combine a derivative formula for the squared operator with interval-enclosed FEM.}
+{$\psettle=70\%$; lean true.}
+
+\cand{Infinite-mass Dirac optimum for right triangles: fixed perimeter}
+{For every mass $m\ge0$, among planar right triangles of fixed perimeter, the isosceles right triangle minimizes the smallest positive eigenvalue of the Dirac operator with infinite-mass boundary condition.}
+{Vu, Conjecture 2 (perimeter clause) in \href{https://arxiv.org/abs/2302.13040}{arXiv:2302.13040}.  Open.}
+{The same one-parameter reduction is even more coercive under perimeter normalization; prove the derivative sign with interval arithmetic.}
+{$\psettle=75\%$; lean true.}
+
+\cand{Three-dimensional Escobar Steklov lower bound}
+{If $(M^3,g)$ is compact, $\operatorname{Ric}\ge0$, and the boundary satisfies $\mathrm{II}\ge c g_{\partial M}$ with $c>0$, then $\sigma_1(M)\ge c$, with equality only for the Euclidean ball of radius $1/c$.}
+{The three-dimensional case of Escobar's conjecture, recorded as Open Question 4.1 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  Stronger curvature hypotheses are known; the Ricci-only form is open.}
+{Optimize Reilly's formula using the harmonic extension's Hessian and a boundary Poincar\'e estimate special to surfaces.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Fraser--Li: embedded FBMS have $\sigma_1=1$}
+{Every properly embedded free-boundary minimal hypersurface $\Sigma\subset B^n$ has first nonzero Steklov eigenvalue $\sigma_1(\Sigma)=1$; the coordinate restrictions already give eigenvalue one.}
+{Fraser--Li conjecture, Question 5.42 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  Known under several topological and symmetry assumptions; open generally.}
+{Use nodal-domain topology to exclude an eigenfunction below the coordinates, beginning with low genus; high-topology numerical examples provide a disproof search.}
+{$\psettle=50\%$; lean true, with high-topology numerical examples providing a direct test of the literal statement.}
+
+\cand{Coordinates span the entire first Steklov eigenspace of an FBMS}
+{For every properly embedded free-boundary minimal surface in $B^n$, the first Steklov eigenspace equals the span of the coordinate functions of the embedding.}
+{Conjecture 5.43 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  Open.}
+{Combine Steklov unique continuation with nondegeneracy of the coordinate immersion; search equivariant numerical FBMS for an extra eigenfunction at one.}
+{$\psettle=50\%$; counterexample and global-proof routes are balanced.}
+
+\cand{Planar convex hot spots}
+{Every first nonconstant Neumann eigenfunction on a bounded convex planar domain attains both its maximum and minimum on the boundary.}
+{The planar remnant of the hot-spots conjecture.  \href{https://arxiv.org/abs/2412.06344}{arXiv:2412.06344} (2024) gives convex counterexamples in high dimensions but leaves dimension two open.}
+{Exploit planar nodal geometry and a quasiconformal gradient maximum principle; simultaneously run certified searches on asymmetric polygons.}
+{$\psettle=50\%$; lean true in the plane.}
+
+\cand{Simply connected planar Bareket conjecture}
+{For every bounded simply connected planar domain $\Omega$ and attractive Robin parameter $\alpha<0$, the equal-area disk $B$ satisfies $\lambda_1^\alpha(\Omega)\le\lambda_1^\alpha(B)$.}
+{The unrestricted Bareket conjecture is false; this remnant is stated open in \href{https://arxiv.org/abs/2204.03235}{arXiv:2204.03235}.}
+{Try conformal-radius transplantation for a proof, but prioritize a simply connected dumbbell at intermediate $\alpha$ as a likely disproof mechanism.}
+{$\psettle=55\%$; lean false.}
+
+\cand{Pentagonal Faber--Krahn conjecture}
+{Among planar pentagons of fixed area, the regular pentagon uniquely minimizes the first Dirichlet eigenvalue.}
+{The $N=5$ case of the polygonal P\'olya--Szeg\H{o} conjecture.  A finite certified reduction appears in \href{https://arxiv.org/abs/2203.16409}{arXiv:2203.16409}; local minimality is certified in \href{https://arxiv.org/abs/2406.11575}{arXiv:2406.11575}.  The global case is open.}
+{Complete the finite list of interval computations furnished by the reduction theorem and isolate equality.}
+{$\psettle=85\%$; lean true.}
+
+\cand{Pentagonal torsional-rigidity conjecture}
+{Among planar pentagons of fixed area, the regular pentagon uniquely maximizes torsional rigidity.}
+{The pentagonal P\'olya--Szeg\H{o} torsion problem; see \href{https://arxiv.org/abs/2309.16450}{arXiv:2309.16450}.  A 2026 theorem handles tangential polygons, not all pentagons.}
+{Prove that an optimizer can be tangential, then invoke the tangential result; alternatively certify the remaining finite-dimensional family.}
+{$\psettle=75\%$; lean true.}
+
+\cand{First positive Neumann eigenvalue under fixed perimeter}
+{For every bounded convex planar $\Omega$, $\mu_2(\Omega)P(\Omega)^2\le16\pi^2$, with equality precisely for the square and equilateral triangle, using $0=\mu_1<\mu_2\le\cdots$.}
+{Bogosel--Henrot--Michetti conjecture, discussed in \href{https://arxiv.org/abs/2502.11542}{arXiv:2502.11542} (2025).  Open generally.}
+{Use a two-dimensional trial space built from support functions and sharpen width/perimeter inequalities until the two equality geometries emerge.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Meissner bodies minimize volume at constant width}
+{Among convex bodies of fixed constant width in $\mathbb R^3$, a Meissner tetrahedron has minimum volume.}
+{Modern computational treatment: \href{https://arxiv.org/abs/2310.17672}{arXiv:2310.17672}; 2026 work still treats the conjecture as open.}
+{Reduce the support function to spherical harmonics and perform a certified global optimization around the Meissner combinatorics, while allowing nonsymmetric perturbations.}
+{$\psettle=50\%$; proof and nearby-counterexample routes are balanced.}
+
+\cand{Wentzell--Laplace ball maximizer}
+{For every $d\ge2$ and fixed boundary-diffusion parameter $\beta>0$, among smooth domains $\Omega\subset\mathbb R^d$ of prescribed volume that are homeomorphic to a ball, the Euclidean ball maximizes the first nontrivial Wentzell--Laplace eigenvalue $\lambda_{1,\beta}(\Omega)$.}
+{Conjecture in M. Dambrine et al., \href{https://arxiv.org/abs/1401.7098}{arXiv:1401.7098}.  The convex case is known; the full topological class remains open.}
+{Extend the convex proof by controlling the defect of the barycentric trial functions, or seek a nonconvex dumbbell/ruffled-boundary counterexample.}
+{$\psettle=55\%$; lean true near the ball, globally uncertain.}
+
+\cand{Uniqueness of the critical catenoid among embedded FB minimal annuli}
+{Every embedded free-boundary minimal annulus in the Euclidean unit ball $B^3$ is congruent to the critical catenoid.}
+{Conjecture 1.3 in \href{https://arxiv.org/abs/2302.08267}{arXiv:2302.08267}.  A 2025 preprint, \href{https://arxiv.org/abs/2501.02700}{arXiv:2501.02700}, claims a proof, but the later 2026 survey \href{https://arxiv.org/abs/2603.13061}{arXiv:2603.13061} still treats the full conjecture as unresolved.}
+{Adapt Brendle's two-point function or prove that one boundary component is rotational; numerically continue nonsymmetric annuli as a counterexample search.}
+{$\psettle=50\%$; lean true.}
+
+\cand{The critical catenoid is the unique index-four embedded FBMS}
+{The critical catenoid is the only embedded free-boundary minimal surface in $B^3$ with Morse index four.}
+{Recorded in the survey \href{https://arxiv.org/abs/1907.05053}{arXiv:1907.05053} and in \href{https://arxiv.org/abs/2112.04883}{arXiv:2112.04883}.  An earlier claimed proof, \href{https://arxiv.org/abs/1609.07810}{arXiv:1609.07810}, records an error in a key formula; later sources still treat unrestricted topology as open.}
+{Use index four to force $\sigma_1=1$ and then constrain topology through nodal domains and the Jacobi fields.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Critical M\"obius band index-five uniqueness}
+{The critical M\"obius band is the only embedded nonorientable free-boundary minimal surface in $B^4$ with Morse index five.}
+{V. Medvedev, Conjecture 1.3 in \href{https://arxiv.org/abs/2112.04883}{arXiv:2112.04883} (2021).  Open; the critical band's index is known to be five.}
+{Lift to the orientable double cover, exploit the five negative normal modes, and classify equality in the energy-index comparison.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Critical-catenoid area gap}
+{Every immersed free-boundary minimal surface in $B^3$ other than the equatorial disk has area at least that of the critical catenoid.}
+{Open Question 10 in \href{https://arxiv.org/abs/1907.05053}{arXiv:1907.05053}.  Open.}
+{Combine min--max width and index reduction with a quantitative monotonicity formula; search multiply covered or highly immersed examples for failure.}
+{$\psettle=50\%$; no truth lean because the immersed clause exposes covering and self-intersection mechanisms.}
+
+\cand{Free-boundary minimal volume decreases under ball conformal maps}
+{If $\Sigma^k\subset B^n$ is an immersed free-boundary minimal submanifold and $f$ is a conformal automorphism of $B^n$, then $|f(\Sigma)|\le|\Sigma|$.}
+{Open Question 8 in \href{https://arxiv.org/abs/1907.05053}{arXiv:1907.05053}.  Open beyond special cases.}
+{Differentiate along the conformal group and seek a global convexity formula; explicit higher-codimension products give a strong counterexample test.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Higher-dimensional conformal boundary-volume monotonicity}
+{If $\Sigma^k\subset B^n$ is free-boundary minimal and $f$ is a conformal automorphism, then $|f(\partial\Sigma)|\le|\partial\Sigma|$ for $k\ge3$.}
+{Open Question 9 in \href{https://arxiv.org/abs/1907.05053}{arXiv:1907.05053}.  The surface case $k=2$ is proved; higher dimensions are open.}
+{Generalize the surface divergence identity by finding the correct Newton-tensor or calibration term; test cones, where the claim reduces to a known closed result.}
+{$\psettle=55\%$; lean true.}
+
+\cand{The best doubly connected planar Steklov domain is a concentric annulus}
+{Among bounded connected planar domains with two boundary components and fixed perimeter, the largest normalized first Steklov eigenvalue is attained by the explicitly optimized concentric annulus.}
+{Conjecture 4.1 in \href{https://arxiv.org/abs/1909.02121}{arXiv:1909.02121}.  The candidate is critical and numerically optimal; global optimality is open.}
+{Uniformize to an annulus, control both boundary weights under conformal mapping, and prove that eccentricity lowers the eigenvalue.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Generic Steklov eigenfunctions choose one boundary component}
+{Let $\partial M=\Gamma_1\sqcup\cdots\sqcup\Gamma_r$.  For a Baire-generic smooth metric and every sequence of boundary-$L^2$-normalized Steklov eigenfunctions $\varphi_j$ with eigenvalue tending to infinity,
+\[\max_i\int_{\Gamma_i}|\varphi_j|^2\,dA\longrightarrow1.\]}
+{This is a strengthened Baire-generic version adopted here from Open Question 10.6 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  The two-dimensional localization phenomenon is known; the higher-dimensional generic statement is open.}
+{Microlocally diagonalize the Dirichlet-to-Neumann operator by boundary component and prove generic nonresonance of the component spectra.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Planar Steklov spectra determine smooth domains}
+{No two noncongruent smooth bounded connected planar domains are Steklov-isospectral.}
+{This is the negative-answer formulation adopted here for Open Question 9.11 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  The survey asks whether such pairs can exist; the problem is open.}
+{On the proof side, combine heat and wave invariants with the conformal representation of the planar Dirichlet-to-Neumann map; on the disproof side, test transplantation and Sunada-type constructions subject to planar embeddability.}
+{$\psettle=50\%$; proof and counterexample routes are balanced.}
+
+\cand{Linear-size law for interior Steklov nodal sets}
+{For a fixed smooth $(d+1)$-dimensional domain $\Omega$ and Steklov eigenpairs $(u_k,\sigma_k)$, there are constants $c,C>0$ such that
+\[c\sigma_k\le\mathcal H^d(\{u_k=0\}\cap\Omega^\circ)\le C\sigma_k.\]}
+{The interior half of Open Question 10.7 in \href{https://arxiv.org/abs/2212.12528}{arXiv:2212.12528}.  The sharp linear upper bound is known for real-analytic data; for smooth data the best cited surface bound is $O(\sigma^{3/2})$, with polynomial bounds in higher dimensions.}
+{First test whether smooth nonanalytic boundaries permit superlinear growth; otherwise combine doubling estimates with a Logunov-style induction adapted to harmonic extensions.}
+{$\psettle=50\%$ because the literal smooth statement is counterexample-friendly.}
+
+\cand{Strominger space forms with nonzero curvature are K\"ahler}
+{A compact Hermitian manifold whose Strominger--Bismut connection has constant nonzero holomorphic sectional curvature is K\"ahler.}
+{X. Chen and F. Zheng, Conjecture 2 in \href{https://arxiv.org/abs/2111.07108}{arXiv:2111.07108} (2021).  The compact locally conformally K\"ahler case is now proved in \href{https://arxiv.org/abs/2608.01893}{arXiv:2608.01893}; the general conjecture remains open.}
+{Classify genuinely non-LCK solvmanifold and balanced candidates algebraically; a small-dimensional non-K\"ahler homogeneous example would disprove the statement, while the resulting torsion identities suggest a Bochner proof.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Chern space forms with nonzero curvature are K\"ahler}
+{A compact Hermitian manifold with constant nonzero Chern holomorphic sectional curvature is K\"ahler.}
+{The Chern half of Conjecture 1 in \href{https://arxiv.org/abs/2111.07108}{arXiv:2111.07108}.  The compact LCK case is proved in \href{https://arxiv.org/abs/2606.24425}{arXiv:2606.24425}, and \href{https://arxiv.org/abs/2608.05598}{arXiv:2608.05598} adds a balanced-threefold nonpositive-curvature case; the general problem is open.}
+{Turn the constant-curvature equation into torsion identities on remaining non-LCK solvmanifolds and balanced classes, then seek an integral Bochner identity that removes the structural assumptions.}
+{$\psettle=50\%$; lean true.}
+
+\cand{Rozansky--Witten sign conjecture in complex dimension six}
+{For an irreducible hyperk\"ahler manifold of complex dimension six, $b_{\Theta\Theta_2}<0$ and $b_{\Theta_3}>0$.}
+{The first unproved dimension of Conjecture 1 (equivalently Conjecture 4) in \href{https://arxiv.org/abs/2112.11617}{arXiv:2112.11617} (2021).  The signs hold for all currently known examples.}
+{Identify a pointwise sum-of-squares expression for the curvature contraction; symbolic tensor reduction already gives strong evidence.}
+{$\psettle=60\%$; lean true.}
+
+\cand{The $4\times4$ Lu--Wenzel two-eigenvalue inequality}
+{For $X\in M_4(\mathbb C)$ with Frobenius norm one and $T_X(Y)=[X^*,[X,Y]]$, the ordered eigenvalues satisfy $\lambda_1(T_X)+\lambda_3(T_X)\le3$.}
+{The first open matrix size in Lu--Wenzel Conjecture 4.11, surveyed in \href{https://arxiv.org/abs/2402.01085}{arXiv:2402.01085} (2024).  Normal, rank-one, and $n\le3$ cases are known.}
+{Stratify by full unitary-congruence invariants or Schur type, not singular values alone, and finish the residual semialgebraic optimization with interval certification.}
+{$\psettle=70\%$; lean true.}
+
+\cand{The $4\times4$ fundamental Lu--Wenzel commutator inequality}
+{For real matrices $B=B_1,B_2,\ldots,B_m\in M_4(\mathbb R)$ satisfying $\operatorname{tr}(B_\alpha B_\beta^T)=0$ whenever $\alpha\ne\beta$ and, for every $2\le\alpha,\beta\le m$,
+\[\operatorname{tr}\bigl(B_\alpha[B,B_\beta]\bigr)=0,\]
+one has
+\[\sum_{\alpha=2}^m\|[B,B_\alpha]\|^2\le\left(\max_{\alpha\ge2}\|B_\alpha\|^2+\sum_{\alpha=2}^m\|B_\alpha\|^2\right)\|B\|^2.\]}
+{The first open size in Conjecture 4.9 of \href{https://arxiv.org/abs/2402.01085}{arXiv:2402.01085}; sizes at most three are proved in its Theorem 4.18.  The inequality unifies several submanifold curvature inequalities.}
+{Use invariant theory and semidefinite sum-of-squares certificates on $M_4(\mathbb R)$; a rational violating tuple would settle it negatively.}
+{$\psettle=55\%$; lean true.}
+
+\cand{Existence of a shrinking $5$-loop under curve shortening}
+{There is a $5$-loop whose curve-shortening flow remains a $5$-loop and shrinks to the origin.}
+{The first open case of the all-$n$ conjecture in \S5.2 of Angenent et al., \href{https://arxiv.org/abs/2403.09876}{arXiv:2403.09876} (2024); the cases $n=3,4$ are proved.}
+{Generalize the finite-parameter sign-balancing argument used for $n=3,4$, with validated numerics controlling the shooting map.}
+{$\psettle=65\%$; lean true.}
+
+\cand{Anisotropic asymptotic shape of shrinking $3$-loops}
+{A shrinking $3$-loop has inner profile $u(t,x)\sim K U_{2}(t-T,x)$ and, after bounding-box rescaling, converges to the closed squeezed bow tie
+\[\{(x,y):|x|\le1,\ y=\pm x^{2}\}\cup\{(\pm1,y):|y|\le1\},\]
+with the precise scale laws stated in the source.}
+{\S6.3 of \href{https://arxiv.org/abs/2403.09876}{arXiv:2403.09876}.  Open beyond the previously understood figure-eight behavior.}
+{Use self-similar variables, spectral decomposition in Hermite modes, and modulation to suppress all modes below $n-1$.}
+{$\psettle=60\%$; lean true.}
+
+\cand{Discrete positive mass for asymptotically flat graphs}
+{Every asymptotically flat graph with nonnegative discrete scalar curvature---defined from sums of Lin--Lu--Yau/Ollivier edge curvatures---has nonnegative discrete ADM mass, with equality only for the standard grid.}
+{Hua--M\"unch--Zhang, Conjecture 1.6 in \href{https://arxiv.org/abs/2307.08334}{arXiv:2307.08334} (2023).  Grid-combinatorial and stronger Ricci-nonnegative cases are proved; the conjecture is open.}
+{Enumerate finite perturbations as a linear or mixed-integer program to seek negative mass, then derive a discrete divergence identity suggested by the dual certificate.}
+{$\psettle=55\%$; proof and counterexample routes are both concrete.}
+
+\cand{Hexagonal Faber--Krahn conjecture}
+{Among planar hexagons of prescribed area, the regular hexagon uniquely minimizes the first Dirichlet eigenvalue $\lambda_1$.}
+{The $N=6$ case of the P\'olya--Szeg\H{o} polygonal conjecture; the modern finite-dimensional reduction is in \href{https://arxiv.org/abs/2203.16409}{arXiv:2203.16409}, with certified local methods developed in \href{https://arxiv.org/abs/2406.11575}{arXiv:2406.11575}.  Global optimality remains open.}
+{Combine the reduction theorem with interval-certified lower bounds on the compact complement of a local neighborhood of the regular hexagon.}
+{$\psettle=80\%$; lean true.}
+
+\cand{Hexagonal torsional-rigidity conjecture}
+{Among planar hexagons of prescribed area, the regular hexagon uniquely maximizes the torsional rigidity $T(\Omega)=\int_\Omega u$, where $-\Delta u=1$ and $u|_{\partial\Omega}=0$.}
+{The $N=6$ case of the P\'olya--Szeg\H{o} polygonal torsion conjecture; recent analytic and numerical evidence appears in \href{https://arxiv.org/abs/2309.16450}{arXiv:2309.16450}, while \href{https://arxiv.org/html/2607.28768}{arXiv:2607.28768} proves only the tangential-polygon class.  The full case is open.}
+{Prove a tangentialization monotonicity or reduce the remaining polygonal moduli space to finitely many interval-certified boxes.}
+{$\psettle=75\%$; lean true.}
+
+\end{enumerate}
+
+\appendix
+\section{The explicit counterexample to L1}\label{app:xu}
+
+Let $M=[-1,1]_y\times T^{n-1}$, $n\ge3$, with its flat product metric.  Its scalar curvature and boundary mean curvature vanish.  With
+\[a=\frac{4(n-1)}{n-2},\qquad p=\frac{2n}{n-2},\qquad u=A-y^2\quad(A>1),\]
+the conformal Laplacian with Xu's Robin condition is $-a\Delta$ with Neumann boundary condition.  Constants show $\eta'_1=0$, and integration by parts shows it is the first eigenvalue.  The conformal metric $\widetilde g=u^{p-2}g$ satisfies
+\[S_{\widetilde g}=u^{1-p}(-a\Delta u)=2a u^{1-p}>0.\]
+At both boundary components the outward derivative is $\partial_\nu u=-2$ and $u=A-1$, hence Xu's transformation formula gives
+\[H_{\widetilde g}=\frac{p-2}{2}u^{-p/2}\partial_\nu u
+=-(p-2)(A-1)^{-p/2}<0.\]
+Thus $H$ is nonzero while $S$ is everywhere positive and
+\[\int_M S\,dV_g=2a\operatorname{Vol}(T^{n-1})\int_{-1}^{1}(A-y^2)^{1-p}\,dy>0.\]
+Both proposed necessary conditions fail.  If one wants connected boundary and orientability, quotient by the free orientation-preserving isometry
+$(y,x_1,x_2,\ldots)\mapsto(-y,-x_1,x_2+1/2,\ldots)$; $u$ descends and the computation is unchanged.
+
+\section{Dependence and triage warnings}
+
+The one hundred statements are not one hundred independent Bernoulli trials.  In particular, L6--L7, L8--L10, L11--L13, L15 and L28--L30, L17--L18, M1--M2, M9--M13, M15--M20, M22--M23, M31--M36, M46--M47, M26 with M49, and M27 with M50 share substantial machinery.  A successful project should start with a falsification sprint: reproduce definitions and conventions, search the simplest symmetry reductions, run low-dimensional symbolic or interval computations, and only then invest in a global proof.
+
+The most attractive first attacks, on the present evidence, are L1, L8, L27, L32, L40, L49, M12, M20, M26, M44, and M49.  They combine a sharp literal statement with either an explicit ODE/matrix reduction, a finite certified computation, or a conspicuous counterexample mechanism.
+
+\end{document}

@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{A Counterexample at the Omitted Parameter in an Affine-Maximal Bernstein Statement}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript concerns Question~2 (L2), ``Affine-maximal Bernstein
+threshold,'' but it is \emph{not} a solution of the intended Sun--Xu
+conjecture.  The question in the list accidentally omits the source's standing
+assumption $a\ne0$.  The counterexample below uses only the resulting
+degenerate case $a=0$; the intended nonzero-parameter problem remains open.
+
+Let $f$ be a smooth strictly convex function on a convex domain in
+$\mathbb R^2$, let $D=\det D^2f$, and consider the affine-maximal-type
+equation $f^{ij}(D^a)_{ij}=0$.  A proposed Bernstein statement asserts
+quadratic rigidity for complete Calabi metrics when
+$a\notin[-2/3,-1/3]$.  We show that the restriction $a\ne0$ is essential:
+at $a=0$ the equation is vacuous, and the explicit nonquadratic potential
+$f(x,y)=\frac12(x^2+y^2)+x^4$ is strictly convex and has a complete Calabi
+metric.  Thus any formulation that includes $a=0$ is false.
+\end{abstract}
+
+\section{Introduction}
+
+For a smooth strictly convex function $f\colon\Omega\to\mathbb R$, write
+\[
+ D=\det D^2f>0,
+ \qquad
+ L_f u=f^{ij}u_{ij},
+\]
+where $(f^{ij})=(D^2f)^{-1}$.  The affine-maximal-type equation studied by
+Sun and Xu \cite{SunXu} is
+\begin{equation}\label{eq:pde}
+ L_f(D^a)=f^{ij}(D^a)_{ij}=0.
+\end{equation}
+The associated Calabi metric is the Hessian metric
+\begin{equation}\label{eq:calabi}
+ G_f=f_{ij}\,dx^i dx^j.
+\end{equation}
+Their Bernstein conjecture concerns nonzero parameters outside the interval
+$[-2/3,-1/3]$.  If the standing condition $a\ne0$ is omitted, however,
+the assertion degenerates immediately.  The following theorem records a
+complete counterexample.
+
+\begin{theorem}\label{thm:main}
+There exists a smooth strictly convex nonquadratic function
+$f\colon\mathbb R^2\to\mathbb R$ for which the Calabi metric $G_f$ is
+complete and \eqref{eq:pde} holds with $a=0$.  Consequently, the Bernstein
+statement allowing every $a\notin[-2/3,-1/3]$ is false.
+\end{theorem}
+
+\section{The counterexample}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Set
+\begin{equation}\label{eq:f}
+ f(x,y)=\frac12(x^2+y^2)+x^4.
+\end{equation}
+Then
+\[
+ D^2f=
+ \begin{pmatrix}
+  1+12x^2&0\\
+  0&1
+ \end{pmatrix},
+ \qquad
+ D=1+12x^2.
+\]
+Thus $D^2f$ is positive definite at every point, so $f$ is smooth and
+strictly convex.  It is plainly nonquadratic.
+
+At $a=0$ one has $D^a\equiv1$.  Therefore
+\[
+ L_f(D^0)=L_f(1)=f^{ij}(1)_{ij}=0,
+\]
+and \eqref{eq:pde} is satisfied identically.
+
+It remains to verify completeness.  From $D^2f\ge I$ as quadratic forms,
+the length of every piecewise $C^1$ curve $\gamma$ satisfies
+\[
+ \operatorname{Length}_{G_f}(\gamma)
+ =\int\sqrt{D^2f(\dot\gamma,\dot\gamma)}\,dt
+ \ge \int |\dot\gamma|\,dt
+ =\operatorname{Length}_{\mathrm{Euc}}(\gamma).
+\]
+Hence the identity map
+$(\mathbb R^2,G_f)\to(\mathbb R^2,g_{\mathrm{Euc}})$ is distance
+nonincreasing.  Every $G_f$-Cauchy sequence is Euclidean Cauchy and converges
+to a point of $\mathbb R^2$; on a Euclidean compact neighborhood of that
+point, $G_f$ is uniformly equivalent to the Euclidean metric, so convergence
+also holds in $G_f$.  Thus $(\mathbb R^2,G_f)$ is a complete metric space,
+and therefore geodesically complete by Hopf--Rinow.  This proves the theorem.
+\end{proof}
+
+\begin{remark}
+The construction does not address the nondegenerate parameter range
+$a\ne0$.  Its point is that the zero parameter cannot be added to the
+statement: at $a=0$, every smooth strictly convex potential satisfies the
+differential equation, and completeness alone cannot force a quadratic.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{SunXu}
+Y.~Sun and R.~Xu,
+\emph{A class of new complete affine maximal type hypersurfaces},
+Differential Geom. Appl. \textbf{101} (2025), 102308;
+\href{https://arxiv.org/abs/2501.08525}{arXiv:2501.08525}.
+
+\bibitem{Shima}
+H.~Shima,
+\emph{The Geometry of Hessian Structures},
+World Scientific, Singapore, 2007.
+
+\end{thebibliography}
+\end{document}

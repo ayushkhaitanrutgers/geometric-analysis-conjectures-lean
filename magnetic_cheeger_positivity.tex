@@ -1,0 +1,359 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Sph}{\mathbb S^1}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\Bspace}{\mathfrak B}
+\newcommand{\frust}{\iota}
+\newcommand{\Hmeasure}{\mathcal H}
+
+\title[BV compactness and magnetic Cheeger constants]
+{BV compactness and positivity of magnetic Cheeger constants}
+\date{24 August 2026}
+
+\subjclass[2020]{49J45, 53C23, 58J50}
+\keywords{magnetic Steklov operator, magnetic Cheeger constant,
+frustration constant, BV compactness, gauge transformation}
+
+\begin{document}
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses two entries: Question~7 (L7), ``Large-domain
+magnetic frustration,'' and Question~6 (L6), ``Magnetic Cheeger positivity.''
+It gives a full proof of Question~7, and Question~6 follows as a corollary.
+Both conclusions use the same compact-manifold, smooth-boundary, and
+nontrivial-gauge hypotheses stated in the list.
+
+Let $M$ be a compact Riemannian manifold with nonempty smooth boundary and let
+$\eta$ be a smooth real $1$-form which cannot be gauged away.  We prove the
+large-domain frustration conjecture posed by Chakradhar, Gittins, Habib and
+Peyerimhoff: domains which exhaust $M$ in volume and whose interior perimeter
+tends to zero have frustration bounded away from zero.  The proof is a BV
+compactness argument.  A nearly minimizing circle-valued gauge is extended by
+a constant across the complement of the domain.  Its total magnetic variation
+tends to zero, and the limit is a global smooth gauge, a contradiction.  As a
+consequence, both magnetic Cheeger constants are strictly positive whenever
+$\eta$ is not gauge-equivalent to zero.
+\end{abstract}
+
+\maketitle
+
+\section{Definitions and statement}
+
+Let $(M^m,g)$ be a compact Riemannian manifold with nonempty smooth boundary.
+All volumes and hypersurface measures below are computed using $g$.  For a
+smooth real $1$-form $\eta$, put
+\[
+  d^\eta u:=du+i\eta u
+\]
+for complex-valued functions $u$.  The space of gauge forms is
+\[
+  \Bspace_M
+  :=\left\{\frac{d\tau}{i\tau}:\tau\in C^\infty(M,\Sph)\right\}.
+\]
+If $D\subset M$ is a smooth relative domain, its magnetic frustration is
+\[
+  \frust^\eta(D)
+  :=\inf_{\tau\in C^\infty(D,\Sph)}
+       \int_D |d^\eta\tau|\,d\vol.
+\]
+We write
+\[
+  \partial_I D:=\partial D\cap\interior(M),
+  \qquad
+  \partial_E D:=\partial D\cap\partial M,
+\]
+and use $|\partial_I D|$ and $|\partial_E D|$ for their
+$(m-1)$-dimensional measures.  The magnetic Cheeger constants introduced in
+\cite{CGHP} are
+\[
+ h^\eta(M)
+ :=\inf_D\frac{\frust^\eta(D)+|\partial_I D|}{|D|},
+ \qquad
+ (h^\eta)'(M)
+ :=\inf_D\frac{\frust^\eta(D)+|\partial_I D|}{|\partial_E D|},
+\]
+where the infima run over nonempty smooth relative domains.  A quotient with
+zero denominator is understood as $+\infty$.
+
+The conjecture in Section~4.1 of \cite{CGHP} is the following.  We prove it
+below.
+
+\smallskip
+\noindent\emph{Status note.}
+The published 2025 version of \cite{CGHP} states both the large-domain claim
+and the resulting positivity question as open.  The argument below is
+self-contained; no claim about priority beyond the cited record is intended.
+
+\begin{theorem}[Large-domain magnetic frustration]\label{thm:large-domain}
+Suppose that $\eta\notin\Bspace_M$.  There are constants
+$\varepsilon,\delta>0$ such that every nonempty smooth relative domain
+$D\subset M$ satisfying
+\[
+ |D|\geq(1-\varepsilon)|M|
+ \quad\text{and}\quad
+ |\partial_I D|\leq\varepsilon
+\]
+also satisfies
+\[
+ \frust^\eta(D)\geq\delta.
+\]
+\end{theorem}
+
+\section{The compactness lemma}
+
+We regard a complex-valued BV function as an $\mathbb R^2$-valued BV
+function.  All BV derivatives on $M$ are \emph{relative} derivatives.  Thus a
+jump across $\partial M$ creates no variation measure; only interfaces inside
+$M$ contribute.
+
+For $u\in BV(M;\mathbb C)$ define its magnetic derivative measure by
+\[
+  \mathcal D^\eta u:=Du+i\eta u\,d\vol.
+\]
+
+\begin{lemma}[Vanishing magnetic variation produces a global gauge]
+\label{lem:compactness}
+Let $D_j\subset M$ be smooth relative domains such that
+\[
+ |M\setminus D_j|\longrightarrow0,
+ \qquad
+ |\partial_I D_j|\longrightarrow0.
+\]
+Suppose that there are maps $\tau_j\in C^\infty(D_j,\Sph)$ for which
+\[
+ \int_{D_j}|d^\eta\tau_j|\,d\vol\longrightarrow0.
+\]
+Then $\eta\in\Bspace_M$.
+\end{lemma}
+
+\begin{proof}
+Extend each $\tau_j$ by the fixed value $1\in\Sph$ and set
+\[
+ u_j:=
+ \begin{cases}
+   \tau_j&\text{on }D_j,\\
+   1&\text{on }M\setminus D_j.
+ \end{cases}
+\]
+The finite-energy condition implies $\tau_j\in W^{1,1}(D_j)$, since
+\[
+ \int_{D_j}|d\tau_j|\,d\vol
+ \leq \int_{D_j}|d^\eta\tau_j|\,d\vol
+       +\int_{D_j}|\eta|\,d\vol.
+\]
+Consequently $\tau_j$ has BV traces on the smooth interface.  The standard
+trace and gluing formula (see \cite{AFP}), applied in hypersurface charts,
+gives a complex $1$-form measure $J_j$ supported on $\partial_I D_j$ such that
+\[
+ Du_j=\boldsymbol 1_{D_j}d\tau_j\,d\vol+J_j,
+ \qquad
+ \|J_j\|(M)\leq2|\partial_I D_j|.
+\]
+This also covers a two-sided slit: the jump between the two circle-valued
+traces has norm at most two.  At a one-sided interface it is the jump between
+the trace and the extension value $1$, again of norm at most two.
+There is no term on $\partial_E D_j$, because the derivative is relative to
+$M$.  Hence
+\begin{align}
+ \mathcal D^\eta u_j
+  ={}&\boldsymbol 1_{D_j}(d\tau_j+i\eta\tau_j)\,d\vol
+      +\boldsymbol 1_{M\setminus D_j}i\eta\,d\vol \notag\\
+    &+J_j.                                                \label{eq:measure}
+\end{align}
+It follows that
+\begin{equation}
+ \|\mathcal D^\eta u_j\|(M)
+ \leq
+ \int_{D_j}|d^\eta\tau_j|\,d\vol
+ +\|\eta\|_{L^\infty(M)}|M\setminus D_j|
+ +2|\partial_I D_j|.
+ \label{eq:key-estimate}
+\end{equation}
+The right-hand side tends to zero.
+
+Moreover, $|u_j|=1$ almost everywhere, and
+\[
+ |Du_j|(M)
+ \leq \|\mathcal D^\eta u_j\|(M)+\|\eta\|_{L^1(M)}.
+\]
+Thus $(u_j)$ is bounded in $BV(M;\mathbb C)$.  By BV compactness on a compact
+manifold with boundary, after passing to a subsequence there is
+$u\in BV(M;\mathbb C)$ such that
+\[
+ u_j\longrightarrow u\quad\text{in }L^1(M).
+\]
+After taking a further subsequence the convergence holds almost everywhere,
+so $|u|=1$ almost everywhere.
+
+The $L^1$ convergence implies that $Du_j\to Du$ distributionally and that
+$i\eta u_j\,d\vol\to i\eta u\,d\vol$ in total variation.  Passing to the
+limit in \eqref{eq:key-estimate} therefore yields
+\[
+ Du+i\eta u\,d\vol=0.
+\]
+In particular, the distributional derivative of $u$ is the bounded density
+$-i\eta u$.  Hence $u\in W^{1,\infty}(M)$ and
+\begin{equation}
+ du=-i\eta u \qquad\text{a.e. on }M.                    \label{eq:parallel}
+\end{equation}
+For completeness, smoothness up to $\partial M$ can be seen directly.  Commute
+weak mixed derivatives in \eqref{eq:parallel}; the quadratic terms cancel and
+give $(d\eta)u=0$.  Since $|u|=1$, it follows that $d\eta=0$.  On every
+contractible interior chart, or boundary half-chart, write $\eta=d\phi$ with
+$\phi$ smooth up to the boundary.  Equation \eqref{eq:parallel} then gives
+$d(e^{i\phi}u)=0$ distributionally.  Thus $e^{i\phi}u$ is almost everywhere
+constant on each connected chart, and $u=ce^{-i\phi}$ there.  Consequently
+$u$ has a smooth representative on $M$, and that representative takes values
+in $\Sph$ everywhere.
+
+Finally let $\sigma:=\overline u$.  Conjugating \eqref{eq:parallel} gives
+$d\sigma=i\eta\sigma$, and therefore
+\[
+ \eta=\frac{d\sigma}{i\sigma}\in\Bspace_M.
+\]
+\end{proof}
+
+\section{Proof of the conjecture and the Cheeger consequence}
+
+\begin{proof}[Proof of Theorem~\ref{thm:large-domain}]
+Assume the conclusion is false.  For every integer $j\geq2$, apply the
+negation with $\varepsilon=j^{-1}$ and $\delta=j^{-1}$.  There is then a
+smooth relative domain $D_j$ such that
+\[
+ |D_j|\geq(1-j^{-1})|M|,
+ \qquad
+ |\partial_I D_j|\leq j^{-1},
+ \qquad
+ \frust^\eta(D_j)<j^{-1}.
+\]
+Choose $\tau_j\in C^\infty(D_j,\Sph)$ within $j^{-1}$ of the infimum in the
+definition of frustration.  Then
+\[
+ \int_{D_j}|d^\eta\tau_j|\,d\vol<2j^{-1}.
+\]
+All hypotheses of Lemma~\ref{lem:compactness} hold, so
+$\eta\in\Bspace_M$, contrary to the assumption.  This proves the theorem.
+\end{proof}
+
+The preceding theorem also settles the positivity question posed immediately
+after Theorem~2.5 of \cite{CGHP}.
+
+\begin{corollary}[Positivity of the magnetic Cheeger constants]
+\label{cor:cheeger}
+If $\eta\notin\Bspace_M$, then
+\[
+ h^\eta(M)>0,
+ \qquad
+ (h^\eta)'(M)>0,
+ \qquad\text{and hence}\qquad
+ h^\eta(M)(h^\eta)'(M)>0.
+\]
+Consequently the Cheeger--Jammes estimate of \cite[Theorem~2.5]{CGHP} is a
+strictly positive lower bound:
+\[
+ \sigma_1^\eta(M)
+ \geq \frac18 h^\eta(M)(h^\eta)'(M)>0.
+\]
+\end{corollary}
+
+\begin{proof}
+Choose the constants in Theorem~\ref{thm:large-domain}, shrinking
+$\varepsilon$ if necessary so that $0<\varepsilon<1/2$.  Let $h(M)>0$ be the
+ordinary relative Cheeger constant.  For any admissible $D$, one of the
+following four estimates applies:
+\begin{align*}
+ |D|\leq\tfrac12|M|
+ &\quad\Longrightarrow\quad
+ \frac{\frust^\eta(D)+|\partial_I D|}{|D|}\geq h(M),\\
+ \tfrac12|M|<|D|<(1-\varepsilon)|M|
+ &\quad\Longrightarrow\quad
+ \frac{\frust^\eta(D)+|\partial_I D|}{|D|}
+ \geq \frac{\varepsilon}{1-\varepsilon}h(M),\\
+ |\partial_I D|>\varepsilon
+ &\quad\Longrightarrow\quad
+ \frac{\frust^\eta(D)+|\partial_I D|}{|D|}
+ \geq\frac{\varepsilon}{|M|},\\
+ |D|\geq(1-\varepsilon)|M|,
+ \quad |\partial_I D|\leq\varepsilon
+ &\quad\Longrightarrow\quad
+ \frac{\frust^\eta(D)+|\partial_I D|}{|D|}
+ \geq\frac{\delta}{|M|}.
+\end{align*}
+In the second line one applies the ordinary Cheeger inequality to
+$M\setminus D$, whose interior boundary agrees with that of $D$.  Taking the
+minimum of the four positive constants proves $h^\eta(M)>0$.
+
+Let
+\[
+ h'(M):=
+ \inf_{\substack{D\text{ admissible}\\ |D|\leq |M|/2}}
+ \frac{|\partial_I D|}{|\partial_E D|}.
+\]
+The positivity $h'(M)>0$ is the relative isoperimetric fact used in the
+Steklov Cheeger inequality; see \cite[Theorem~1]{Jammes}.  If
+$|D|\leq|M|/2$, then
+\[
+ \frac{\frust^\eta(D)+|\partial_I D|}{|\partial_E D|}
+ \geq h'(M).
+\]
+If $|D|>|M|/2$, then $|\partial_E D|\leq|\partial M|$ and
+\[
+ \frac{\frust^\eta(D)+|\partial_I D|}{|\partial_E D|}
+ \geq h^\eta(M)\frac{|D|}{|\partial_E D|}
+ \geq h^\eta(M)\frac{|M|}{2|\partial M|}.
+\]
+This proves $(h^\eta)'(M)>0$.  The final assertion is exactly the estimate in
+\cite[Theorem~2.5]{CGHP}.
+\end{proof}
+
+\begin{remark}[Finite-perimeter formulation]
+The proof of Lemma~\ref{lem:compactness} uses only the BV trace and gluing
+formula.  It therefore remains valid for finite-perimeter sets $D_j$, with
+$\partial_I D_j$ replaced by the reduced boundary inside $M$.  Smoothness of
+the domains is needed only to match the formulation in \cite{CGHP}.
+\end{remark}
+
+\begin{remark}[Where topology enters]
+No explicit choice of generators of $H_1(M)$ is needed.  The topological
+obstruction is retained in the circle-valued BV limit: if the frustration,
+the omitted volume, and the interior perimeter all vanished simultaneously,
+the limit equation $du+i\eta u=0$ would itself produce the forbidden global
+gauge.  The jump term in \eqref{eq:measure} is precisely the cost of cutting
+the topology.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{AFP}
+L. Ambrosio, N. Fusco and D. Pallara,
+\emph{Functions of bounded variation and free discontinuity problems},
+Oxford Mathematical Monographs, Oxford University Press, 2000.
+
+\bibitem{CGHP}
+T. Chakradhar, K. Gittins, G. Habib and N. Peyerimhoff,
+\emph{A note on the magnetic Steklov operator on functions},
+Mathematika \textbf{71} (2025), no.~4, e70037,
+\href{https://doi.org/10.1112/mtk.70037}{doi:10.1112/mtk.70037};
+\href{https://arxiv.org/abs/2410.07462}{arXiv:2410.07462}.
+
+\bibitem{Jammes}
+P. Jammes,
+\emph{Une in\'egalit\'e de Cheeger pour le spectre de Steklov},
+Ann. Inst. Fourier (Grenoble) \textbf{65} (2015), no.~3, 1381--1385.
+
+\end{thebibliography}
+
+\end{document}

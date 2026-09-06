@@ -1,0 +1,450 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!65!black
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfc}{erfc}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Hads}{\mathcal{H}_{\mathrm{ADS}}}
+\newcommand{\Haus}{\mathcal{H}}
+\newcommand{\Pgamma}{P_{\gamma}}
+
+\title[An explicit counterexample to a Huisken-energy bound]
+{An explicit counterexample to a conjectured dimension-free
+Huisken-energy bound}
+
+% Replace the following line with the author's name before submission.
+\author{ChatGPT 5.6 Sol}
+% \address{Department, University, Postal address}
+% \email{author@example.edu}
+
+\subjclass[2020]{53E10, 52A20, 60D05}
+\keywords{mean curvature flow, Huisken energy, Gaussian perimeter,
+convex body, counterexample}
+
+\begin{document}
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~5 (L5), ``Gaussian boundary area of
+convex bodies is below two.''  It gives a full counterexample to the literal
+dimension-free conjecture, including a smooth strictly convex example.  The
+disproof itself is not new: after the correct normalization it follows from
+Ball's 1993 cube estimate; the contribution here is an explicit
+low-dimensional exact certificate.
+
+Angenent, Daskalopoulos, and \v{S}e\v{s}um conjectured that the
+Gaussian-weighted boundary area
+\[
+ (4\pi)^{-(d-1)/2}\int_{\partial C}e^{-|x|^2/4}\,
+ d\Haus^{d-1}(x)
+\]
+is strictly smaller than \(2\) for every closed convex set
+\(C\subset\R^d\) with nonempty interior.  We record a completely
+explicit counterexample in ambient dimension \(9\):
+\[
+ Q=\left[-\frac{12}{5},\frac{12}{5}\right]^9.
+\]
+An exact calculation, certified using explicit rational bounds, gives
+\[
+ \Hads(Q)>\frac{1002087}{500000}>2.
+\]
+We also show that the same violation
+persists for smooth convex bodies whose principal curvatures are everywhere
+positive.  After a dilation, the functional is
+\(\sqrt{2\pi}\) times the standard Gaussian perimeter.  Accounting for this
+normalization, the failure of a dimension-free bound follows directly from
+Ball's 1993 cube estimate.  The purpose of this note is to spell out its
+consequence for the stated conjecture and to provide a low-dimensional exact
+certificate.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let \(d\ge2\).  For a closed convex set \(C\subset\R^d\) with nonempty
+interior, set
+\begin{equation}\label{eq:ADS-functional}
+ \Hads(C)
+ :=(4\pi)^{-(d-1)/2}
+   \int_{\partial C}e^{-|x|^2/4}\,d\Haus^{d-1}(x).
+\end{equation}
+In the notation of Angenent--Daskalopoulos--\v{S}e\v{s}um
+\cite[Conjecture~I]{ADS}, the ambient dimension is \(d=n+1\) and
+\(\Hads\) is their Huisken energy.  Their conjecture asserts
+\begin{equation}\label{eq:conjecture}
+ \Hads(C)<2
+ \qquad\text{for every closed convex \(C\subset\R^d\) with nonempty
+ interior.}
+\end{equation}
+The phase space in \cite[\S1.2]{ADS} imposes no regularity or boundedness
+condition beyond convexity, so polytopes are included.
+
+Our main result is the following.
+
+\begin{theorem}\label{thm:main}
+In ambient dimension \(d=9\), the compact centrally symmetric convex body
+\[
+ Q=\left[-\frac{12}{5},\frac{12}{5}\right]^9
+\]
+satisfies
+\begin{equation}\label{eq:main-bound}
+ \Hads(Q)>\frac{1002087}{500000}>2.
+\end{equation}
+Consequently, Conjecture~\eqref{eq:conjecture} is false already for
+hypersurface dimension \(n=8\).
+\end{theorem}
+
+The corners of \(Q\) are not responsible for the failure.
+
+\begin{theorem}\label{thm:smooth}
+There exists a compact convex body \(C\subset\R^9\) with smooth boundary
+and everywhere positive principal curvatures such that
+\(\Hads(C)>2\).
+\end{theorem}
+
+\section{The weighted boundary area of a cube}
+
+For \(a>0\) and an integer \(d\ge2\), write
+\[
+ Q_d(a):=[-a,a]^d.
+\]
+Recall that
+\[
+ \erf(s):=\frac{2}{\sqrt\pi}\int_0^s e^{-t^2}\,dt,
+ \qquad
+ \erfc(s):=1-\erf(s).
+\]
+
+\begin{proposition}[Cube formula]\label{prop:cube-formula}
+For every \(a>0\) and \(d\ge2\),
+\begin{equation}\label{eq:cube-formula}
+ \Hads\bigl(Q_d(a)\bigr)
+ =2d\,e^{-a^2/4}\erf(a/2)^{d-1}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The intersections of distinct facets have zero \((d-1)\)-dimensional
+Hausdorff measure.  On any one of the \(2d\) facets, one coordinate is
+equal to \(a\) or \(-a\), and Fubini's theorem gives
+\[
+ \int_{[-a,a]^{d-1}}e^{-(a^2+|x'|^2)/4}\,dx'
+ =e^{-a^2/4}
+   \left(\int_{-a}^{a}e^{-t^2/4}\,dt\right)^{d-1}.
+\]
+The substitution \(t=2s\) yields
+\[
+ \int_{-a}^{a}e^{-t^2/4}\,dt
+ =2\sqrt\pi\,\erf(a/2).
+\]
+Multiplying by \(2d(4\pi)^{-(d-1)/2}\) proves
+\eqref{eq:cube-formula}.
+\end{proof}
+
+For later perspective, the same formula gives a self-contained version of
+the classical cube-growth observation.
+
+\begin{proposition}[No dimension-free upper bound]\label{prop:unbounded}
+The values of \(\Hads\) on compact centrally symmetric cubes are unbounded
+as the ambient dimension tends to infinity.
+\end{proposition}
+
+\begin{proof}
+For an integer \(k\ge1\), let
+\[
+ d_k:=\left\lceil k e^{k^2}\right\rceil,
+ \qquad Q_k:=[-2k,2k]^{d_k},
+ \qquad q_k:=\erfc(k).
+\]
+The elementary Mills bound
+\begin{equation}\label{eq:mills}
+ \erfc(s)
+ =\frac{2}{\sqrt\pi}\int_s^\infty e^{-t^2}\,dt
+ <\frac{e^{-s^2}}{s\sqrt\pi}
+ \qquad(s>0)
+\end{equation}
+follows by replacing \(1\) with \(t/s\) under the integral.  Since
+\(d_k\le k e^{k^2}+1\), the elementary inequalities \(e>2\) and
+\(\sqrt\pi>3/2\) imply
+\[
+ d_kq_k
+ <\frac1{\sqrt\pi}+\frac{e^{-k^2}}{k\sqrt\pi}
+ <\frac23+\frac13=1,
+ \qquad
+ q_k<\frac{e^{-1}}{\sqrt\pi}<\frac13<\frac12.
+\]
+For \(0\le q\le1/2\), one has
+\(\log(1-q)\ge-2q\).  Therefore
+\[
+ (1-q_k)^{d_k-1}
+ =\exp\bigl((d_k-1)\log(1-q_k)\bigr)>e^{-2}.
+\]
+Proposition~\ref{prop:cube-formula} and
+\(d_ke^{-k^2}\ge k\) now give
+\[
+ \Hads(Q_k)
+ =2d_ke^{-k^2}(1-q_k)^{d_k-1}
+ >2e^{-2}k,
+\]
+which tends to infinity.
+\end{proof}
+
+\section{An exact certificate in dimension nine}
+
+The proof of Theorem~\ref{thm:main} will use only the following rational
+bounds.  Their somewhat explicit form is included so that the strict
+inequality does not rest on floating-point computation.
+
+\begin{lemma}[Rational certificate]\label{lem:certificate}
+The following inequalities hold:
+\begin{equation}\label{eq:certificate}
+ e^{-36/25}>\frac{2369}{10000},
+ \qquad
+ \erf(6/5)>\frac{91}{100},
+ \qquad
+ \left(\frac{91}{100}\right)^8>\frac{47}{100}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We prove the three estimates in turn.
+
+\smallskip
+\noindent
+\emph{The exponential estimate.}
+Put \(y=36/25\).  For the terms \(t_j=y^j/j!\), one has
+\(t_{j+1}/t_j\le y/7=36/175\) whenever \(j\ge6\).  Hence
+\begin{align*}
+ e^y
+ &<\sum_{j=0}^{5}\frac{y^j}{j!}
+   +\frac{1}{1-36/175}\frac{y^6}{6!}\\
+ &=\frac{28647109619}{6787109375}
+ <\frac{4221}{1000}.
+\end{align*}
+For completeness, the final difference is
+\[
+ \frac{4221}{1000}
+ -\frac{28647109619}{6787109375}
+ =\frac{10232423}{54296875000}>0.
+\]
+Taking reciprocals and clearing denominators once more gives
+\[
+ e^{-36/25}>\frac{1000}{4221}>\frac{2369}{10000},
+ \qquad
+ 10000000-2369\cdot4221=451>0.
+\]
+
+\smallskip
+\noindent
+\emph{The error-function estimate.}
+We use the elementary identity
+\[
+ \frac{22}{7}-\pi
+ =\int_0^1\frac{x^4(1-x)^4}{1+x^2}\,dx>0,
+\]
+which follows by polynomial division and
+\(\int_0^1(1+x^2)^{-1}\,dx=\pi/4\).  Thus \(\pi<22/7\), and hence
+\begin{equation}\label{eq:pi-bound}
+ \frac2{\sqrt\pi}>\frac{11281}{10000},
+\end{equation}
+because
+\[
+ 11\cdot11281^2=1399870571
+ <1400000000=14\cdot10000^2.
+\]
+The power series
+\begin{equation}\label{eq:erf-series}
+ \erf(x)=\frac2{\sqrt\pi}
+ \sum_{j=0}^{\infty}
+ \frac{(-1)^j x^{2j+1}}{j!(2j+1)}
+\end{equation}
+is alternating.  At \(x=6/5\), its term magnitudes decrease strictly,
+since
+\[
+ \frac{(6/5)^{2j+3}}{(j+1)!(2j+3)}
+ \bigg/
+ \frac{(6/5)^{2j+1}}{j!(2j+1)}
+ =\frac{36(2j+1)}{25(j+1)(2j+3)}<1;
+\]
+after clearing denominators, the denominator minus the numerator is
+\(50j^2+53j+39>0\).  The partial sum ending with the negative term
+\(j=7\) is therefore a strict lower bound.  Direct rational summation gives
+\begin{align*}
+ \sum_{j=0}^{7}
+ \frac{(-1)^j(6/5)^{2j+1}}{j!(2j+1)}
+ &=\frac{616091309997726}{763702392578125}\\
+ &>\frac{8067}{10000}.
+\end{align*}
+The last comparison is certified by the positive cross-product difference
+\[
+ 10000\cdot616091309997726
+ -8067\cdot763702392578125
+ =125899049525625.
+\]
+Combining this with \eqref{eq:pi-bound} and \eqref{eq:erf-series},
+\[
+ \erf(6/5)
+ >\frac{11281\cdot8067}{10^8}
+ =\frac{91003827}{10^8}
+ >\frac{91}{100}.
+\]
+
+\smallskip
+\noindent
+\emph{The power estimate.}
+Finally,
+\[
+ \left(\frac{91}{100}\right)^4
+ =\frac{68574961}{10^8}>\frac{6857}{10000},
+\]
+and therefore
+\[
+ \left(\frac{91}{100}\right)^8
+ >\left(\frac{6857}{10000}\right)^2
+ =\frac{47018449}{10^8}>\frac{47}{100}.
+\]
+This proves \eqref{eq:certificate}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Apply Proposition~\ref{prop:cube-formula} with \(d=9\) and \(a=12/5\).
+Since \(a^2/4=36/25\) and \(a/2=6/5\), Lemma~\ref{lem:certificate}
+gives
+\begin{align*}
+ \Hads(Q)
+ &=18e^{-36/25}\erf(6/5)^8\\
+ &>18\left(\frac{2369}{10000}\right)
+       \left(\frac{47}{100}\right)
+ =\frac{1002087}{500000}>2.
+\end{align*}
+The last inequality has the exact margin
+\(2087/500000>0\).
+\end{proof}
+
+\section{Smooth strictly convex counterexamples}
+
+We now prove that the inequality is not rescued by imposing smoothness or
+strict convexity.  For every integer \(m\ge2\), define
+\begin{equation}\label{eq:smooth-approximation}
+ C_m:=\left\{x\in\R^9:
+ \sum_{i=1}^9\left(\frac{5x_i}{12}\right)^{2m}
+ +\frac1m\sum_{i=1}^9\left(\frac{5x_i}{12}\right)^2
+ \le1\right\}.
+\end{equation}
+
+\begin{proposition}\label{prop:approximation}
+Each \(C_m\) is a compact convex body with smooth boundary and everywhere
+positive principal curvatures.  Moreover, \(C_m\) converges in Hausdorff
+distance to \(Q=[-12/5,12/5]^9\).
+\end{proposition}
+
+\begin{proof}
+Write \(z_i=5x_i/12\) and
+\[
+ F_m(z):=\sum_{i=1}^9z_i^{2m}+\frac1m\sum_{i=1}^9z_i^2.
+\]
+The change \(x=(12/5)z\) is a homothety, so smoothness, strict convexity,
+and positivity of the principal curvatures may be checked in the
+\(z\)-coordinates.
+The Hessian of \(F_m\) in the \(z\)-coordinates is diagonal, and
+\[
+ \frac{\partial^2F_m}{\partial z_i^2}
+ =2m(2m-1)z_i^{2m-2}+\frac2m>0.
+\]
+Thus \(F_m\) is strictly convex.  It is coercive, and \(F_m(0)=0\), so
+its unit sublevel set is a compact convex body.  On the level set \(F_m=1\),
+\[
+ z\cdot\nabla F_m(z)
+ =2m\sum_{i=1}^9z_i^{2m}+\frac2m\sum_{i=1}^9z_i^2>0,
+\]
+so the gradient never vanishes there.  Consequently
+\(\partial C_m\) is smooth.  With the convention that the outward second
+fundamental form of a convex hypersurface is positive, the second fundamental
+form of the level set in \(z\)-space is the restriction of
+\(D^2F_m/|\nabla F_m|\) to tangent vectors.  It is positive definite, and
+the homothety back to \(x\)-space preserves that sign.  Therefore all
+principal curvatures of \(\partial C_m\) are positive.
+
+If \(x\in C_m\), then \(|5x_i/12|\le1\) for every \(i\), so \(C_m\subset Q\).
+Conversely, fix \(0<\eta<1\).  For \(x\in(1-\eta)Q\),
+\[
+ F_m(5x/12)
+ \le9(1-\eta)^{2m}+\frac9m(1-\eta)^2.
+\]
+The right-hand side is smaller than \(1\) for all sufficiently large \(m\).
+Thus \((1-\eta)Q\subset C_m\subset Q\) eventually.  Every point of \(Q\)
+lies within \(\eta\sup_{x\in Q}|x|\) of \((1-\eta)Q\subset C_m\), while
+\(C_m\subset Q\); hence the Hausdorff distance tends to zero.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:smooth}]
+Angenent--Daskalopoulos--\v{S}e\v{s}um prove that \(\Hads\) is continuous
+under local Hausdorff convergence of closed convex sets
+\cite[Lemma~3.6]{ADS}.  For the compact sets in
+Proposition~\ref{prop:approximation}, ordinary Hausdorff convergence implies
+local Hausdorff convergence.  Hence
+\[
+ \lim_{m\to\infty}\Hads(C_m)=\Hads(Q)>2.
+\]
+It follows that \(\Hads(C_m)>2\) for every sufficiently large \(m\).  Any
+one such \(C_m\) has all the asserted properties.
+\end{proof}
+
+\begin{remark}
+The approximation argument is deliberately qualitative: it proves the
+existence of a smooth positively curved counterexample without claiming a
+numerically optimal value of \(m\).  The polytope \(Q\) itself already lies
+in the precise phase space of \cite{ADS} and is the exact counterexample to
+the conjecture as stated.
+\end{remark}
+
+\begin{thebibliography}{99}
+
+\bibitem{ADS}
+S.~B. Angenent, P. Daskalopoulos, and N. \v{S}e\v{s}um,
+\emph{Dynamics of convex mean curvature flow},
+J. Reine Angew. Math. \textbf{825} (2025), 185--235,
+\href{https://doi.org/10.1515/crelle-2025-0029}
+{doi:10.1515/crelle-2025-0029};
+preprint, \href{https://arxiv.org/abs/2305.17272}{arXiv:2305.17272}.
+
+\bibitem{Ball}
+K. Ball,
+\emph{The reverse isoperimetric problem for Gaussian measure},
+Discrete Comput. Geom. \textbf{10} (1993), 411--420,
+\href{https://doi.org/10.1007/BF02573986}
+{doi:10.1007/BF02573986}.
+
+\bibitem{Nazarov}
+F.~L. Nazarov,
+\emph{On the maximal perimeter of a convex set in \(\R^n\) with respect to
+a Gaussian measure},
+in \emph{Geometric Aspects of Functional Analysis},
+Lecture Notes in Math. 1807, Springer, Berlin, 2003, 169--187,
+\href{https://doi.org/10.1007/978-3-540-36428-3_15}
+{doi:10.1007/978-3-540-36428-3\_15}.
+
+\end{thebibliography}
+
+\end{document}

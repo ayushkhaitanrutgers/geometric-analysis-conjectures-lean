@@ -1,0 +1,319 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,
+            citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\nul}{\operatorname{nul}}
+
+\title{An exact reduction of the index-four conjecture\\
+for the critical spherical catenoid in hyperbolic three-space}
+\author{}
+\date{18 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~32 (L32), ``Every critical hyperbolic
+catenoid has index four.''  Its status is \emph{partial}: it proves one global
+pinching inequality and gives an exact reduction, but it does not prove the
+conjecture.  The monotonicity inequality $r'(a)\ge0$ and the required
+mode-two spectral inequality both remain open.
+
+For the critical rotational free-boundary minimal annulus
+$\Sigma_a\subset B^3(r(a))\subset\mathbb H^3$, $a>1/2$, Medvedev
+conjectured that $\ind(\Sigma_a)=4$.  We record a short Sturm argument
+showing that the geometric pinching inequality
+$B(s_0(a))^2>2K(a)^2$, left as a global residual condition in recent
+work, is automatic for every parameter.  We then give an exact formula
+for the mode-zero index and reduce the original index-only conjecture
+to two sharp scalar statements: $r'(a)\geq0$ and nonnegativity of the
+first even radial eigenvalue in angular mode two.  The corresponding
+strict inequalities are equivalent to the strong conclusion
+$\ind=4$, $\nul=2$.  This note does not claim a global resolution:
+both residual inequalities remain open, and the mode-two spectral
+margin tends to zero in the large-parameter limit.
+\end{abstract}
+
+\section{Context and scope}
+
+Medvedev proved the lower bound $\ind(\Sigma_a)\geq4$ and posed equality
+as a conjecture~\cite{Medvedev}.  Pigazzini subsequently separated the
+Robin Jacobi problem into Fourier modes, proved the strong conclusion
+near the closing-neck limit, and reduced the remaining analysis to
+one-dimensional shooting problems~\cite{PigazziniLocal,PigazziniMode}.
+The purpose here is to isolate a consequence of those formulas which
+removes one of the geometric hypotheses and to state exactly what is
+still needed for the original, index-only conjecture.  In particular,
+none of the numerical evidence mentioned below is used as a proof.
+
+\section{An exact index reduction}
+
+Fix $a>\frac12$ and put
+\[
+ B(s)^2=a\cosh(2s)-\frac12,
+ \qquad K^2=a^2-\frac14,
+ \qquad B_0=B(s_0(a)).
+\]
+The critical catenoid is parametrized on
+$[-s_0,s_0]\times\mathbb S^1$, its metric is
+$ds^2+B(s)^2d\theta^2$, and
+$|\mathrm{II}|^2=2K^2/B^4$.  After separation into angular modes,
+the radial operator in mode $k$ is
+\begin{equation}\label{eq:radial-operator-reduction}
+ \mathcal A_k u
+ =-\frac1B(Bu')'
+  +\left(2+\frac{k^2}{B^2}-\frac{2K^2}{B^4}\right)u,
+\end{equation}
+with $u'(s_0)=\coth(r)u(s_0)$.  On $[0,s_0]$, the even and odd
+sectors have, respectively, $u'(0)=0$ and $u(0)=0$.
+
+We use the elementary shooting count in the following form.  If $w$ is
+the zero-energy solution satisfying the left boundary condition and
+$w(s_0)\ne0$, then
+\begin{equation}\label{eq:shooting-count-reduction}
+ N_-=n_z(w)+
+ \mathbf 1_{\{w'(s_0)/w(s_0)-\coth r<0\}},
+\end{equation}
+where $n_z(w)$ counts zeros in $(0,s_0)$.  The cases in which
+$w(s_0)=0$ follow either directly from the Pruefer angle or by a
+one-sided limiting argument.
+
+\begin{lemma}[The geometric inequality is automatic]
+For every $a>\frac12$,
+\begin{equation}\label{eq:G-global-reduction}
+ \cosh(2s_0)>2a,
+ \qquad\text{equivalently}\qquad B_0^2>2K^2.
+\end{equation}
+The odd radial sector of mode zero has exactly one negative eigenvalue
+and no zero eigenvalue.
+\end{lemma}
+
+\begin{proof}
+The axial-boost Jacobi field gives the zero-energy odd solution
+\[
+ v(s)=\frac{a\sinh(2s)}{B(s)}>0\qquad(0<s\le s_0).
+\]
+It has no interior zero, and direct differentiation, together with
+$\coth r=a\sinh(2s_0)/B_0^2$, gives
+\begin{equation}\label{eq:odd-defect-reduction}
+ \frac{v'(s_0)}{v(s_0)}-\coth r
+ =\frac{2a-\cosh(2s_0)}{B_0^2\sinh(2s_0)}.
+\end{equation}
+On the other hand, the ambient coordinate
+$\Phi^1=A(s)\sinh\varphi(s)$ is odd and satisfies
+\[
+ \mathcal S(\Phi^1,\Phi^1)
+ =-\int_{\Sigma_a}|\mathrm{II}|^2(\Phi^1)^2\,dA<0.
+\]
+Thus the odd mode-zero problem has at least one negative eigenvalue.
+Applying \eqref{eq:shooting-count-reduction} to $v$, whose zero count
+is zero, forces the left side of \eqref{eq:odd-defect-reduction} to be
+strictly negative.  This proves \eqref{eq:G-global-reduction}; the same
+shooting formula then gives exactly one negative eigenvalue.  Strictness
+also shows that $v$ does not satisfy the Robin condition, so the odd
+kernel is trivial.
+\end{proof}
+
+Let
+\[
+ \phi_a=\langle\partial_a\Phi_a,\nu_a\rangle_L
+\]
+be the even parametric Jacobi field.  It satisfies
+\begin{equation}\label{eq:parametric-data-reduction}
+ \mathcal A_0\phi_a=0,
+ \quad \phi_a(0)=\frac1{2K}>0,
+ \quad \phi_a'(0)=0,
+ \quad
+ \phi_a'(s_0)-\coth r\,\phi_a(s_0)
+ =-r'(a)\frac K{B_0^2}.
+\end{equation}
+The weighted Wronskian of $\phi_a$ and the axial-boost field is a
+nonzero constant.  Sturm separation therefore shows that $\phi_a$ has
+at most one zero in $(0,s_0]$.
+
+\begin{lemma}[Exact mode-zero count]\label{lem:mode-zero-count-reduction}
+The number of negative eigenvalues in the even radial sector of mode
+zero is
+\[
+ N_-^{0,\mathrm{even}}
+ =1+\mathbf 1_{\{r'(a)<0\}}.
+\]
+Its nullity is one if $r'(a)=0$ and zero otherwise.  Consequently the
+full mode-zero contribution to the Morse index is
+\begin{equation}\label{eq:mode-zero-index-reduction}
+ \operatorname{ind}_0(\Sigma_a)
+ =2+\mathbf 1_{\{r'(a)<0\}}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The positive timelike coordinate
+$\Phi^0=A(s)\cosh\varphi(s)$ is even and
+$\mathcal S(\Phi^0,\Phi^0)<0$.  Hence the even problem has at least one
+negative eigenvalue.
+
+Suppose first that $r'(a)>0$.  If $\phi_a(s_0)>0$, then $\phi_a$ has no
+zero and its boundary defect divided by its boundary value is negative;
+\eqref{eq:shooting-count-reduction} gives one negative eigenvalue.  If
+$\phi_a(s_0)<0$, then $\phi_a$ has exactly one zero and the corresponding
+boundary quotient is positive, giving again one negative eigenvalue.
+If $\phi_a(s_0)=0$, then
+$\phi_a'(s_0)=-r'(a)K/B_0^2<0$.  Thus the zero-energy Pruefer angle
+at $s_0$ is exactly $\pi$ (the solution is positive in the open
+interval and crosses zero with negative derivative).  The Robin angle
+lies strictly between $0$ and $\pi$, so precisely one Robin eigenangle
+has been crossed before energy zero.  Again $N_-=1$.
+
+If $r'(a)=0$, then $\phi_a$ is a nonzero Robin eigenfunction at
+eigenvalue zero.  Since the ground eigenvalue is negative and $\phi_a$
+has at most one zero, zero is the second eigenvalue.  Thus there is one
+negative eigenvalue and a one-dimensional kernel.
+
+Finally suppose that $r'(a)<0$.  The alternative
+$\phi_a(s_0)>0$ would give zero interior zeros and a positive boundary
+quotient, hence no negative eigenvalue, contrary to the $\Phi^0$ test.
+The endpoint case is also impossible: it would give
+$\phi_a'(s_0)=-r'(a)K/B_0^2>0$; starting positive, the solution would
+then have to be negative immediately to the left of $s_0$, producing
+one interior zero in addition to the endpoint zero, contrary to the
+at-most-one-zero property.  Thus $\phi_a(s_0)<0$: it has one interior
+zero, while \eqref{eq:parametric-data-reduction} gives a negative
+boundary quotient.  Formula \eqref{eq:shooting-count-reduction} gives
+two negative eigenvalues.  Combining this even count with the preceding
+odd count proves \eqref{eq:mode-zero-index-reduction} and the nullity
+claim.
+\end{proof}
+
+Let $\mu_0^{\mathrm{even}}(2)$ denote the first even radial eigenvalue
+of \eqref{eq:radial-operator-reduction} in mode $2$.  The mode-$1$
+sector has index two and nullity two.  For every $k\ge2$, the odd radial
+sector is strictly positive, all even eigenvalues except possibly the
+first are positive, and
+\begin{equation}\label{eq:mode-monotonicity-reduction}
+ \mu_0^{\mathrm{even}}(k)
+ \ge \mu_0^{\mathrm{even}}(2)+\frac{k^2-4}{B_0^2}.
+\end{equation}
+We have therefore proved the following exact reduction.
+
+\begin{theorem}[Exact reduction of the index-four conjecture]
+For a fixed $a>\frac12$,
+\begin{equation}\label{eq:exact-index-formula-reduction}
+ \operatorname{ind}(\Sigma_a)
+ =4+\mathbf 1_{\{r'(a)<0\}}
+  +2\sum_{k\ge2}
+       \mathbf 1_{\{\mu_0^{\mathrm{even}}(k)<0\}}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:weak-equivalence-reduction}
+ \operatorname{ind}(\Sigma_a)=4
+ \quad\Longleftrightarrow\quad
+ r'(a)\ge0\quad\text{and}\quad
+ \mu_0^{\mathrm{even}}(2)\ge0.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:strong-equivalence-reduction}
+ \operatorname{ind}(\Sigma_a)=4,
+ \quad\operatorname{nul}(\Sigma_a)=2
+ \quad\Longleftrightarrow\quad
+ r'(a)>0\quad\text{and}\quad
+ \mu_0^{\mathrm{even}}(2)>0.
+\end{equation}
+\end{theorem}
+
+The remaining mode-$2$ inequality is equivalently the nonnegativity of
+the quadratic form
+\begin{equation}\label{eq:k2-picone-reduction}
+ \mathcal S_2(Bh,Bh)
+ =\int_{-s_0}^{s_0}
+ \left[B^3(h')^2+\frac{3B^2-2K^2}{B}h^2\right]ds.
+\end{equation}
+For $a>1$ the coefficient $3B^2-2K^2$ is negative near the neck, so
+\eqref{eq:k2-picone-reduction} is the genuine residual spectral
+obstruction; it is not settled merely by \eqref{eq:G-global-reduction}.
+
+\section{What remains open}
+
+Lemma~\ref{lem:mode-zero-count-reduction} shows that the radius
+monotonicity question is not merely auxiliary: a parameter with
+$r'(a)<0$ would force an additional negative mode and disprove the
+index-four conjecture.  Conversely, $r'(a)=0$ does not change the
+index, but it creates an additional even mode-zero Jacobi field and
+therefore violates the strong nullity statement.  Global monotonicity
+of $a\mapsto r(a)$ is still posed as an open problem in current
+work~\cite{PigazziniDegenerate}.
+
+The second obstruction is the sign of
+$\mu_0^{\mathrm{even}}(2)$.  In the conformal coordinate $x$ defined
+by $dx=ds/B$, put $p=(\log B)_x=B_s$.  If $z$ is the even zero-energy
+shot in mode two, normalized by $z(0)=1$ and $z_x(0)=0$, then
+\[
+ z_{xx}=2(1+p^2)z,
+ \qquad
+ \mu_0^{\mathrm{even}}(2)\geq0
+ \quad\Longleftrightarrow\quad
+ z_x(T)-p(T)z(T)\geq0,
+\]
+where $T$ is the boundary value of $x$.  Moreover,
+\[
+ \frac{d}{dx}\bigl(z_xB-zB_x\bigr)
+ =zB\left(3-\frac{2K^2}{B^2}\right).
+\]
+The factor in parentheses changes sign exactly once.  Thus the
+remaining assertion is a sharp cancellation inequality, not a
+pointwise consequence of the global pinching lemma.
+
+Floating-point shooting over a wide logarithmic parameter grid finds
+no counterexample and finds both residual quantities positive.  It
+also indicates that the mode-two boundary defect decays cubically in
+$a$.  Because that margin tends to zero, a finite grid without explicit
+uniform remainder bounds cannot certify the conjecture.
+
+\begin{remark}[Status]
+As of 18 August 2026, the global conjecture is still stated as open in
+the primary literature.  The result proved above is a rigorous exact
+reduction and a global closure of the pinching condition, not a proof
+of the two remaining inequalities.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{Medvedev}
+V.~Medvedev,
+\emph{On free boundary minimal submanifolds in geodesic balls in
+hyperbolic and spherical spaces},
+arXiv:2311.02409v3 (2025),
+\url{https://arxiv.org/abs/2311.02409}.
+
+\bibitem{PigazziniLocal}
+A.~Pigazzini,
+\emph{Analytic local resolution of Medvedev's Morse index conjecture
+for the critical spherical catenoid in $\mathbb H^3$},
+arXiv:2605.13562v7 (2026),
+\url{https://arxiv.org/abs/2605.13562}.
+
+\bibitem{PigazziniMode}
+A.~Pigazzini,
+\emph{Robin nullity in mode $|k|=1$ and asymptotic radius of the
+critical spherical catenoid},
+arXiv:2605.11244v3 (2026),
+\url{https://arxiv.org/abs/2605.11244}.
+
+\bibitem{PigazziniDegenerate}
+A.~Pigazzini,
+\emph{A degenerate free boundary minimal annulus and non-uniqueness
+in spherical caps beyond the hemisphere},
+arXiv:2607.23534v3 (2026),
+\url{https://arxiv.org/abs/2607.23534}.
+
+\end{thebibliography}
+
+\end{document}

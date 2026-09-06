@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{A Nonconvex Hyperbolic Obstacle with Positive Exterior Robin Threshold}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~41 (L41), ``Positive exterior-Robin
+threshold in the hyperbolic plane.''  It gives a full construction and proof
+in the Lipschitz category stated in the source.  The strict spectral
+inequality also survives rounding the four corners, so the example can be
+made smooth.
+
+We construct a bounded, nonconvex, simply connected Lipschitz obstacle in
+the hyperbolic plane whose exterior Robin Laplacian has a discrete eigenvalue
+below the essential-spectrum threshold $1/4$ for a positive Robin parameter.
+The obstacle is an annular sector obtained by cutting a thin radial channel
+through a geodesic annulus.  A compactly supported trial function, constant
+in the inner chamber and decaying inside the channel, gives an explicit
+strict Rayleigh bound.  In particular, the critical exterior Robin
+parameter of the constructed obstacle is positive.
+\end{abstract}
+
+\section{Introduction}
+
+Let $\Omega\subset\mathbb H^2$ be a bounded Lipschitz obstacle with
+connected exterior
+\[
+ D=\mathbb H^2\setminus\overline\Omega.
+\]
+For $\alpha\in\mathbb R$, consider the closed quadratic form
+\begin{equation}\label{eq:form}
+ Q_\alpha^D[u]
+ =\int_D|\nabla u|^2\,d\mu
+ +\alpha\int_{\partial D}|u|^2\,d\sigma,
+ \qquad u\in W^{1,2}(D).
+\end{equation}
+It defines the exterior Robin Laplacian in the sign convention of
+Celentano, Krej\v{c}i\v{r}\'{i}k, and Lotoreichik \cite{CKL}.  Its lowest
+spectral point is
+\begin{equation}\label{eq:rayleigh}
+ \lambda_1^\alpha(D)
+ =\inf_{0\ne u\in W^{1,2}(D)}
+ \frac{Q_\alpha^D[u]}{\|u\|_{L^2(D)}^2}.
+\end{equation}
+For bounded Lipschitz obstacles with connected exterior,
+\begin{equation}\label{eq:ess}
+ \sigma_{\mathrm{ess}}(-\Delta_\alpha^D)=[1/4,\infty)
+\end{equation}
+for every $\alpha\in\mathbb R$ \cite[Proposition~3.4]{CKL}.  Thus a trial
+function with Rayleigh quotient below $1/4$ produces a discrete eigenvalue.
+
+Define the critical threshold
+\[
+ \alpha_*(D)=\sup\{\alpha\in\mathbb R:\lambda_1^\alpha(D)<1/4\}.
+\]
+Our main result gives an explicit family for which this threshold is positive.
+
+\begin{theorem}\label{thm:main}
+Fix $0<r<R$ and set
+\[
+ A_r=2\pi(\cosh r-1),
+ \qquad
+ P_r=2\pi\sinh r,
+ \qquad
+ \alpha_r=\frac18\tanh\frac r2>0.
+\]
+For all sufficiently small $\eta>0$, the domain
+\begin{equation}\label{eq:obstacle}
+ \Omega_\eta
+ =\{(\rho,\theta):r<\rho<R,\ \eta<\theta<2\pi-\eta\}
+ \subset\mathbb H^2
+\end{equation}
+is a bounded, nonconvex, simply connected Lipschitz obstacle with connected
+exterior $D_\eta$, and
+\[
+ \lambda_1^{\alpha_r}(D_\eta)<\frac14.
+\]
+Consequently, $-\Delta_{\alpha_r}^{D_\eta}$ has a discrete eigenvalue below
+$1/4$ and $\alpha_*(D_\eta)>0$.
+\end{theorem}
+
+\section{Geometry of the obstacle}
+
+Use geodesic polar coordinates about a point $o\in\mathbb H^2$:
+\[
+ g=d\rho^2+\sinh^2\rho\,d\theta^2,
+ \qquad
+ d\mu=\sinh\rho\,d\rho\,d\theta.
+\]
+The coordinate rectangle in \eqref{eq:obstacle} has four transverse
+piecewise smooth corners.  Hence $\Omega_\eta$ is bounded, Lipschitz, and
+diffeomorphic to a rectangle, so it is simply connected.  Its exterior is
+the union of the inner disk, the removed radial wedge, and the region outside
+the radius-$R$ disk.  The wedge joins these pieces, and therefore $D_\eta$
+is connected.
+
+If $0<\eta<\pi/2$, choose two points of the same radius
+$s\in(r,R)$ and polar angles $\pi/2$ and $3\pi/2$.  Their unique minimizing
+geodesic is the diameter through $o$, which crosses the disk $B_r(o)$.
+Since this disk is disjoint from $\Omega_\eta$, the obstacle is not
+geodesically convex.
+
+\section{The trial function}
+
+Let $\delta=\sqrt\eta<R-r$ and put $\chi(t)=(1-t)_+$.  Write $W_\eta$ for
+the angular wedge of total aperture $2\eta$ centered on the ray $\theta=0$.
+On $D_\eta$ define
+\begin{equation}\label{eq:trial}
+ u_\eta(\rho,\theta)=
+ \begin{cases}
+  1,&0\le\rho<r,\\[1mm]
+  \chi\!\left(\dfrac{\rho-r}{\delta}\right),
+  &r\le\rho<r+\delta,\quad\theta\in W_\eta,\\[3mm]
+  0,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+The values match across the mouth $\rho=r$ and across
+$\rho=r+\delta$.  The two angular sides of the decay region lie on
+$\partial D_\eta$, so there is no interior jump there.  Standard Sobolev
+gluing gives $u_\eta\in W^{1,2}(D_\eta)$.
+
+\begin{lemma}\label{lem:estimates}
+The trial function \eqref{eq:trial} satisfies
+\begin{align}
+ \int_{D_\eta}|\nabla u_\eta|^2\,d\mu
+ &\le2\delta\sinh(r+\delta),\label{eq:energy}\\
+ \int_{\partial D_\eta}|u_\eta|^2\,d\sigma
+ &\le P_r+2\delta,\label{eq:trace}\\
+ \|u_\eta\|_{L^2(D_\eta)}^2&\ge A_r.\label{eq:norm}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Only the radial decay region contributes to the gradient.  Since it has
+angular aperture $2\eta$ and $\eta=\delta^2$,
+\begin{align*}
+ \int_{D_\eta}|\nabla u_\eta|^2\,d\mu
+ &=\frac{2\eta}{\delta^2}
+   \int_r^{r+\delta}\sinh\rho\,d\rho\\
+ &=2\bigl(\cosh(r+\delta)-\cosh r\bigr)
+ \le2\delta\sinh(r+\delta).
+\end{align*}
+
+The trace equals one on the inner circular arc, vanishes on the outer arc,
+and equals $\chi((\rho-r)/\delta)$ on each of the two radial walls.  Hence
+\begin{align*}
+ \int_{\partial D_\eta}|u_\eta|^2\,d\sigma
+ &=(2\pi-2\eta)\sinh r
+ +2\int_r^{r+\delta}
+ \left(1-\frac{\rho-r}{\delta}\right)^2d\rho\\
+ &=(2\pi-2\eta)\sinh r+\frac{2\delta}{3}
+ \le P_r+2\delta.
+\end{align*}
+Finally, $u_\eta=1$ throughout the inner disk $B_r(o)$, whose area is
+$A_r$, proving \eqref{eq:norm}.
+\end{proof}
+
+\section{Proof of the spectral inequality}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By \eqref{eq:rayleigh} and Lemma~\ref{lem:estimates},
+\begin{equation}\label{eq:quotient}
+ \lambda_1^{\alpha_r}(D_\eta)
+ \le
+ \frac{\alpha_rP_r
+2\delta\bigl(\sinh(r+\delta)+\alpha_r\bigr)}{A_r}.
+\end{equation}
+The hyperbolic disk identities give
+\[
+ \frac{P_r}{A_r}
+ =\frac{\sinh r}{\cosh r-1}
+ =\coth\frac r2,
+ \qquad
+ \frac{\alpha_rP_r}{A_r}=\frac18.
+\]
+The error term in \eqref{eq:quotient} tends to zero with
+$\delta=\sqrt\eta$.  Thus the right-hand side is less than $1/4$ for all
+sufficiently small $\eta$.
+
+For an explicit range, put
+\[
+ C_r=\sinh\left(r+\frac14\right)+\alpha_r
+\]
+and choose
+\[
+ 0<\eta<
+ \min\left\{
+ \frac\pi2,\frac1{16},(R-r)^2,
+ \left(\frac{A_r}{16C_r}\right)^2
+ \right\}.
+\]
+Then $\delta<1/4$, $\delta<R-r$, and
+\[
+ \frac{2\delta(\sinh(r+\delta)+\alpha_r)}{A_r}
+ \le\frac{2\delta C_r}{A_r}<\frac18.
+\]
+Equation \eqref{eq:quotient} therefore yields
+$\lambda_1^{\alpha_r}(D_\eta)<1/4$.  By \eqref{eq:ess}, the spectrum below
+$1/4$ is discrete.  Since $\alpha_r>0$ belongs to the defining set for
+$\alpha_*(D_\eta)$, one has
+$\alpha_*(D_\eta)\ge\alpha_r>0$.
+\end{proof}
+
+\begin{remark}
+The theorem is stated in the Lipschitz category used in \cite{CKL}.  Because
+the Rayleigh inequality is strict, the four corners can also be rounded in
+small disjoint neighborhoods while preserving the conclusion.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{CKL}
+A.~Celentano, D.~Krej\v{c}i\v{r}\'{i}k, and V.~Lotoreichik,
+\emph{Optimisation of the lowest Robin eigenvalue in exterior domains of the
+hyperbolic plane},
+\href{https://arxiv.org/abs/2601.10280}{arXiv:2601.10280}.
+
+\bibitem{Chavel}
+I.~Chavel,
+\emph{Eigenvalues in Riemannian Geometry},
+Academic Press, Orlando, 1984.
+
+\end{thebibliography}
+\end{document}

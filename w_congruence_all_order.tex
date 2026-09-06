@@ -1,0 +1,448 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,
+            citecolor=blue!55!black,urlcolor=blue!65!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Hess}{\operatorname{Hess}}
+\newcommand{\cO}{\mathcal O}
+
+\title{All-order compatibility of the resonant Taylor equation at an
+umbilic of a \(W\)-congruence}
+\author{[Author Name]}
+\date{August 18, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~8 (L8), ``All-order identity for umbilics
+of $W$-congruences.''  It gives a full proof of the nontrivial finite-jet
+interpretation: the resonant equation follows from the lower-order jet
+equations.  For an already existing analytic $W$-congruence the literal
+identity is automatic from $W\equiv0$; the result proved here is precisely the
+claimed redundancy in the Taylor recursion.
+
+Craizer and Garcia isolated one apparently exceptional equation in the
+Taylor recursion at a nondegenerate umbilic of a \(W\)-congruence.  If the
+integer determined by the quadratic jet is \(m\), their conjecture says that
+the resonant equation \(W_{m0}=0\) imposes no condition beyond the equations
+of lower total order.  We prove this in every order.  In hodograph variables
+the Weingarten equation is equivalent, up to a nonvanishing factor, to a
+function \(E\), and there is an exact identity
+\[
+                         (X-2)\Delta=A E.
+\]
+The linear part of \(X\) has eigenvalues \(2/(m+1)\) and \(1\).  A finite
+Poincar\'e--Dulac reduction has at most one nonlinear resonance.  When that
+resonance occurs, the identity above and one lower-degree equation force its
+coefficient to vanish.  The remaining scalar resonance then forces the
+coefficient of \(A^m\) in \(E\), and hence \(W_{m0}\), to vanish.  The
+argument is finite and algebraic; no convergence of a formal normalizing
+map is required.
+\end{abstract}
+
+\section{Statement of the jet problem}
+
+Write \(P=\xi^1\) and \(Q=\xi^2\).  In the affine chart of
+Craizer--Garcia, the equation for a \(W\)-congruence is
+\begin{align}
+ W(P,Q)={}&(Q_y-P_x)(Q_{xx}P_{yy}-P_{xx}Q_{yy}) \notag\\
+ &-2P_y(P_{xx}Q_{xy}-Q_{xx}P_{xy})
+ +2Q_x(P_{xy}Q_{yy}-P_{yy}Q_{xy}).                 \label{eq:W}
+\end{align}
+For a germ at the origin, set
+\[
+ p_{ij}=\partial_x^i\partial_y^jP(0),\qquad
+ q_{ij}=\partial_x^i\partial_y^jQ(0),\qquad
+ W_{ij}=\partial_x^i\partial_y^jW(P,Q)(0).
+\]
+Throughout, \(\cO(k)\) denotes terms of ordinary total order at least \(k\)
+at the origin.
+At an umbilic,
+\[
+ p_{01}=q_{10}=0,\qquad p_{10}=q_{01}.
+\]
+The common value in the second equality may be set equal to zero without
+changing \(W\).  At a nondegenerate umbilic, the linear normalizations in
+\cite{CG} give
+\begin{equation}
+ p_{20}=p_{02}=q_{11}=0,\qquad p_{11}=a\ne0,
+ \qquad q_{02}\ne0,\qquad p_{11}\ne q_{02}.        \label{eq:norm}
+\end{equation}
+The parameter used in the source is
+\begin{equation}
+                              m=-\frac{q_{02}}a.       \label{eq:m}
+\end{equation}
+
+The literal assertion that \(W_{m0}=0\) for an already existing analytic
+\(W\)-congruence follows at once from \(W\equiv0\).  The nontrivial content
+of the conjecture is the following finite-jet implication.
+
+\begin{theorem}[All-order resonant compatibility]                 \label{thm:main}
+Assume \eqref{eq:norm}, and suppose that the parameter in
+\eqref{eq:m} is an integer \(m\ge1\).  If
+\begin{equation}
+                  W_{ij}=0\qquad\text{whenever }i+j<m,             \label{eq:lower}
+\end{equation}
+then
+\begin{equation}
+                              W_{m0}=0.                             \label{eq:target}
+\end{equation}
+Thus the exceptional equation is a consequence of the lower total-order
+equations and imposes no additional vanishing condition on the jet.
+\end{theorem}
+
+The proof occupies Sections~\ref{sec:hodograph}--\ref{sec:proof}.  Only
+jets of finite order enter, so the theorem holds equally for formal germs
+and for \(C^{m+2}\) germs.
+
+For later reference, expanding a determinant gives another concise form of
+\eqref{eq:W}:
+\begin{equation}
+ W=\det\!\begin{pmatrix}
+ 2Q_x&Q_y-P_x&-2P_y\\
+ P_{xx}&P_{xy}&P_{yy}\\
+ Q_{xx}&Q_{xy}&Q_{yy}
+ \end{pmatrix}
+ =\det\bigl(\Hess(xQ-yP),\Hess P,\Hess Q\bigr).       \label{eq:hess}
+\end{equation}
+In the last determinant, a symmetric Hessian is represented by the row
+\((f_{xx},f_{xy},f_{yy})\).  Indeed,
+\[
+ \Hess(xQ-yP)=x\Hess Q-y\Hess P
+                 +(2Q_x,Q_y-P_x,-2P_y),
+\]
+and row operations prove the second equality in \eqref{eq:hess}.
+
+\section{Hodograph form of the equation}                         \label{sec:hodograph}
+
+Assume for the moment that \(m>1\).  The first lower jet equation gives
+\begin{equation}
+                       W_{10}=2q_{20}a^2(1-m),                     \label{eq:W10}
+\end{equation}
+so \eqref{eq:lower} implies \(q_{20}=0\).
+
+Introduce
+\begin{equation}
+ A=P_y,\qquad B=\frac{P_x-Q_y}{2}.                                 \label{eq:AB}
+\end{equation}
+At the origin,
+\begin{equation}
+ A=ax+\cO(2),\qquad
+ B=\frac{(m+1)a}{2}\,y+\cO(2).                                   \label{eq:ABlinear}
+\end{equation}
+Consequently \((A,B)\) are local coordinates.  Denote their Jacobian by
+\begin{equation}
+ J=\det\frac{\partial(A,B)}{\partial(x,y)},\qquad
+ J(0)=\frac{m+1}{2}a^2\ne0.                                      \label{eq:J}
+\end{equation}
+Regard the remaining two combinations of first derivatives as functions of
+\((A,B)\):
+\begin{equation}
+ -Q_x=F(A,B),\qquad \frac{P_x+Q_y}{2}=G(A,B).                      \label{eq:FG}
+\end{equation}
+Equivalently,
+\begin{equation}
+ P_x=B+G,\qquad P_y=A,\qquad Q_x=-F,\qquad Q_y=G-B.                \label{eq:first}
+\end{equation}
+
+\begin{lemma}[Exact hodograph identities]                         \label{lem:identities}
+Define
+\begin{align}
+ E={}&(1-G_B)F-(1+G_B)AF_A+(AG_A-B)F_B-2BG_A,          \label{eq:E}\\
+ X={}&A(1+G_B)\partial_A+(B-AG_A)\partial_B,           \label{eq:X}\\
+ \Delta={}&B^2-AF.                                    \label{eq:Delta}
+\end{align}
+Then
+\begin{equation}
+                         W=2J E                                      \label{eq:WE}
+\end{equation}
+and
+\begin{equation}
+                         (X-2)\Delta=A E.                             \label{eq:key}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The following calculation makes the signs and the factor \(2\) explicit.
+From \eqref{eq:first}, equality of mixed derivatives gives
+\[
+                         A_x-B_y=G_y,
+        \qquad          F_y-B_x=-G_x.                              \label{eq:compat}
+\]
+A direct rearrangement of the six terms in \eqref{eq:W} yields
+\begin{align}
+ \frac W2={}&(A_x-B_y)\Delta_x+(F_y-B_x)\Delta_y \notag\\
+ &+\det\!\begin{pmatrix}
+ A&B&F\\ A_x&B_x&F_x\\ A_y&B_y&F_y
+ \end{pmatrix}.                                                    \label{eq:Wdelta}
+\end{align}
+With the Poisson bracket
+\(\{U,V\}=U_AV_B-U_BV_A\), the first line on the right of
+\eqref{eq:Wdelta} is \(-J\{G,\Delta\}\).  The determinant in its second
+line equals
+\[
+                         J(F-AF_A-BF_B).
+\]
+Consequently
+\[
+ \frac{W}{2J}=F-AF_A-BF_B-\{G,B^2-AF\}
+\]
+and expanding the bracket gives
+\[
+ \frac{W}{2J}=(1-G_B)F-(1+G_B)AF_A
+                    +(AG_A-B)F_B-2BG_A,
+\]
+which is \eqref{eq:WE}.  This computation is valid near the origin because
+\(J\) is a unit.
+
+For the second identity, direct differentiation gives
+\begin{align*}
+ X(B^2-AF)-2(B^2-AF)
+  =A\bigl((1-G_B)F-(1+G_B)AF_A
+                    +(AG_A-B)F_B-2BG_A\bigr),
+\end{align*}
+which is \eqref{eq:key}.
+\end{proof}
+
+The normalized quadratic jet determines the leading terms of the objects in
+Lemma~\ref{lem:identities}.  Since \(q_{20}=q_{11}=0\), the function \(F\)
+has no constant or linear part.  From \eqref{eq:ABlinear} and
+\eqref{eq:FG},
+\begin{equation}
+ F=\cO(2),\qquad
+ G=\frac{1-m}{1+m}B+\cO(2).                           \label{eq:leadingFG}
+\end{equation}
+It follows that
+\begin{equation}
+ X=X_0+\cO(2),\qquad
+ X_0=\alpha A\partial_A+B\partial_B,\qquad
+ \alpha=\frac{2}{m+1},\qquad
+ \Delta=B^2+\cO(3).                                  \label{eq:leading}
+\end{equation}
+
+\section{A finite resonance lemma}                                  \label{sec:normal}
+
+We isolate the formal-algebraic step.  If \(H\) is a germ, \(H_d\) denotes
+its homogeneous part of ordinary total degree \(d\).
+
+\begin{lemma}[Vanishing of the resonant forcing]                    \label{lem:resonance}
+Let \(m\ge2\), put \(\alpha=2/(m+1)\), and let
+\[
+ X=\alpha A\partial_A+B\partial_B+\cO(2),\qquad
+ \Delta=B^2+\cO(3).
+\]
+If
+\begin{equation}
+                             R:=(X-2)\Delta=\cO(m+1),                \label{eq:Rorder}
+\end{equation}
+then the coefficient of \(A^{m+1}\) in \(R_{m+1}\) is zero.
+\end{lemma}
+
+\begin{proof}
+We use only changes of coordinates tangent to the identity and only through
+degree \(m\).  More explicitly, under old variables
+\(z=\Phi(\widetilde z)\) we replace \(X\) by \(\Phi^*X\), \(\Delta\) by
+\(\Delta\circ\Phi\), and \(R\) by \(R\circ\Phi\).  Thus the scalar identity
+\((X-2)\Delta=R\) is preserved.  Since \(\Phi=\mathrm{id}+\cO(2)\) and
+\(R=\cO(m+1)\), these changes preserve \(\Delta_2=B^2\), preserve the order
+condition \eqref{eq:Rorder}, and leave the degree-\((m+1)\) homogeneous
+part \(R_{m+1}\) unchanged.
+
+Write \(X=X_0+\sum_{d\ge2}X_d\), where
+\(X_0=\alpha A\partial_A+B\partial_B\) and the coefficients of \(X_d\)
+are homogeneous of degree \(d\).  At degree \(d\), a coordinate change
+generated by a homogeneous vector field \(H_d\) changes \(X_d\) by a signed
+homological term.  With the pullback convention above it is
+\(X_d\mapsto X_d-[X_0,H_d]\).  The sign is immaterial for elimination.  On
+the monomial vector fields the operator \([X_0,\cdot]\) is diagonal:
+\begin{align}
+ [X_0,A^iB^j\partial_A]
+    &=\bigl(\alpha(i-1)+j\bigr)A^iB^j\partial_A,       \label{eq:homA}\\
+ [X_0,A^iB^j\partial_B]
+    &=\bigl(\alpha i+j-1\bigr)A^iB^j\partial_B.       \label{eq:homB}
+\end{align}
+Here \(i+j=d\ge2\).  The eigenvalue in \eqref{eq:homA} never vanishes.
+The eigenvalue in \eqref{eq:homB} can vanish only if
+\[
+             j=0,\qquad i=r:=\frac{m+1}{2}.
+\]
+Thus there is no nonlinear vector-field resonance when \(m\) is even.  If
+\(m\) is odd, the only possible one is
+\(cA^r\partial_B\), at degree \(r\).
+
+Suppose \(m\) is odd.  Normalize the terms of \(X\) through degree \(r\),
+leaving only that possible resonant term.  Since \(r+1<m+1\), the
+degree-\((r+1)\) part of \eqref{eq:Rorder} is zero.  Using
+\(\Delta_2=B^2\), it is
+\begin{equation}
+ 0=(X_0-2)\Delta_{r+1}+cA^r\partial_B(B^2)
+   =(X_0-2)\Delta_{r+1}+2cA^rB.                       \label{eq:killc}
+\end{equation}
+But
+\[
+                         \alpha r+1=2,
+\]
+so the coefficient of \(A^rB\) in
+\((X_0-2)\Delta_{r+1}\) is zero.  Taking that coefficient in
+\eqref{eq:killc} gives \(2c=0\).  Hence the sole possible nonlinear
+resonance is absent.
+
+We may therefore continue the finite normalization and arrange
+\begin{equation}
+                              X=X_0+\cO(m+1).                         \label{eq:Xnf}
+\end{equation}
+No convergence question arises: only finitely many homogeneous coordinate
+changes have been used.  Since \(\Delta\) has order two, the remainder in
+\eqref{eq:Xnf} contributes first in degree \(m+2\).  Consequently
+\begin{equation}
+                         R_{m+1}=(X_0-2)\Delta_{m+1}.                 \label{eq:Rtop}
+\end{equation}
+Finally, \(X_0-2\) acts on \(A^{m+1}\) by multiplication by
+\[
+                         \alpha(m+1)-2=0.
+\]
+The coefficient of \(A^{m+1}\) on the right-hand side of
+\eqref{eq:Rtop}, and therefore in \(R_{m+1}\), is zero.
+\end{proof}
+
+\begin{remark}
+The odd-\(m\) step \eqref{eq:killc} is essential.  A bare
+Poincar\'e--Dulac argument would leave the term \(A^{(m+1)/2}\partial_B\).
+Identity \eqref{eq:key} shows that its coefficient is already killed by an
+equation of degree \((m+3)/2<m+1\).  This is the lower mixed compatibility
+that is hidden in a direct Taylor elimination.
+\end{remark}
+
+\section{Proof of the conjecture}                                  \label{sec:proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+First let \(m>1\).  Equation \eqref{eq:W10} and the lower-order hypothesis
+give \(q_{20}=0\), so all conclusions of Section~\ref{sec:hodograph} apply.
+
+Hypothesis \eqref{eq:lower} is precisely
+\begin{equation}
+                              W=\cO(m)                               \label{eq:Word}
+\end{equation}
+in the original variables.  The coordinate map \((x,y)\mapsto(A,B)\) is a
+local diffeomorphism and \(J(0)\ne0\).  Hence \eqref{eq:WE} implies
+\begin{equation}
+                              E=\cO(m).                               \label{eq:Eord}
+\end{equation}
+By \eqref{eq:key},
+\[
+                           R:=(X-2)\Delta=AE=\cO(m+1).
+\]
+Lemma~\ref{lem:resonance}, together with \eqref{eq:leading}, now gives
+\begin{equation}
+                              [A^{m+1}](AE)_{m+1}=0,                  \label{eq:AEm}
+\end{equation}
+where \([A^{m+1}]\) denotes coefficient extraction.  Since multiplication
+by \(A\) raises total degree by one and \(E=\cO(m)\), we have
+\((AE)_{m+1}=AE_m\) and
+\([A^{m+1}](AE)_{m+1}=[A^m]E_m\).  Thus \eqref{eq:AEm} says
+\begin{equation}
+                              [A^m]E_m=0.                             \label{eq:Em}
+\end{equation}
+
+It remains only to translate this coefficient back to the original jet.
+First express \(W\) in the hodograph variables \((A,B)\), and denote its
+degree-\(m\) part there by \(\widetilde W_m\).  Because \(E=\cO(m)\),
+equation \eqref{eq:WE} gives
+\(\widetilde W_m=2J(0)E_m\).  Pull this homogeneous polynomial back by the diagonal
+linear map from \eqref{eq:ABlinear},
+\[
+                   A=ax,\qquad B=\frac{m+1}{2}ay.
+\]
+A monomial containing \(B\) cannot contribute to the coefficient of
+\(x^m\).  With ordinary monomial coefficients, the exact relation is
+\begin{equation}
+ W_{m0}=2J(0)m!a^m[A^m]E_m.                            \label{eq:return}
+\end{equation}
+Equation \eqref{eq:Em} therefore gives \(W_{m0}=0\).
+
+For \(m=1\), no hodograph normalization is needed.  Direct differentiation
+of \eqref{eq:W} at the normalized umbilic gives the identity
+\[
+                              W_{10}=2q_{20}a^2(1-m),
+\]
+which vanishes when \(m=1\).  This completes the proof.
+\end{proof}
+
+\begin{corollary}[Jet-ideal form]                                  \label{cor:ideal}
+Fix \(m\ge1\), and set
+\begin{align*}
+ \mathcal R_m={}&
+ \R[p_{ij},q_{ij}:i+j\le m+2,p_{11}^{-1}]\big/
+ \bigl(p_{01},q_{10},p_{10}-q_{01},p_{20},p_{02},q_{11},
+       q_{02}+mp_{11}\bigr).
+\end{align*}
+This is the universal normalized jet ring, localized at
+\(a=p_{11}\).  If
+\[
+             I_{<m}=\langle W_{ij}:i+j<m\rangle\subset\mathcal R_m,
+\]
+then
+\[
+                              W_{m0}\in I_{<m}.
+\]
+\end{corollary}
+
+\begin{proof}
+For \(m=1\), the identity \(W_{10}=2q_{20}a^2(1-m)\) proves the claim
+directly.  Let \(m>1\), and carry out the preceding finite normal-form
+calculation in the quotient by
+\(I_{<m}\).  The hodograph coefficients require division only by powers of
+the unit \(a\) (equivalently, by \(J(0)=(m+1)a^2/2\)).  Every homological
+elimination divides only by one of the nonzero numerical eigenvalues in
+\eqref{eq:homA}--\eqref{eq:homB}.  In the odd case, equation
+\eqref{eq:killc} sets the sole resonant coefficient equal to zero in that
+quotient.  Hence the coefficient in \eqref{eq:return} is zero in the
+quotient, which is exactly the asserted ideal membership.
+\end{proof}
+
+\section{Consequences and status}
+
+For an analytic \(W\)-congruence the literal equation \(W_{m0}=0\) is, of
+course, immediate from the definition \(W\equiv0\).  Theorem~\ref{thm:main}
+proves the stronger assertion intended in the jet-space discussion of
+\cite{CG}: before one assumes the order-\(m\) equation, it is already forced
+by the equations of smaller total order.  Corollary~\ref{cor:ideal} gives
+the corresponding algebraic redundancy.  Thus the exceptional Taylor
+equation introduces no additional jet relation for any integer \(m\ge1\).
+
+The proof also explains the low-order computer algebra observed in the
+source.  The resonance is not removed by the coefficient that would normally
+serve as a pivot.  Instead, the exact identity \eqref{eq:key} converts a
+lower mixed equation into the compatibility condition that removes the only
+possible nonlinear normal-form obstruction.
+
+Accordingly, the conjecture represented by equation~(3.4) in the current
+version of \cite{CG} is true, both in its literal form and in the stronger
+finite-jet redundancy sense made precise in Theorem~\ref{thm:main}.
+
+\begin{thebibliography}{9}
+\bibitem{CG}
+M.~Craizer and R.~A.~Garcia,
+\emph{Stable umbilical points of a \(W\)-congruence},
+arXiv:2504.07289v3 (26 December 2025),
+\href{https://arxiv.org/abs/2504.07289}{arXiv:2504.07289}.
+\end{thebibliography}
+
+\end{document}

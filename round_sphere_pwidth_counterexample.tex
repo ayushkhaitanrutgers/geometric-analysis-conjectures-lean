@@ -1,0 +1,370 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!60!black,
+  pdftitle={A width-plateau counterexample to an index-p conjecture for mean-curvature flow}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=*,itemsep=0.25em,topsep=0.35em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Sph}{\mathbb S}
+\newcommand{\RP}{\mathbb {RP}}
+\newcommand{\Ztwo}{\mathbb Z_2}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\nul}{\operatorname{nul}}
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\Area}{\operatorname{Area}}
+\newcommand{\Mass}{\mathbf M}
+
+\title{A Width-Plateau Counterexample to an\\
+Index-$p$ Conjecture for Mean-Curvature Flow}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript addresses Question~55 (M5), ``An eternal flow leaves every
+higher $p$-width hypersurface.''  It gives a full counterexample to the
+literal positive-Ricci alternative in the published conjecture and in the
+list.  It does not disprove a repaired version restricted to generic bumpy
+metrics, nor does it settle the connecting-flow problem once a suitable
+higher-index width realizer and lower-area endpoint are assumed to exist.
+This file is duplicated as \texttt{M5\_round\_sphere\_pwidth\_counterexample.tex};
+the duplicate is not a separate solution.
+
+Chen and Gaspar conjectured that if a closed Riemannian manifold has a
+bumpy metric or a metric of positive Ricci curvature, then, for every
+$p\geq 2$, its $p$-width is realized by a min--max minimal hypersurface of
+Morse index exactly $p$ which is connected by an eternal weak
+mean-curvature flow to a minimal hypersurface of smaller area and smaller
+index.  We observe that the positive-Ricci branch of the conjecture is
+false.  On the unit round three-sphere one has
+$\omega_2(\Sph^3)=4\pi$, and every Almgren--Pitts width realizer of
+mass $4\pi$ is a
+multiplicity-one equatorial two-sphere.  Its Morse index is $1$, not $2$.
+Moreover, the round three-sphere has no nonempty closed minimal surface of
+area below $4\pi$, so the required lower-area endpoint does not exist.
+Thus the round three-sphere gives two independent obstructions to the
+conjecture as published.
+\end{abstract}
+
+\section{Introduction}
+
+Let $\omega_p(M,g)$ denote the $p$-width of a closed Riemannian manifold,
+defined using mod-$2$ codimension-one cycles; see
+\cite{MarquesNevesPositiveRicci,Pitts}.  Motivated by Morse theory for the
+area functional, Chen and Gaspar formulated the following conjecture in
+\cite[Conjecture~1]{ChenGaspar}.
+
+\medskip
+\noindent
+\emph{Published conjecture.}
+If $(M,g)$ is closed and $g$ is bumpy or has positive Ricci curvature,
+then, for every integer $p\geq2$, there exists a min--max minimal
+hypersurface $\Sigma_-$ such that
+\[
+  \Area(\Sigma_-)=\omega_p(M,g),
+  \qquad \ind(\Sigma_-)=p,
+\]
+and $\Sigma_-$ can be connected by an eternal weak mean-curvature flow to
+a minimal hypersurface $\Sigma_+$ having strictly smaller area and
+strictly smaller Morse index.
+
+The disjunction in the hypothesis is important: a positive-Ricci metric
+need not be bumpy.  Symmetric metrics may have plateaux in their volume
+spectrum, and on such a plateau the parameter $p$ need not equal the
+Morse index of the realizing critical point.  The simplest example
+already disproves the conjecture.
+
+\begin{theorem}\label{thm:main}
+Conjecture~1 of Chen--Gaspar \cite{ChenGaspar}, in its published form, is
+false.  A counterexample is the unit round three-sphere with $p=2$.
+Indeed, $\Ric_{\Sph^3}=2g_{\mathrm{rd}}>0$ and
+$\omega_2(\Sph^3,g_{\mathrm{rd}})=4\pi$, but every minimal hypersurface
+realizing this width is an equatorial $\Sph^2$, with
+\[
+  \ind(\Sph^2)=1,
+  \qquad
+  \nul(\Sph^2)=3.
+\]
+There is also no nonempty closed minimal surface in $\Sph^3$ of area
+strictly less than $4\pi$.  Thus both the exact-index requirement and the
+lower-area endpoint requirement fail.
+\end{theorem}
+
+Chen and Gaspar themselves record in the proof of
+\cite[Proposition~1]{ChenGaspar} that the equatorial spheres realize the
+first four widths of the round $\Sph^3$.  We nevertheless give a direct
+argument for the only identity needed here, $\omega_2=4\pi$, so that the
+counterexample is self-contained modulo standard Almgren--Pitts
+existence and regularity.
+
+\section{The second width of the round three-sphere}
+
+Write
+\[
+  \mathcal Z_2=\mathcal Z_2(\Sph^3;\Ztwo)
+\]
+for the space of flat mod-$2$ two-cycles in $\Sph^3$, and let
+$\bar\lambda\in H^1(\mathcal Z_2;\Ztwo)$ be its canonical generator.  A
+continuous map $\Phi:X\to\mathcal Z_2$ is a $p$-sweepout when
+\[
+  \Phi^*(\bar\lambda^p)\neq0
+\]
+and the usual no-concentration condition holds.
+
+\begin{lemma}\label{lem:width}
+For the unit round three-sphere,
+\[
+  \omega_1(\Sph^3)=\omega_2(\Sph^3)=4\pi.
+\]
+\end{lemma}
+
+\begin{proof}
+The standard family of geodesic spheres, starting and ending at the zero
+cycle, is a one-sweepout whose largest member is an equator.  Hence
+$\omega_1(\Sph^3)\leq4\pi$.
+
+Conversely, Almgren--Pitts min--max theory \cite{Pitts} produces a nonzero
+stationary integral varifold $V$ with mass
+$\|V\|(\Sph^3)=\omega_1(\Sph^3)$.  In ambient dimension three its support
+is a smooth embedded closed minimal surface, possibly with positive
+integer multiplicities.  By stereographic projection and conformal
+invariance, the classical Euclidean Willmore inequality becomes the
+following spherical inequality \cite{Willmore,MarquesNevesWillmore}: every
+closed immersed surface $\Sigma\subset\Sph^3$ satisfies
+\begin{equation}\label{eq:willmore}
+  \Area(\Sigma)+\frac14\int_\Sigma |\mathbf H|^2\,d\mu\geq4\pi,
+\end{equation}
+where $\mathbf H$ is the trace mean-curvature vector; equality occurs only
+for a geodesic two-sphere.  Each minimal component of $V$ therefore has
+area at least $4\pi$.  It follows that $\omega_1(\Sph^3)\geq4\pi$, and
+thus $\omega_1(\Sph^3)=4\pi$.
+
+It remains to give a two-sweepout of maximal mass $4\pi$.  Regard
+$\RP^2$ as a projective plane in the $\RP^3$ of normal lines in
+$\mathbb R^4$, and define
+\[
+  \Phi:\RP^2\longrightarrow\mathcal Z_2,
+  \qquad
+  \Phi([v])=\Sph^3\cap v^\perp.
+\]
+Every member is an equatorial two-sphere and hence has mass $4\pi$.  If
+$\alpha$ denotes the generator of $H^1(\RP^2;\Ztwo)$, then
+\begin{equation}\label{eq:pullback}
+  \Phi^*\bar\lambda=\alpha.
+\end{equation}
+The map $\Phi$ is continuous in the flat topology.  It also has no
+concentration of mass: for some universal $C$ and all sufficiently small
+$r>0$,
+\[
+  \sup_{[v]\in\RP^2}\sup_{x\in\Sph^3}
+  \|\Phi([v])\|(B_r(x))\leq Cr^2\longrightarrow0.
+\]
+After choosing any finite cubulation of $\RP^2$, it is therefore an
+admissible family in the definition of the width.
+
+To verify \eqref{eq:pullback}, restrict $\Phi$ to a projective line.  The
+resulting loop rotates an equator through a half turn.  Equivalently, a
+generic point of $\Sph^3$ belongs to exactly one equator in the loop,
+counted modulo $2$.  Its Almgren swept chain is consequently the
+fundamental class $[\Sph^3]$, so Almgren's isomorphism evaluates
+$\bar\lambda$ nontrivially on this loop.  Hence
+$\Phi^*\bar\lambda=\alpha$.  Therefore
+\[
+  \Phi^*(\bar\lambda^2)=\alpha^2\neq0
+  \quad\text{in }H^2(\RP^2;\Ztwo).
+\]
+Thus $\Phi$ is a two-sweepout, and
+$\omega_2(\Sph^3)\leq4\pi$.  Since the widths are nondecreasing,
+\[
+  4\pi=\omega_1(\Sph^3)\leq\omega_2(\Sph^3)\leq4\pi,
+\]
+which proves the claim.
+\end{proof}
+
+\begin{remark}
+The same phenomenon is usually stated as
+\[
+  \omega_1(\Sph^3)=\omega_2(\Sph^3)
+  =\omega_3(\Sph^3)=\omega_4(\Sph^3)=4\pi,
+  \qquad
+  \omega_5(\Sph^3)=2\pi^2;
+\]
+see, for example, \cite{Nurser} and the discussion in
+\cite{ChenGaspar}.  Only the first equality is required below.
+\end{remark}
+
+\section{Rigidity of the width realizers}
+
+The mass value $4\pi$ leaves no alternative realizing surface.
+
+\begin{lemma}\label{lem:rigidity}
+Let $V$ be a stationary integral two-varifold in the unit round
+$\Sph^3$ whose support has the regularity of an Almgren--Pitts min--max
+hypersurface.  If $\|V\|(\Sph^3)=4\pi$, then
+\[
+  V=|E|
+\]
+for an equatorial two-sphere $E$, with multiplicity one.
+\end{lemma}
+
+\begin{proof}
+By regularity, write
+\[
+  V=\sum_{j=1}^N m_j|\Sigma_j|,
+  \qquad m_j\in\mathbb N,
+\]
+where the $\Sigma_j$ are smooth embedded closed minimal components.  By
+\eqref{eq:willmore}, $\Area(\Sigma_j)\geq4\pi$ for every $j$.  Since the
+total mass is exactly $4\pi$, there can be only one component, its
+multiplicity is one, and equality holds in the Willmore inequality.  The
+equality case makes $\Sigma_1$ a geodesic sphere.  Minimality then forces
+it to be an equator.
+\end{proof}
+
+This argument also removes three possible ambiguities at once.  Allowing
+integer multiplicity cannot produce another mass-$4\pi$ varifold;
+allowing disconnected support cannot fit within the mass budget; and in
+dimension three the min--max support has no singular set.  Even if one
+reads the conjecture as asking for an arbitrary closed immersed minimal
+surface of parametrized area $\omega_2$, rather than a particular min--max
+varifold, the equality case of \eqref{eq:willmore} forces the immersion to
+be an embedding onto a geodesic two-sphere.  Minimality makes it an equator;
+equivalently, its induced varifold is $|E|$.
+
+\section{Index and the lower-area obstruction}
+
+Let $E\cong\Sph^2$ be an equator.  Its second fundamental form vanishes,
+and $\Ric_{\Sph^3}(\nu,\nu)=2$.  With the convention that the Morse index
+is the number of negative directions of the second-variation form,
+\[
+  Q_E(f,f)
+  =\int_E\left(|\nabla f|^2-
+  \bigl(|A_E|^2+\Ric(\nu,\nu)\bigr)f^2\right)d\mu
+  =\int_{\Sph^2}\left(|\nabla f|^2-2f^2\right)d\mu.
+\]
+The spectrum of the nonnegative Laplacian $-\Delta_{\Sph^2}$ is
+\[
+  \ell(\ell+1),
+  \qquad \ell=0,1,2,\ldots,
+\]
+with multiplicity $2\ell+1$.  Hence the constant mode $\ell=0$ is the
+only negative direction, while the three $\ell=1$ modes span the kernel.
+Therefore
+\begin{equation}\label{eq:index}
+  \ind(E)=1,
+  \qquad
+  \nul(E)=3.
+\end{equation}
+
+Combining Lemmas~\ref{lem:width} and \ref{lem:rigidity} with
+\eqref{eq:index}, every minimal hypersurface realizing
+$\omega_2(\Sph^3)=4\pi$ has index $1$.  In particular, no such realizer
+has the index $p=2$ required by the conjecture.
+
+There is a second, logically independent contradiction.  If
+$\Sigma_+\subset\Sph^3$ were a nonempty closed minimal surface, then
+\eqref{eq:willmore} would give
+\[
+  \Area(\Sigma_+)\geq4\pi=\Area(E).
+\]
+Thus no minimal hypersurface of strictly smaller area exists.  Here, as is
+standard, ``hypersurface'' means a nonempty geometric hypersurface.  A
+Brakke flow issuing from an equator may become extinct, but the empty
+varifold is not the lower-area minimal hypersurface required by the
+published statement.  This completes the proof of
+Theorem~\ref{thm:main}.
+
+\section{Scope of the correction}
+
+The counterexample concerns the literal positive-Ricci alternative in
+the published conjecture.  It does not disprove a version restricted to
+generic bumpy metrics.  Nor does it settle the existence of connecting
+flows when an appropriate higher-index width realizer and a lower-area
+minimal endpoint are already known to exist.
+
+In their Berger-sphere setting, Chen and Gaspar explain that approximation
+and compactness produce a width realizer satisfying
+\[
+  \ind(\Sigma)\leq p\leq\ind(\Sigma)+\nul(\Sigma),
+\]
+rather than $\ind(\Sigma)=p$; see \cite[Remark~1]{ChenGaspar}.  The same
+relation holds for the round equator at $p=2$, since $1\leq2\leq4$ by
+\eqref{eq:index}.  Replacing the exact index condition by this
+augmented-index relation in an appropriately qualified conjecture would
+remove the first obstruction, but not the absence of a lower-area endpoint
+on the bottom width plateau.  Any repaired statement must therefore also
+address width plateaux or impose a condition ensuring that a lower-area
+minimal critical point exists.
+
+\begin{thebibliography}{9}
+
+\bibitem{ChenGaspar}
+J.~Chen and P.~Gaspar,
+\emph{When can minimal hypersurfaces be connected by mean curvature flow?},
+Math. Ann. \textbf{395} (2026), Article 40.
+\href{https://doi.org/10.1007/s00208-026-03479-5}
+{doi:10.1007/s00208-026-03479-5}.
+
+\bibitem{MarquesNevesPositiveRicci}
+F.~C. Marques and A.~Neves,
+\emph{Existence of infinitely many minimal hypersurfaces in positive
+Ricci curvature},
+Invent. Math. \textbf{209} (2017), no.~2, 577--616.
+\href{https://doi.org/10.1007/s00222-016-0716-3}
+{doi:10.1007/s00222-016-0716-3}.
+
+\bibitem{MarquesNevesWillmore}
+F.~C. Marques and A.~Neves,
+\emph{Min--max theory and the Willmore conjecture},
+Ann. of Math. (2) \textbf{179} (2014), no.~2, 683--782.
+\href{https://doi.org/10.4007/annals.2014.179.2.6}
+{doi:10.4007/annals.2014.179.2.6}.
+
+\bibitem{Nurser}
+C.~A.~G. Nurser,
+\emph{Low min--max widths of the round three-sphere},
+Ph.D. thesis, Imperial College London, 2016.
+
+\bibitem{Pitts}
+J.~T. Pitts,
+\emph{Existence and Regularity of Minimal Surfaces on Riemannian Manifolds},
+Mathematical Notes, vol.~27, Princeton University Press, Princeton, 1981.
+
+\bibitem{Willmore}
+T.~J. Willmore,
+\emph{Note on embedded surfaces},
+An. \c{S}tiin\c{t}. Univ. ``Al. I. Cuza'' Ia\c{s}i Sec\c{t}. I a Mat.
+\textbf{11B} (1965), 493--496.
+
+\end{thebibliography}
+
+\end{document}

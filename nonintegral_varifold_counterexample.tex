@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\spt}{\operatorname{spt}}
+
+\title{Infinite-Order Contact Does Not Force Containment for Nonintegral Stationary Varifolds}
+\author{[Author Name]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Relation to the problem list.}
+This manuscript concerns Question~30 (L30), ``Infinite-order contact forces
+containment,'' but it is \emph{not} a solution of the intended
+Brena--Decio--De~Lellis problem.  Their problem is for integer rectifiable
+varifolds, whereas the question in the list omits integrality.  The example
+below uses noninteger weights essentially.  It disproves only the broader
+statement printed in the list; the intended integral-varifold problem remains
+open.
+
+We give an explicit stationary rectifiable varifold whose support has
+infinite-order quadratic contact with a plane at the origin but is not
+locally contained in that plane.  The construction is a base plane together
+with a rapidly weighted sequence of parallel planes converging to it.  The
+weights are nonintegral; this is essential to local finiteness.  The example
+shows that an infinite-order-contact rigidity statement for stationary
+varifolds requires an integrality or comparable multiplicity hypothesis.
+\end{abstract}
+
+\section{Introduction}
+
+Let $V$ be an $m$-dimensional stationary rectifiable varifold in a Euclidean
+open set and let $\mathcal M$ be a smooth minimal $m$-submanifold through
+$x_0\in\spt V$.  A natural unique-continuation question asks whether
+\begin{equation}\label{eq:contact}
+ \int_{B_r(x_0)}\operatorname{dist}(x,\mathcal M)^2\,d\|V\|(x)
+ =o(r^N)
+ \qquad\text{for every }N\in\mathbb N
+\end{equation}
+forces $\spt V$ to be locally contained in $\mathcal M$.  Brena, Decio,
+and De Lellis formulate this problem for integer rectifiable varifolds
+\cite{BDD}.  We show that the corresponding assertion for arbitrary
+real-weighted rectifiable varifolds is false.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\ge1$, there exist a stationary rectifiable
+$m$-varifold $V$ in $\mathbb R^{m+1}$, an $m$-plane $P$, and a point
+$0\in P\cap\spt V$ such that \eqref{eq:contact} holds with
+$\mathcal M=P$, but
+\[
+ \spt V\not\subset P
+\]
+in every neighborhood of the origin.  The varifold $V$ is locally Radon
+but is not integral.
+\end{theorem}
+
+\section{Construction and proof}
+
+Let
+\[
+ P=\mathbb R^m\times\{0\}\subset\mathbb R^{m+1}
+\]
+and fix a unit normal vector $e$.  For $j\ge1$, set
+\[
+ h_j=2^{-j},
+ \qquad
+ a_j=e^{-h_j^{-2}}=e^{-4^j},
+ \qquad
+ P_j=P+h_je.
+\]
+Define
+\begin{equation}\label{eq:V}
+ V=|P|+\sum_{j=1}^{\infty}a_j|P_j|.
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+First we verify that \eqref{eq:V} defines a rectifiable Radon varifold.
+For every compact set $K\subset\mathbb R^{m+1}$, the $m$-dimensional
+measure of $K\cap P_j$ is bounded uniformly in $j$, while
+$\sum_j a_j<\infty$.  Hence the series of weight measures converges on
+compact sets.  Its support is contained in the countably rectifiable set
+$P\cup\bigcup_jP_j$, and its multiplicity is measurable and positive.
+
+Every affine plane is stationary.  If $X$ is a compactly supported smooth
+vector field, then
+\[
+ \delta V(X)=\delta|P|(X)+\sum_{j=1}^{\infty}a_j\delta|P_j|(X)=0.
+\]
+The series is absolutely convergent because the masses of the planes on
+$\spt X$ are uniformly bounded and $\sum_j a_j<\infty$.  Thus $V$ is
+stationary.
+
+Let $\omega_m$ denote the volume of the unit ball in $\mathbb R^m$, and
+put
+\[
+ I(r)=\int_{B_r(0)}\operatorname{dist}(x,P)^2\,d\|V\|(x).
+\]
+The base plane contributes zero.  If $h_j<r$, then
+$P_j\cap B_r(0)$ is an $m$-ball of radius
+$\sqrt{r^2-h_j^2}$ and every point on it has distance $h_j$ from $P$.
+Consequently
+\begin{equation}\label{eq:I}
+ I(r)=\omega_m\sum_{h_j<r}
+ a_jh_j^2(r^2-h_j^2)^{m/2}.
+\end{equation}
+
+Let $J=J(r)$ be the least index satisfying $h_J<r$.  Since
+$4^{j+1}\ge4^j+1$ for $j\ge1$, the superexponential tail obeys
+\[
+ \sum_{j\ge J}e^{-4^j}\le C e^{-4^J}
+\]
+for an absolute constant $C$.  Moreover $h_J<r$, so
+$4^J=h_J^{-2}>r^{-2}$.  Using \eqref{eq:I}, we obtain
+\[
+ I(r)
+ \le \omega_m r^{m+2}\sum_{j\ge J}a_j
+ \le C_m r^{m+2}e^{-1/r^2}.
+\]
+Since $e^{-1/r^2}=o(r^k)$ as $r\downarrow0$ for every $k>0$, it follows
+that $I(r)=o(r^N)$ for every $N\in\mathbb N$.
+
+On the other hand, $h_j\downarrow0$.  Every ball centered at the origin
+therefore meets some parallel plane $P_j$, and every such $P_j$ belongs to
+$\spt V$.  Hence the support is not contained in $P$ in any neighborhood
+of the origin.
+
+Finally, the multiplicity of $V$ on $P_j$ is
+$a_j=e^{-4^j}\notin\mathbb Z$.  Thus $V$ is not an integral varifold.
+\end{proof}
+
+\begin{remark}
+The fractional weights are the mechanism that makes the example locally
+finite.  Replacing them by positive integer multiplicities on infinitely
+many full parallel planes would produce infinite mass in every fixed ball.
+Accordingly, the construction does not resolve the integral-varifold unique
+continuation problem in \cite{BDD}.
+\end{remark}
+
+\begin{thebibliography}{9}
+
+\bibitem{BDD}
+C.~Brena, S.~Decio, and C.~De Lellis,
+\emph{Remarks and conjectures on stationary varifolds},
+Rend. Lincei Mat. Appl. \textbf{36} (2025), 409--443;
+\href{https://arxiv.org/abs/2503.00651}{arXiv:2503.00651}.
+
+\bibitem{Simon}
+L.~Simon,
+\emph{Lectures on Geometric Measure Theory},
+Proceedings of the Centre for Mathematical Analysis, vol.~3,
+Australian National University, Canberra, 1983.
+
+\end{thebibliography}
+\end{document}
