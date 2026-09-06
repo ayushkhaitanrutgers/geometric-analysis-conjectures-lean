@@ -7,3 +7,5 @@ lake-manifest.json
 CLAUDE.md
 # build artifacts
 *.pdf
+.history/
+.vscode/
